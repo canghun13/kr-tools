@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>한국어 금융 계산기 모음 2026 | MoneyDecoded</title>
+<meta name="description" content="연봉 실수령액, 퇴직금, 청약, 환율 등 한국어 금융 계산기 모음. 무료 · 회원가입 불필요 · 2026년 최신 기준.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f5f0;
+    --surface: #ffffff;
+    --surface2: #f9f9f7;
+    --border: #e8e8e4;
+    --text: #1a1a1a;
+    --text2: #666660;
+    --text3: #999994;
+    --accent: #2563eb;
+    --accent-light: #eff6ff;
+    --radius: 12px;
+    --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Pretendard', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  nav {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    height: 52px;
+    gap: 16px;
+  }
+  .nav-logo { font-weight: 700; font-size: 15px; color: var(--text); text-decoration: none; }
+  .nav-links { display: flex; gap: 16px; margin-left: auto; }
+  .nav-links a { font-size: 13px; color: var(--text2); text-decoration: none; }
+  .nav-links a:hover { color: var(--accent); }
+
+  .hero {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 48px 24px 36px;
+    text-align: center;
+  }
+  .hero-badge {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent);
+    background: var(--accent-light);
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-size: clamp(24px, 4vw, 34px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
+  }
+  .hero p { font-size: 15px; color: var(--text2); }
+
+  .container { max-width: 860px; margin: 0 auto; padding: 36px 16px 60px; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text3);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 14px;
+    margin-top: 32px;
+  }
+  .section-label:first-child { margin-top: 0; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; margin-bottom: 8px; }
+
+  .tool-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 20px;
+    text-decoration: none;
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+  }
+  .tool-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 4px 16px rgba(37,99,235,0.12);
+    transform: translateY(-2px);
+  }
+  .tool-card.coming-soon {
+    opacity: 0.5;
+    pointer-events: none;
+    cursor: default;
+  }
+
+  .card-top { display: flex; align-items: center; gap: 12px; }
+  .card-icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .card-name { font-size: 15px; font-weight: 600; }
+  .card-desc { font-size: 13px; color: var(--text2); line-height: 1.5; }
+  .card-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 10px;
+    margin-top: 2px;
+    align-self: flex-start;
+  }
+  .tag-new { background: #dcfce7; color: #16a34a; }
+  .tag-soon { background: #f3f4f6; color: var(--text3); }
+  .tag-popular { background: #fef3c7; color: #d97706; }
+
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0 0;
+  }
+
+  .bottom-links {
+    margin-top: 32px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .bottom-link {
+    flex: 1;
+    min-width: 200px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    text-decoration: none;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: border-color 0.15s;
+  }
+  .bottom-link:hover { border-color: var(--accent); }
+  .bottom-link .bl-icon { font-size: 20px; }
+  .bottom-link .bl-sub { font-size: 12px; color: var(--text3); font-weight: 400; margin-top: 2px; }
+  .bottom-link .bl-arrow { margin-left: auto; color: var(--text3); }
+
+  footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 24px;
+    text-align: center;
+    margin-top: 48px;
+  }
+  footer .footer-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 10px; }
+  footer .footer-links a { font-size: 13px; color: var(--text2); text-decoration: none; }
+  footer p { font-size: 12px; color: var(--text3); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://kr.tools.moneydecoded.net" class="nav-logo">MoneyDecoded 🇰🇷</a>
+  <div class="nav-links">
+    <a href="https://tools.moneydecoded.net">영어 계산기</a>
+    <a href="https://www.moneydecoded.net">블로그</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-badge">무료 · 2026년 최신 기준 · 회원가입 불필요</div>
+  <h1>한국어 금융 계산기</h1>
+  <p>세금, 급여, 대출, 투자 — 복잡한 계산 한 번에</p>
+</div>
+
+<div class="container">
+
+  <div class="section-label">급여 · 세금</div>
+  <div class="grid">
+    <a href="https://kr.tools.moneydecoded.net/salary-calculator.html" class="tool-card">
+      <div class="card-top">
+        <div class="card-icon" style="background:#eff6ff">💰</div>
+        <div class="card-name">연봉 실수령액 계산기</div>
+      </div>
+      <div class="card-desc">4대보험·소득세 공제 후 실제 월급 계산. 부양가족·비과세 반영.</div>
+      <span class="card-tag tag-popular">🔥 인기</span>
+    </a>
+    <div class="tool-card coming-soon">
+      <div class="card-top">
+        <div class="card-icon" style="background:#f0fdf4">🏖️</div>
+        <div class="card-name">퇴직금 계산기</div>
+      </div>
+      <div class="card-desc">근속연수·평균임금 기준 퇴직금 자동 계산.</div>
+      <span class="card-tag tag-soon">준비중</span>
+    </div>
+  </div>
+
+  <div class="section-label">대출 · 부동산</div>
+  <div class="grid">
+    <div class="tool-card coming-soon">
+      <div class="card-top">
+        <div class="card-icon" style="background:#fef3c7">🏠</div>
+        <div class="card-name">주택담보대출 계산기</div>
+      </div>
+      <div class="card-desc">월 상환액·총 이자·LTV·DSR 한번에 계산.</div>
+      <span class="card-tag tag-soon">준비중</span>
+    </div>
+    <div class="tool-card coming-soon">
+      <div class="card-top">
+        <div class="card-icon" style="background:#fdf4ff">📋</div>
+        <div class="card-name">청약 당첨 가점 계산기</div>
+      </div>
+      <div class="card-desc">무주택 기간·부양가족·청약통장 점수 자동 계산.</div>
+      <span class="card-tag tag-soon">준비중</span>
+    </div>
+  </div>
+
+  <div class="section-label">해외송금 · 환율</div>
+  <div class="grid">
+    <a href="https://tools.moneydecoded.net/remittance-compare.html" class="tool-card">
+      <div class="card-top">
+        <div class="card-icon" style="background:#ecfdf5">✈️</div>
+        <div class="card-name">해외송금 수수료 비교</div>
+      </div>
+      <div class="card-desc">Wise · Remitly · OFX 수수료 한눈에 비교. 가장 저렴한 방법 찾기.</div>
+      <span class="card-tag tag-new">추천</span>
+    </a>
+    <div class="tool-card coming-soon">
+      <div class="card-top">
+        <div class="card-icon" style="background:#fff7ed">💱</div>
+        <div class="card-name">환율 계산기</div>
+      </div>
+      <div class="card-desc">실시간 환율 기반 원화·외화 변환.</div>
+      <span class="card-tag tag-soon">준비중</span>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="bottom-links">
+    <a href="https://tools.moneydecoded.net" class="bottom-link">
+      <span class="bl-icon">🌐</span>
+      <div>
+        <div>영어 금융 계산기</div>
+        <div class="bl-sub">Compound Interest · Loan · ETF · Mortgage</div>
+      </div>
+      <span class="bl-arrow">→</span>
+    </a>
+    <a href="https://www.moneydecoded.net" class="bottom-link">
+      <span class="bl-icon">📰</span>
+      <div>
+        <div>MoneyDecoded 블로그</div>
+        <div class="bl-sub">금융 트렌드 · 투자 인사이트</div>
+      </div>
+      <span class="bl-arrow">→</span>
+    </a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="https://kr.tools.moneydecoded.net">한국어 도구</a>
+    <a href="https://tools.moneydecoded.net">영어 계산기</a>
+    <a href="https://tools.moneydecoded.net/remittance-compare.html">해외송금 비교</a>
+    <a href="https://www.moneydecoded.net/p/privacy-policy.html">개인정보처리방침</a>
+  </div>
+  <p>© 2026 MoneyDecoded. 본 계산기는 참고용이며 전문가의 조언을 대체하지 않습니다.</p>
+</footer>
+
+</body>
+</html>
