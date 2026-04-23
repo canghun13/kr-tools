@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>퇴직금 계산기 2026 — 정확한 퇴직금 즉시 계산 | MoneyDecoded</title>
+<meta name="description" content="2026년 퇴직금 계산기. 근속연수·평균임금 기준 퇴직금 자동 계산. 중간정산·IRP 세금까지 한번에 확인.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f5f0;
+    --surface: #ffffff;
+    --surface2: #f9f9f7;
+    --border: #e8e8e4;
+    --text: #1a1a1a;
+    --text2: #666660;
+    --text3: #999994;
+    --accent: #2563eb;
+    --accent-light: #eff6ff;
+    --green: #16a34a;
+    --green-light: #f0fdf4;
+    --red: #dc2626;
+    --orange: #ea580c;
+    --radius: 12px;
+    --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Pretendard', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    font-size: 15px;
+  }
+
+  nav {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    height: 52px;
+    gap: 16px;
+  }
+  .nav-logo { font-weight: 700; font-size: 15px; color: var(--text); text-decoration: none; }
+  .nav-links { display: flex; gap: 16px; margin-left: auto; }
+  .nav-links a { font-size: 13px; color: var(--text2); text-decoration: none; }
+  .nav-links a:hover { color: var(--accent); }
+
+  .hero {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 40px 24px 32px;
+    text-align: center;
+  }
+  .hero-badge {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent);
+    background: var(--accent-light);
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin-bottom: 14px;
+  }
+  .hero h1 {
+    font-size: clamp(22px, 4vw, 30px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+    margin-bottom: 10px;
+  }
+  .hero h1 em { font-style: normal; color: var(--accent); }
+  .hero p { font-size: 14px; color: var(--text2); max-width: 480px; margin: 0 auto; }
+
+  .stats-bar {
+    background: var(--surface2);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 24px;
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .stat-item { text-align: center; }
+  .stat-value { font-size: 17px; font-weight: 700; color: var(--text); }
+  .stat-label { font-size: 11px; color: var(--text3); margin-top: 1px; }
+
+  .container { max-width: 820px; margin: 0 auto; padding: 28px 16px; }
+  .layout { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media (max-width: 640px) { .layout { grid-template-columns: 1fr; } }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+  }
+  .card-header {
+    padding: 16px 20px 12px;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface2);
+  }
+  .card-title { font-size: 13px; font-weight: 600; color: var(--text2); text-transform: uppercase; letter-spacing: 0.05em; }
+  .card-body { padding: 20px; }
+
+  .field { margin-bottom: 16px; }
+  .field:last-child { margin-bottom: 0; }
+  label { display: block; font-size: 13px; font-weight: 500; color: var(--text2); margin-bottom: 6px; }
+  .input-wrap { position: relative; }
+  .input-wrap input, .input-wrap select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text);
+    background: var(--surface);
+    transition: border-color 0.15s;
+    appearance: none;
+  }
+  .input-wrap input:focus, .input-wrap select:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+  }
+  .input-suffix {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 13px;
+    color: var(--text3);
+    pointer-events: none;
+  }
+
+  .date-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+  .hint { font-size: 11px; color: var(--text3); margin-top: 4px; }
+
+  /* 결과 */
+  .result-highlight {
+    background: var(--accent);
+    color: white;
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+  .result-highlight .label { font-size: 12px; opacity: 0.8; margin-bottom: 4px; }
+  .result-highlight .amount { font-size: 30px; font-weight: 700; letter-spacing: -0.02em; }
+  .result-highlight .sub { font-size: 12px; opacity: 0.7; margin-top: 3px; }
+
+  .result-list { display: flex; flex-direction: column; gap: 8px; }
+  .result-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 9px 12px;
+    background: var(--surface2);
+    border-radius: 8px;
+    font-size: 13px;
+  }
+  .result-item .name { color: var(--text2); }
+  .result-item .value { font-weight: 600; color: var(--text); }
+  .result-item.green-row {
+    background: var(--green-light);
+    border: 1px solid #bbf7d0;
+  }
+  .result-item.green-row .name { color: var(--green); font-weight: 600; }
+  .result-item.green-row .value { color: var(--green); font-size: 15px; }
+  .result-item.orange-row {
+    background: #fff7ed;
+    border: 1px solid #fed7aa;
+  }
+  .result-item.orange-row .name { color: var(--orange); font-weight: 600; }
+  .result-item.orange-row .value { color: var(--orange); }
+
+  .full-card { grid-column: 1 / -1; }
+
+  .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 20px; }
+  .info-item {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .info-item .info-num { font-size: 20px; font-weight: 700; color: var(--accent); margin-bottom: 2px; }
+  .info-item .info-label { font-size: 12px; color: var(--text2); }
+
+  .section-title {
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 14px;
+    margin-top: 32px;
+  }
+
+  .faq-item {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin-bottom: 8px;
+    overflow: hidden;
+  }
+  .faq-q {
+    padding: 14px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--surface);
+    user-select: none;
+  }
+  .faq-q:hover { background: var(--surface2); }
+  .faq-q .arrow { transition: transform 0.2s; color: var(--text3); }
+  .faq-q.open .arrow { transform: rotate(180deg); }
+  .faq-a {
+    display: none;
+    padding: 0 16px 14px;
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.7;
+    background: var(--surface);
+  }
+  .faq-a.show { display: block; }
+
+  .cta-card {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--text);
+    background: var(--surface);
+    transition: border-color 0.15s;
+  }
+  .cta-card:hover { border-color: var(--accent); }
+  .cta-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+  .cta-text .cta-name { font-size: 13px; font-weight: 600; }
+  .cta-text .cta-desc { font-size: 12px; color: var(--text3); margin-top: 1px; }
+  .cta-arrow { margin-left: auto; color: var(--text3); }
+
+  .disclaimer { font-size: 11px; color: var(--text3); text-align: center; margin-top: 12px; line-height: 1.6; }
+
+  footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 24px;
+    text-align: center;
+    margin-top: 48px;
+  }
+  footer .footer-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 10px; }
+  footer .footer-links a { font-size: 13px; color: var(--text2); text-decoration: none; }
+  footer .footer-links a:hover { color: var(--accent); }
+  footer p { font-size: 12px; color: var(--text3); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://kr-tools.moneydecoded.net" class="nav-logo">MoneyDecoded 🇰🇷</a>
+  <div class="nav-links">
+    <a href="https://kr-tools.moneydecoded.net/salary-calculator.html">연봉계산기</a>
+    <a href="https://tools.moneydecoded.net">영어 도구</a>
+    <a href="https://www.moneydecoded.net">블로그</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-badge">무료 · 2026년 기준 · 회원가입 불필요</div>
+  <h1>퇴직금 계산기<br><em>정확한 퇴직금</em> 즉시 확인</h1>
+  <p>근속연수·평균임금 자동 계산 · 세금·IRP 공제 후 실수령액까지</p>
+</div>
+
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-value">1년</div>
+    <div class="stat-label">이상 근무 시 발생</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-value">30일</div>
+    <div class="stat-label">평균임금 × 근속연수</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-value">IRP</div>
+    <div class="stat-label">의무 이전 (300만원 초과)</div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="layout">
+
+    <!-- INPUT -->
+    <div class="card">
+      <div class="card-header"><div class="card-title">근무 정보 입력</div></div>
+      <div class="card-body">
+
+        <div class="field">
+          <label>입사일</label>
+          <div class="input-wrap">
+            <input type="date" id="start-date">
+          </div>
+        </div>
+
+        <div class="field">
+          <label>퇴사일</label>
+          <div class="input-wrap">
+            <input type="date" id="end-date">
+          </div>
+        </div>
+
+        <div class="field">
+          <label>최근 3개월 월 급여 평균</label>
+          <div class="input-wrap">
+            <input type="number" id="monthly-salary" value="3500000" min="0" step="100000">
+            <span class="input-suffix">원</span>
+          </div>
+          <div class="hint">기본급 + 고정수당 포함. 상여금은 아래에 별도 입력.</div>
+        </div>
+
+        <div class="field">
+          <label>연간 상여금 (없으면 0)</label>
+          <div class="input-wrap">
+            <input type="number" id="bonus" value="0" min="0" step="100000">
+            <span class="input-suffix">원/년</span>
+          </div>
+          <div class="hint">연간 상여금의 3/12를 평균임금에 산입합니다.</div>
+        </div>
+
+        <div class="field">
+          <label>연간 연차수당 (없으면 0)</label>
+          <div class="input-wrap">
+            <input type="number" id="annual-leave" value="0" min="0" step="100000">
+            <span class="input-suffix">원/년</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- RESULT -->
+    <div class="card">
+      <div class="card-header"><div class="card-title">퇴직금 계산 결과</div></div>
+      <div class="card-body">
+
+        <div class="result-highlight">
+          <div class="label">퇴직금 (세전)</div>
+          <div class="amount" id="result-total">—</div>
+          <div class="sub" id="result-years">근속 — 계산 중</div>
+        </div>
+
+        <div class="result-list">
+          <div class="result-item">
+            <span class="name">근속연수</span>
+            <span class="value" id="r-years">—</span>
+          </div>
+          <div class="result-item">
+            <span class="name">1일 평균임금</span>
+            <span class="value" id="r-daily">—</span>
+          </div>
+          <div class="result-item">
+            <span class="name">30일분 평균임금</span>
+            <span class="value" id="r-30days">—</span>
+          </div>
+          <div class="result-item">
+            <span class="name">퇴직소득세 (추정)</span>
+            <span class="value" id="r-tax" style="color:var(--red)">—</span>
+          </div>
+          <div class="result-item green-row">
+            <span class="name">✓ 실수령 퇴직금</span>
+            <span class="value" id="r-net">—</span>
+          </div>
+          <div class="result-item orange-row">
+            <span class="name">⚠ IRP 의무 이전</span>
+            <span class="value" id="r-irp">300만원 초과 시</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 내부 링크 -->
+    <div class="card full-card">
+      <div class="card-header"><div class="card-title">함께 확인하면 좋은 계산기</div></div>
+      <div class="card-body" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px">
+        <a href="https://kr-tools.moneydecoded.net/salary-calculator.html" class="cta-card">
+          <div class="cta-icon" style="background:#eff6ff">💰</div>
+          <div class="cta-text">
+            <div class="cta-name">연봉 실수령액 계산기</div>
+            <div class="cta-desc">4대보험·소득세 공제 후 월급 확인</div>
+          </div>
+          <span class="cta-arrow">→</span>
+        </a>
+        <a href="https://tools.moneydecoded.net/remittance-compare.html" class="cta-card">
+          <div class="cta-icon" style="background:#ecfdf5">✈️</div>
+          <div class="cta-text">
+            <div class="cta-name">해외송금 수수료 비교</div>
+            <div class="cta-desc">퇴직금 해외 송금 시 최저 수수료</div>
+          </div>
+          <span class="cta-arrow">→</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 기준 안내 -->
+  <div class="section-title">퇴직금 계산 기준 안내</div>
+  <div class="info-grid">
+    <div class="info-item">
+      <div class="info-num">1년</div>
+      <div class="info-label">최소 근속 요건 (365일 이상)</div>
+    </div>
+    <div class="info-item">
+      <div class="info-num">30일</div>
+      <div class="info-label">평균임금 × 근속연수 = 퇴직금</div>
+    </div>
+    <div class="info-item">
+      <div class="info-num">14일</div>
+      <div class="info-label">퇴사 후 지급 기한</div>
+    </div>
+    <div class="info-item">
+      <div class="info-num">300만원</div>
+      <div class="info-label">초과 시 IRP 계좌 의무 이전</div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="section-title">자주 묻는 질문</div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      퇴직금은 어떻게 계산되나요?
+      <span class="arrow">▾</span>
+    </div>
+    <div class="faq-a">
+      퇴직금 = 1일 평균임금 × 30일 × (근속연수). 1일 평균임금은 퇴직 전 3개월간 지급된 임금 총액을 그 기간의 총 일수(약 91일)로 나눈 금액입니다. 상여금과 연차수당도 일정 비율 포함됩니다.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      퇴직금에도 세금이 붙나요?
+      <span class="arrow">▾</span>
+    </div>
+    <div class="faq-a">
+      네, 퇴직소득세가 부과됩니다. 단, 일반 근로소득세보다 낮게 적용되며 근속연수가 길수록 공제액이 커져 세금 부담이 줄어듭니다. IRP 계좌로 수령하면 세금을 나중에 납부(과세 이연)할 수 있어 유리합니다.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      IRP 계좌가 뭔가요? 꼭 만들어야 하나요?
+      <span class="arrow">▾</span>
+    </div>
+    <div class="faq-a">
+      IRP(개인형 퇴직연금)는 퇴직금을 받는 계좌입니다. 퇴직금이 300만원을 초과하면 IRP 계좌로만 수령 가능합니다. 은행·증권사에서 무료로 개설 가능하며, 55세 이후 연금으로 수령하면 세금 혜택이 있습니다.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      계약직·아르바이트도 퇴직금을 받을 수 있나요?
+      <span class="arrow">▾</span>
+    </div>
+    <div class="faq-a">
+      네, 가능합니다. 고용 형태와 관계없이 1주 15시간 이상, 1년 이상 계속 근무했다면 퇴직금을 받을 수 있습니다. 계약직, 파트타임, 아르바이트 모두 해당됩니다.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      회사가 퇴직금을 안 준다면 어떻게 하나요?
+      <span class="arrow">▾</span>
+    </div>
+    <div class="faq-a">
+      퇴사 후 14일 이내에 지급하지 않으면 노동청에 신고할 수 있습니다. 고용노동부 민원마당(minwon.moel.go.kr) 또는 가까운 노동청을 방문하세요. 3년 이내에 청구권을 행사할 수 있습니다.
+    </div>
+  </div>
+
+  <p class="disclaimer">
+    이 계산기는 참고용이며 실제 퇴직금은 회사 규정, 정확한 임금 내역에 따라 다를 수 있습니다. 정확한 계산은 회사 인사팀 또는 노무사에게 문의하세요.
+  </p>
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="https://kr-tools.moneydecoded.net">한국어 도구</a>
+    <a href="https://kr-tools.moneydecoded.net/salary-calculator.html">연봉계산기</a>
+    <a href="https://tools.moneydecoded.net">영어 계산기</a>
+    <a href="https://tools.moneydecoded.net/remittance-compare.html">해외송금 비교</a>
+    <a href="https://www.moneydecoded.net/p/privacy-policy.html">개인정보처리방침</a>
+  </div>
+  <p>© 2026 MoneyDecoded. 본 계산기는 참고용이며 전문가의 조언을 대체하지 않습니다.</p>
+</footer>
+
+<script>
+function fmt(n) {
+  return Math.round(n).toLocaleString('ko-KR') + '원';
+}
+
+function getYearsMonthsDays(start, end) {
+  const s = new Date(start);
+  const e = new Date(end);
+  const diffMs = e - s;
+  const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+  const years = diffDays / 365;
+  return { days: diffDays, years };
+}
+
+function calcRetirementTax(severance, years) {
+  // 퇴직소득세 간소화 계산 (근속연수공제 + 환산급여공제)
+  const yearsFloor = Math.floor(years);
+
+  // 근속연수 공제
+  let yearsDeduction = 0;
+  if (yearsFloor <= 5) yearsDeduction = yearsFloor * 300000;
+  else if (yearsFloor <= 10) yearsDeduction = 1500000 + (yearsFloor - 5) * 500000;
+  else if (yearsFloor <= 20) yearsDeduction = 4000000 + (yearsFloor - 10) * 800000;
+  else yearsDeduction = 12000000 + (yearsFloor - 20) * 1200000;
+
+  const taxableBase = Math.max(0, severance - yearsDeduction);
+  // 환산급여 = 과세표준 / 근속연수 × 12
+  const annualized = yearsFloor > 0 ? (taxableBase / yearsFloor) * 12 : taxableBase * 12;
+
+  // 환산급여공제
+  let annualDeduction = 0;
+  if (annualized <= 8000000) annualDeduction = annualized;
+  else if (annualized <= 70000000) annualDeduction = 8000000 + (annualized - 8000000) * 0.6;
+  else if (annualized <= 120000000) annualDeduction = 45200000 + (annualized - 70000000) * 0.55;
+  else if (annualized <= 300000000) annualDeduction = 72700000 + (annualized - 120000000) * 0.45;
+  else annualDeduction = 153700000 + (annualized - 300000000) * 0.35;
+
+  const taxableAnnual = Math.max(0, annualized - annualDeduction);
+
+  // 세율 적용
+  let incomeTax = 0;
+  if (taxableAnnual <= 14000000) incomeTax = taxableAnnual * 0.06;
+  else if (taxableAnnual <= 50000000) incomeTax = 840000 + (taxableAnnual - 14000000) * 0.15;
+  else if (taxableAnnual <= 88000000) incomeTax = 6240000 + (taxableAnnual - 50000000) * 0.24;
+  else if (taxableAnnual <= 150000000) incomeTax = 15360000 + (taxableAnnual - 88000000) * 0.35;
+  else incomeTax = 37060000 + (taxableAnnual - 150000000) * 0.38;
+
+  // 환산세액 → 퇴직소득세
+  const retirementTax = yearsFloor > 0 ? (incomeTax / 12) * yearsFloor : 0;
+  const localTax = retirementTax * 0.1;
+  return Math.max(0, retirementTax + localTax);
+}
+
+function calculate() {
+  const startDate = document.getElementById('start-date').value;
+  const endDate = document.getElementById('end-date').value;
+  const monthlySalary = parseFloat(document.getElementById('monthly-salary').value) || 0;
+  const bonus = parseFloat(document.getElementById('bonus').value) || 0;
+  const annualLeave = parseFloat(document.getElementById('annual-leave').value) || 0;
+
+  if (!startDate || !endDate || monthlySalary === 0) return;
+
+  const { days, years } = getYearsMonthsDays(startDate, endDate);
+
+  if (days < 365) {
+    document.getElementById('result-total').textContent = '1년 미만';
+    document.getElementById('result-years').textContent = `근속 ${days}일 — 퇴직금 없음`;
+    document.getElementById('r-years').textContent = `${days}일 (1년 미만)`;
+    document.getElementById('r-daily').textContent = '—';
+    document.getElementById('r-30days').textContent = '—';
+    document.getElementById('r-tax').textContent = '—';
+    document.getElementById('r-net').textContent = '해당없음';
+    document.getElementById('r-irp').textContent = '해당없음';
+    return;
+  }
+
+  // 평균임금 계산 (3개월 기준)
+  const totalDays3M = 91; // 3개월 평균 일수
+  const total3MSalary = monthlySalary * 3 + (bonus / 12) * 3 + (annualLeave / 12) * 3;
+  const dailyAvg = total3MSalary / totalDays3M;
+  const monthly30 = dailyAvg * 30;
+
+  // 퇴직금
+  const severance = monthly30 * years;
+  const tax = calcRetirementTax(severance, years);
+  const netSeverance = severance - tax;
+
+  const yearsFloor = Math.floor(years);
+  const months = Math.floor((years - yearsFloor) * 12);
+
+  document.getElementById('result-total').textContent = fmt(severance);
+  document.getElementById('result-years').textContent = `근속 ${yearsFloor}년 ${months}개월`;
+  document.getElementById('r-years').textContent = `${yearsFloor}년 ${months}개월 (${days}일)`;
+  document.getElementById('r-daily').textContent = fmt(dailyAvg);
+  document.getElementById('r-30days').textContent = fmt(monthly30);
+  document.getElementById('r-tax').textContent = '-' + fmt(tax);
+  document.getElementById('r-net').textContent = fmt(netSeverance);
+  document.getElementById('r-irp').textContent = severance > 3000000 ? 'IRP 의무 이전 대상' : '해당없음 (300만원 이하)';
+}
+
+function toggleFaq(el) {
+  el.classList.toggle('open');
+  el.nextElementSibling.classList.toggle('show');
+}
+
+// 오늘 날짜를 퇴사일 기본값으로
+const today = new Date().toISOString().split('T')[0];
+document.getElementById('end-date').value = today;
+
+// 3년 전을 입사일 기본값으로
+const threeYearsAgo = new Date();
+threeYearsAgo.setFullYear(threeYearsAgo.getFullYear() - 3);
+document.getElementById('start-date').value = threeYearsAgo.toISOString().split('T')[0];
+
+document.querySelectorAll('input').forEach(el => el.addEventListener('input', calculate));
+calculate();
+</script>
+</body>
+</html>
