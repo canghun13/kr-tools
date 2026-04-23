@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>청약 가점 계산기 2026 | MoneyDecoded</title>
+<meta name="description" content="아파트 청약 당첨 가점 자동 계산기. 무주택 기간, 부양가족 수, 청약통장 가입기간 점수를 한번에 확인. 2026년 기준.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #f5f5f0;
+    --surface: #ffffff;
+    --surface2: #f9f9f7;
+    --border: #e8e8e4;
+    --text: #1a1a1a;
+    --text2: #666660;
+    --text3: #999994;
+    --accent: #2563eb;
+    --accent-light: #eff6ff;
+    --accent-mid: #dbeafe;
+    --success: #16a34a;
+    --success-bg: #f0fdf4;
+    --warn: #d97706;
+    --warn-bg: #fffbeb;
+    --danger: #dc2626;
+    --danger-bg: #fef2f2;
+    --radius: 12px;
+    --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
+  }
+  body {
+    font-family: 'Pretendard', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+
+  nav {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    height: 52px;
+  }
+  .nav-logo { font-weight: 700; font-size: 15px; color: var(--text); text-decoration: none; }
+  .nav-links { display: flex; gap: 16px; margin-left: auto; }
+  .nav-links a { font-size: 13px; color: var(--text2); text-decoration: none; }
+  .nav-links a:hover { color: var(--accent); }
+
+  .hero {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 40px 24px 28px;
+  }
+  .hero-inner { max-width: 800px; margin: 0 auto; }
+  .hero-badge {
+    display: inline-block;
+    font-size: 12px; font-weight: 600;
+    color: var(--accent); background: var(--accent-light);
+    padding: 4px 12px; border-radius: 20px; margin-bottom: 12px;
+  }
+  h1 { font-size: clamp(22px, 4vw, 30px); font-weight: 700; letter-spacing: -0.025em; margin-bottom: 6px; }
+  .subtitle { font-size: 14px; color: var(--text2); }
+
+  .layout {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1.5rem 1rem 4rem;
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 1.25rem;
+    align-items: start;
+  }
+  @media(max-width:660px){ .layout { grid-template-columns: 1fr; } }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  .card:last-child { margin-bottom: 0; }
+  .card-title {
+    font-size: 11px; font-weight: 700;
+    color: var(--text3);
+    text-transform: uppercase; letter-spacing: 0.07em;
+    margin-bottom: 1rem;
+  }
+
+  /* Score item row */
+  .score-item {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: border-color 0.15s;
+  }
+  .score-item:last-child { margin-bottom: 0; }
+  .score-item:hover { border-color: #b3c7f7; }
+  .score-item.open { border-color: var(--accent); }
+
+  .item-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .item-left { display: flex; align-items: center; gap: 10px; }
+  .item-icon {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0;
+  }
+  .item-name { font-size: 14px; font-weight: 600; }
+  .item-max { font-size: 11px; color: var(--text3); margin-top: 1px; }
+
+  .item-score-badge {
+    font-size: 22px; font-weight: 700;
+    color: var(--accent);
+    min-width: 48px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .item-score-badge span { font-size: 12px; font-weight: 400; color: var(--text3); }
+
+  .item-body {
+    display: none;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+  }
+  .score-item.open .item-body { display: block; }
+
+  /* Select options */
+  .opt-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 8px;
+  }
+  .opt-btn {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 10px;
+    background: var(--surface);
+    font-family: 'Pretendard', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text2);
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.12s;
+    line-height: 1.4;
+  }
+  .opt-btn:hover { border-color: #b3c7f7; color: var(--text); }
+  .opt-btn.selected {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+  .opt-score { display: block; font-size: 11px; margin-top: 2px; opacity: 0.7; }
+
+  /* Number input for dependants */
+  .dep-stepper {
+    display: flex; align-items: center; gap: 12px; margin-top: 4px;
+  }
+  .step-btn {
+    width: 36px; height: 36px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface2);
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text2);
+    transition: all 0.12s;
+  }
+  .step-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .step-val {
+    font-size: 22px; font-weight: 700;
+    color: var(--text);
+    min-width: 32px; text-align: center;
+  }
+  .dep-label { font-size: 12px; color: var(--text3); margin-left: 4px; }
+
+  /* Result panel */
+  .result-card {
+    position: sticky;
+    top: 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1.25rem;
+  }
+
+  .total-score-wrap {
+    background: var(--accent);
+    border-radius: 10px;
+    padding: 1.25rem;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  .total-label { font-size: 12px; color: rgba(255,255,255,0.75); margin-bottom: 4px; }
+  .total-num { font-size: 52px; font-weight: 700; color: #fff; line-height: 1; letter-spacing: -0.03em; }
+  .total-max { font-size: 13px; color: rgba(255,255,255,0.6); margin-top: 4px; }
+
+  /* Score gauge */
+  .gauge-wrap { margin: 0.9rem 0; }
+  .gauge-track {
+    width: 100%; height: 10px;
+    background: var(--border);
+    border-radius: 6px; overflow: hidden;
+    margin-bottom: 6px;
+  }
+  .gauge-fill {
+    height: 100%;
+    border-radius: 6px;
+    background: var(--accent);
+    transition: width 0.4s ease;
+  }
+  .gauge-labels { display: flex; justify-content: space-between; font-size: 11px; color: var(--text3); }
+
+  /* Sub scores */
+  .sub-row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+  }
+  .sub-row:last-child { border-bottom: none; }
+  .sub-k { color: var(--text2); }
+  .sub-v { font-weight: 700; color: var(--accent); }
+  .sub-v .of { font-size: 11px; font-weight: 400; color: var(--text3); }
+
+  /* Grade badge */
+  .grade-box {
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 13px;
+    margin-top: 0.75rem;
+    font-weight: 500;
+  }
+  .grade-box.high { background: var(--success-bg); color: var(--success); }
+  .grade-box.mid { background: var(--warn-bg); color: var(--warn); }
+  .grade-box.low { background: var(--danger-bg); color: var(--danger); }
+  .grade-box strong { font-weight: 700; }
+
+  /* Info note */
+  .info-note {
+    background: var(--accent-light);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: #1d4ed8;
+    line-height: 1.6;
+    margin-top: 0.75rem;
+  }
+
+  footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 24px;
+    text-align: center;
+  }
+  footer p { font-size: 12px; color: var(--text3); }
+  footer a { color: var(--text3); text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://kr-tools.moneydecoded.net" class="nav-logo">MoneyDecoded 🇰🇷</a>
+  <div class="nav-links">
+    <a href="https://kr-tools.moneydecoded.net/mortgage-calculator.html">주담대</a>
+    <a href="https://kr-tools.moneydecoded.net/salary-calculator.html">연봉</a>
+    <a href="https://www.moneydecoded.net">블로그</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">2026년 기준 · 무료</div>
+    <h1>청약 가점 계산기</h1>
+    <p class="subtitle">무주택 기간 · 부양가족 · 청약통장 가입기간 — 최대 84점</p>
+  </div>
+</div>
+
+<div class="layout">
+  <!-- Left: inputs -->
+  <div>
+
+    <!-- 1. 무주택 기간 -->
+    <div class="card">
+      <div class="card-title">항목별 점수 선택</div>
+
+      <div class="score-item open" id="item-homeless">
+        <div class="item-header" onclick="toggle('item-homeless')">
+          <div class="item-left">
+            <div class="item-icon" style="background:#eff6ff">🏠</div>
+            <div>
+              <div class="item-name">무주택 기간</div>
+              <div class="item-max">최대 32점</div>
+            </div>
+          </div>
+          <div class="item-score-badge" id="score-homeless">0<span>점</span></div>
+        </div>
+        <div class="item-body">
+          <p style="font-size:12px;color:var(--text3);margin-bottom:10px;">만 30세 이후(또는 혼인일) 무주택 기간. 세대 구성원 전원 무주택 기준.</p>
+          <div class="opt-grid" id="opts-homeless"></div>
+        </div>
+      </div>
+
+      <!-- 2. 부양가족 -->
+      <div class="score-item" id="item-dep">
+        <div class="item-header" onclick="toggle('item-dep')">
+          <div class="item-left">
+            <div class="item-icon" style="background:#f0fdf4">👨‍👩‍👧‍👦</div>
+            <div>
+              <div class="item-name">부양가족 수</div>
+              <div class="item-max">최대 35점</div>
+            </div>
+          </div>
+          <div class="item-score-badge" id="score-dep">5<span>점</span></div>
+        </div>
+        <div class="item-body">
+          <p style="font-size:12px;color:var(--text3);margin-bottom:12px;">주민등록등본 기준 세대원 중 부양가족 수. 본인 제외, 배우자 포함.</p>
+          <div class="dep-stepper">
+            <button class="step-btn" onclick="changeDep(-1)">−</button>
+            <div class="step-val" id="dep-val">0</div>
+            <div class="dep-label">명</div>
+            <button class="step-btn" onclick="changeDep(1)">+</button>
+          </div>
+          <p style="font-size:12px;color:var(--text3);margin-top:10px;" id="dep-score-desc">부양가족 0명 → 5점</p>
+        </div>
+      </div>
+
+      <!-- 3. 청약통장 가입기간 -->
+      <div class="score-item" id="item-bank">
+        <div class="item-header" onclick="toggle('item-bank')">
+          <div class="item-left">
+            <div class="item-icon" style="background:#fff7ed">🏦</div>
+            <div>
+              <div class="item-name">청약통장 가입기간</div>
+              <div class="item-max">최대 17점</div>
+            </div>
+          </div>
+          <div class="item-score-badge" id="score-bank">0<span>점</span></div>
+        </div>
+        <div class="item-body">
+          <p style="font-size:12px;color:var(--text3);margin-bottom:10px;">주택청약종합저축 또는 청약저축 가입 기간 기준.</p>
+          <div class="opt-grid" id="opts-bank"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 무주택 확인 -->
+    <div class="card">
+      <div class="card-title">무주택자 확인</div>
+      <p style="font-size:13px;color:var(--text2);margin-bottom:12px;">가점제 청약은 세대원 전원이 무주택이어야 합니다.</p>
+      <div style="display:flex;gap:10px;">
+        <button class="opt-btn selected" id="btn-homeless-yes" onclick="setHomeless(true)" style="flex:1;">✅ 세대 전원 무주택</button>
+        <button class="opt-btn" id="btn-homeless-no" onclick="setHomeless(false)" style="flex:1;">❌ 유주택 세대원 있음</button>
+      </div>
+      <div id="homeless-warn" style="display:none;" class="grade-box low" style="margin-top:10px;">
+        <strong>가점제 청약 불가</strong> — 세대 내 유주택자가 있으면 가점제 신청이 제한됩니다.
+      </div>
+    </div>
+  </div>
+
+  <!-- Right: result -->
+  <div class="result-card">
+    <div class="card-title">가점 합계</div>
+
+    <div class="total-score-wrap">
+      <div class="total-label">내 청약 가점</div>
+      <div class="total-num" id="total-score">5</div>
+      <div class="total-max">/ 84점 만점</div>
+    </div>
+
+    <div class="gauge-wrap">
+      <div class="gauge-track">
+        <div class="gauge-fill" id="gauge" style="width:6%"></div>
+      </div>
+      <div class="gauge-labels"><span>0</span><span>42</span><span>84</span></div>
+    </div>
+
+    <div class="sub-row">
+      <span class="sub-k">무주택 기간</span>
+      <span class="sub-v" id="r-homeless">0<span class="of"> / 32</span></span>
+    </div>
+    <div class="sub-row">
+      <span class="sub-k">부양가족</span>
+      <span class="sub-v" id="r-dep">5<span class="of"> / 35</span></span>
+    </div>
+    <div class="sub-row">
+      <span class="sub-k">청약통장</span>
+      <span class="sub-v" id="r-bank">0<span class="of"> / 17</span></span>
+    </div>
+
+    <div id="grade-box" class="grade-box low">
+      <strong>낮음 (0~39점)</strong> — 가점 경쟁이 낮은 외곽·소형 단지 위주로 전략을 세우세요.
+    </div>
+
+    <div class="info-note">
+      📌 수도권 인기 단지 당첨 가점은 보통 <strong>60~70점대</strong> 이상입니다.
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>본 계산기는 참고용입니다. 실제 청약 가점 기준은 공고문을 확인하세요.<br>
+  <a href="https://kr-tools.moneydecoded.net">← 모든 계산기</a> · <a href="https://www.moneydecoded.net">블로그</a></p>
+</footer>
+
+<script>
+  // ── Data ──
+  const homelessOpts = [
+    { label: '1년 미만', score: 2 },
+    { label: '1년 이상', score: 4 },
+    { label: '2년 이상', score: 6 },
+    { label: '3년 이상', score: 8 },
+    { label: '4년 이상', score: 10 },
+    { label: '5년 이상', score: 12 },
+    { label: '6년 이상', score: 14 },
+    { label: '7년 이상', score: 16 },
+    { label: '8년 이상', score: 18 },
+    { label: '9년 이상', score: 20 },
+    { label: '10년 이상', score: 22 },
+    { label: '11년 이상', score: 24 },
+    { label: '12년 이상', score: 26 },
+    { label: '13년 이상', score: 28 },
+    { label: '14년 이상', score: 30 },
+    { label: '15년 이상', score: 32 },
+  ];
+
+  const bankOpts = [
+    { label: '6개월 미만', score: 1 },
+    { label: '6개월 이상', score: 2 },
+    { label: '1년 이상', score: 3 },
+    { label: '2년 이상', score: 4 },
+    { label: '3년 이상', score: 6 },
+    { label: '4년 이상', score: 8 },
+    { label: '5년 이상', score: 10 },
+    { label: '6년 이상', score: 12 },
+    { label: '7년 이상', score: 14 },
+    { label: '8년 이상', score: 16 },
+    { label: '9년 이상', score: 17 },
+    { label: '10년 이상', score: 17 },
+  ];
+
+  const depScores = [5, 10, 15, 20, 25, 30, 35];
+  // index = 부양가족 수 (0~6+)
+
+  // ── State ──
+  let state = { homeless: 0, dep: 0, bank: 0, isHomeless: true };
+
+  // ── Build option buttons ──
+  function buildOpts(containerId, opts, key, scoreId) {
+    const wrap = document.getElementById(containerId);
+    opts.forEach((o, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'opt-btn';
+      btn.innerHTML = `${o.label}<span class="opt-score">${o.score}점</span>`;
+      btn.onclick = () => selectOpt(containerId, i, key, o.score, scoreId);
+      wrap.appendChild(btn);
+    });
+  }
+
+  function selectOpt(containerId, idx, key, score, scoreId) {
+    document.querySelectorAll(`#${containerId} .opt-btn`).forEach((b, i) => {
+      b.classList.toggle('selected', i === idx);
+    });
+    state[key] = score;
+    document.getElementById(scoreId).innerHTML = `${score}<span>점</span>`;
+    updateResult();
+  }
+
+  // ── Dependants ──
+  function changeDep(delta) {
+    const max = 6;
+    state.dep = Math.max(0, Math.min(max, state.dep + delta));
+    const score = depScores[state.dep] || 35;
+    document.getElementById('dep-val').textContent = state.dep;
+    document.getElementById('score-dep').innerHTML = `${score}<span>점</span>`;
+    document.getElementById('dep-score-desc').textContent = `부양가족 ${state.dep}명 → ${score}점`;
+    updateResult();
+  }
+
+  // ── Homeless toggle ──
+  function setHomeless(val) {
+    state.isHomeless = val;
+    document.getElementById('btn-homeless-yes').classList.toggle('selected', val);
+    document.getElementById('btn-homeless-no').classList.toggle('selected', !val);
+    document.getElementById('homeless-warn').style.display = val ? 'none' : 'block';
+    updateResult();
+  }
+
+  // ── Toggle item open ──
+  function toggle(id) {
+    document.getElementById(id).classList.toggle('open');
+  }
+
+  // ── Update result ──
+  function updateResult() {
+    const depScore = depScores[state.dep] || 35;
+    const total = state.homeless + depScore + state.bank;
+
+    document.getElementById('total-score').textContent = total;
+    document.getElementById('gauge').style.width = (total / 84 * 100) + '%';
+    document.getElementById('r-homeless').innerHTML = `${state.homeless}<span class="of"> / 32</span>`;
+    document.getElementById('r-dep').innerHTML = `${depScore}<span class="of"> / 35</span>`;
+    document.getElementById('r-bank').innerHTML = `${state.bank}<span class="of"> / 17</span>`;
+
+    const box = document.getElementById('grade-box');
+    if (total >= 70) {
+      box.className = 'grade-box high';
+      box.innerHTML = '<strong>매우 높음 (70점 이상)</strong> — 수도권 인기 단지 도전 가능합니다.';
+    } else if (total >= 60) {
+      box.className = 'grade-box high';
+      box.innerHTML = '<strong>높음 (60~69점)</strong> — 수도권 일반 단지 당첨 가능성이 있습니다.';
+    } else if (total >= 45) {
+      box.className = 'grade-box mid';
+      box.innerHTML = '<strong>중간 (45~59점)</strong> — 지방·외곽 단지 위주로 노려보세요.';
+    } else {
+      box.className = 'grade-box low';
+      box.innerHTML = '<strong>낮음 (44점 이하)</strong> — 가점 경쟁이 낮은 단지나 추첨제 물량을 공략하세요.';
+    }
+  }
+
+  // ── Init ──
+  buildOpts('opts-homeless', homelessOpts, 'homeless', 'score-homeless');
+  buildOpts('opts-bank', bankOpts, 'bank', 'score-bank');
+  updateResult();
+</script>
+</body>
+</html>
