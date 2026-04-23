@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>환율 계산기 2026 | 실시간 원화 환전 | MoneyDecoded</title>
+<meta name="description" content="실시간 환율 기반 원화·외화 환전 계산기. USD, JPY, EUR, GBP, CNY 등 주요 통화 지원. 수수료 포함 실수령액 계산.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #f5f5f0;
+    --surface: #ffffff;
+    --surface2: #f9f9f7;
+    --border: #e8e8e4;
+    --text: #1a1a1a;
+    --text2: #666660;
+    --text3: #999994;
+    --accent: #2563eb;
+    --accent-light: #eff6ff;
+    --accent-mid: #dbeafe;
+    --success: #16a34a;
+    --success-bg: #f0fdf4;
+    --warn: #d97706;
+    --warn-bg: #fffbeb;
+    --radius: 12px;
+    --shadow: 0 1px 3px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.04);
+  }
+  body { font-family: 'Pretendard', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+  nav {
+    background: var(--surface); border-bottom: 1px solid var(--border);
+    padding: 0 24px; display: flex; align-items: center; height: 52px;
+  }
+  .nav-logo { font-weight: 700; font-size: 15px; color: var(--text); text-decoration: none; }
+  .nav-links { display: flex; gap: 16px; margin-left: auto; }
+  .nav-links a { font-size: 13px; color: var(--text2); text-decoration: none; }
+  .nav-links a:hover { color: var(--accent); }
+
+  .hero { background: var(--surface); border-bottom: 1px solid var(--border); padding: 40px 24px 28px; }
+  .hero-inner { max-width: 720px; margin: 0 auto; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12px; font-weight: 600; color: var(--accent);
+    background: var(--accent-light); padding: 4px 12px; border-radius: 20px; margin-bottom: 12px;
+  }
+  .live-dot { width: 7px; height: 7px; border-radius: 50%; background: #22c55e; animation: pulse 1.8s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+  h1 { font-size: clamp(22px, 4vw, 30px); font-weight: 700; letter-spacing: -0.025em; margin-bottom: 6px; }
+  .subtitle { font-size: 14px; color: var(--text2); }
+
+  .wrap { max-width: 720px; margin: 0 auto; padding: 1.5rem 1rem 4rem; }
+
+  .card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  .card-title {
+    font-size: 11px; font-weight: 700; color: var(--text3);
+    text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 1rem;
+  }
+
+  /* ── Main converter ── */
+  .converter {
+    display: grid;
+    grid-template-columns: 1fr 40px 1fr;
+    gap: 10px;
+    align-items: end;
+  }
+  @media(max-width:520px){ .converter { grid-template-columns: 1fr; } .swap-btn { transform: rotate(90deg); } }
+
+  .conv-field label {
+    display: block; font-size: 12px; font-weight: 600;
+    color: var(--text3); margin-bottom: 6px; letter-spacing: 0.04em; text-transform: uppercase;
+  }
+  .conv-input-wrap { position: relative; }
+  .conv-input-wrap select {
+    position: absolute; left: 0; top: 0; bottom: 0;
+    width: 88px; border: none; border-right: 1px solid var(--border);
+    background: var(--surface2); border-radius: var(--radius) 0 0 var(--radius);
+    font-family: 'Pretendard', sans-serif;
+    font-size: 14px; font-weight: 600; color: var(--text);
+    padding: 0 8px 0 10px; cursor: pointer; appearance: none; outline: none;
+  }
+  .conv-input-wrap input {
+    width: 100%; height: 52px;
+    padding: 0 14px 0 100px;
+    border: 1px solid var(--border); border-radius: var(--radius);
+    background: var(--surface);
+    font-family: 'Pretendard', sans-serif;
+    font-size: 20px; font-weight: 700; color: var(--text);
+    outline: none; transition: border-color 0.15s;
+    -moz-appearance: textfield;
+  }
+  .conv-input-wrap input::-webkit-inner-spin-button { -webkit-appearance: none; }
+  .conv-input-wrap input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-mid); }
+  .conv-input-wrap input[readonly] { background: var(--surface2); color: var(--accent); cursor: default; }
+
+  .swap-btn {
+    width: 40px; height: 40px; border-radius: 50%;
+    border: 1px solid var(--border); background: var(--surface);
+    font-size: 18px; cursor: pointer; display: flex;
+    align-items: center; justify-content: center;
+    transition: all 0.15s; margin-bottom: 6px;
+    align-self: end;
+  }
+  .swap-btn:hover { border-color: var(--accent); background: var(--accent-light); }
+
+  /* Rate display */
+  .rate-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 8px;
+    padding: 10px 14px;
+    background: var(--accent-light);
+    border-radius: 8px;
+    margin-top: 12px;
+    font-size: 13px;
+  }
+  .rate-bar .rate-text { color: var(--accent); font-weight: 600; }
+  .rate-bar .rate-time { font-size: 11px; color: var(--text3); }
+  .rate-bar.loading { background: var(--surface2); }
+  .rate-bar.loading .rate-text { color: var(--text3); }
+  .rate-bar.error { background: #fef2f2; }
+  .rate-bar.error .rate-text { color: #dc2626; }
+
+  /* Fee slider */
+  .fee-row { display: flex; align-items: center; gap: 12px; margin-top: 4px; }
+  .fee-row label { font-size: 13px; color: var(--text2); white-space: nowrap; }
+  .fee-row input[type=range] { flex: 1; accent-color: var(--accent); }
+  .fee-val { font-size: 14px; font-weight: 700; color: var(--text); min-width: 38px; text-align: right; }
+
+  /* Results */
+  .result-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+    margin-top: 0.25rem;
+  }
+  .res-box {
+    background: var(--surface2); border-radius: 10px;
+    padding: 12px 14px;
+  }
+  .res-label { font-size: 11px; color: var(--text3); margin-bottom: 4px; }
+  .res-val { font-size: 18px; font-weight: 700; color: var(--text); letter-spacing: -0.02em; }
+  .res-val.accent { color: var(--accent); }
+  .res-sub { font-size: 11px; color: var(--text3); margin-top: 2px; }
+
+  /* Currency rate table */
+  .rate-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .rate-table th {
+    font-size: 11px; font-weight: 700; color: var(--text3);
+    text-align: left; padding: 0 10px 8px; border-bottom: 1px solid var(--border);
+    text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  .rate-table th:last-child { text-align: right; }
+  .rate-table td { padding: 10px 10px; border-bottom: 1px solid var(--border); }
+  .rate-table tr:last-child td { border-bottom: none; }
+  .rate-table .currency-name { font-weight: 600; }
+  .rate-table .currency-sub { font-size: 12px; color: var(--text3); }
+  .rate-table .rate-val { text-align: right; font-weight: 700; font-family: 'Pretendard', monospace; }
+  .rate-table .rate-unit { font-size: 11px; color: var(--text3); font-weight: 400; }
+  .flag { font-size: 20px; margin-right: 8px; }
+  .clickable-row { cursor: pointer; transition: background 0.1s; }
+  .clickable-row:hover { background: var(--accent-light); }
+
+  footer {
+    background: var(--surface); border-top: 1px solid var(--border);
+    padding: 24px; text-align: center;
+  }
+  footer p { font-size: 12px; color: var(--text3); }
+  footer a { color: var(--text3); text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://kr-tools.moneydecoded.net" class="nav-logo">MoneyDecoded 🇰🇷</a>
+  <div class="nav-links">
+    <a href="https://kr-tools.moneydecoded.net/mortgage-calculator.html">주담대</a>
+    <a href="https://kr-tools.moneydecoded.net/salary-calculator.html">연봉</a>
+    <a href="https://www.moneydecoded.net">블로그</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge"><div class="live-dot"></div> 실시간 환율</div>
+    <h1>환율 계산기</h1>
+    <p class="subtitle">원화 ↔ 외화 실시간 환전 계산 · 수수료 포함 실수령액</p>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- Converter -->
+  <div class="card">
+    <div class="card-title">환율 변환</div>
+    <div class="converter">
+      <div class="conv-field">
+        <label>보내는 금액</label>
+        <div class="conv-input-wrap">
+          <select id="from-currency" onchange="onCurrencyChange()">
+            <option value="KRW">🇰🇷 KRW</option>
+            <option value="USD">🇺🇸 USD</option>
+            <option value="JPY">🇯🇵 JPY</option>
+            <option value="EUR">🇪🇺 EUR</option>
+            <option value="GBP">🇬🇧 GBP</option>
+            <option value="CNY">🇨🇳 CNY</option>
+            <option value="AUD">🇦🇺 AUD</option>
+            <option value="CAD">🇨🇦 CAD</option>
+            <option value="HKD">🇭🇰 HKD</option>
+            <option value="SGD">🇸🇬 SGD</option>
+            <option value="THB">🇹🇭 THB</option>
+            <option value="VND">🇻🇳 VND</option>
+          </select>
+          <input type="number" id="from-amount" value="100" min="0" oninput="convert('from')">
+        </div>
+      </div>
+
+      <button class="swap-btn" onclick="swapCurrencies()" title="통화 바꾸기">⇄</button>
+
+      <div class="conv-field">
+        <label>받는 금액</label>
+        <div class="conv-input-wrap">
+          <select id="to-currency" onchange="onCurrencyChange()">
+            <option value="KRW">🇰🇷 KRW</option>
+            <option value="USD" selected>🇺🇸 USD</option>
+            <option value="JPY">🇯🇵 JPY</option>
+            <option value="EUR">🇪🇺 EUR</option>
+            <option value="GBP">🇬🇧 GBP</option>
+            <option value="CNY">🇨🇳 CNY</option>
+            <option value="AUD">🇦🇺 AUD</option>
+            <option value="CAD">🇨🇦 CAD</option>
+            <option value="HKD">🇭🇰 HKD</option>
+            <option value="SGD">🇸🇬 SGD</option>
+            <option value="THB">🇹🇭 THB</option>
+            <option value="VND">🇻🇳 VND</option>
+          </select>
+          <input type="number" id="to-amount" readonly>
+        </div>
+      </div>
+    </div>
+
+    <div id="rate-bar" class="rate-bar loading">
+      <span class="rate-text">환율 불러오는 중…</span>
+      <span class="rate-time"></span>
+    </div>
+  </div>
+
+  <!-- Fee + result -->
+  <div class="card">
+    <div class="card-title">수수료 포함 계산</div>
+    <div class="fee-row">
+      <label>환전 수수료</label>
+      <input type="range" id="fee-slider" min="0" max="5" step="0.1" value="1.5" oninput="updateFee()">
+      <div class="fee-val" id="fee-display">1.5%</div>
+    </div>
+    <p style="font-size:12px;color:var(--text3);margin-top:6px;margin-bottom:14px;">은행 창구 1.5~1.75% / 인터넷뱅킹 0.5~1% / Wise 0.4~0.7%</p>
+    <div class="result-grid">
+      <div class="res-box">
+        <div class="res-label">환율 적용 전</div>
+        <div class="res-val accent" id="res-before">—</div>
+        <div class="res-sub" id="res-before-unit"></div>
+      </div>
+      <div class="res-box">
+        <div class="res-label">수수료 차감 후</div>
+        <div class="res-val" id="res-after">—</div>
+        <div class="res-sub" id="res-after-unit"></div>
+      </div>
+      <div class="res-box">
+        <div class="res-label">수수료 금액</div>
+        <div class="res-val" id="res-fee">—</div>
+        <div class="res-sub" id="res-fee-unit"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rate table -->
+  <div class="card">
+    <div class="card-title">주요 통화 대 원화 환율</div>
+    <table class="rate-table">
+      <thead>
+        <tr>
+          <th>통화</th>
+          <th style="text-align:right">매매기준율</th>
+        </tr>
+      </thead>
+      <tbody id="rate-table-body">
+        <tr><td colspan="2" style="color:var(--text3);font-size:13px;padding:16px 10px;">환율 불러오는 중…</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:11px;color:var(--text3);margin-top:10px;" id="rate-source-note"></p>
+  </div>
+
+</div>
+
+<footer>
+  <p>환율은 참고용이며 실제 환전 시 금융기관 고시 환율이 적용됩니다.<br>
+  <a href="https://kr-tools.moneydecoded.net">← 모든 계산기</a> · <a href="https://tools.moneydecoded.net/remittance-compare.html">해외송금 수수료 비교</a></p>
+</footer>
+
+<script>
+  const CURRENCIES = {
+    KRW: { name: '한국 원화', flag: '🇰🇷', unit: '원', decimals: 0 },
+    USD: { name: '미국 달러', flag: '🇺🇸', unit: '$', decimals: 2 },
+    JPY: { name: '일본 엔화', flag: '🇯🇵', unit: '¥', decimals: 0 },
+    EUR: { name: '유로', flag: '🇪🇺', unit: '€', decimals: 2 },
+    GBP: { name: '영국 파운드', flag: '🇬🇧', unit: '£', decimals: 2 },
+    CNY: { name: '중국 위안', flag: '🇨🇳', unit: '¥', decimals: 2 },
+    AUD: { name: '호주 달러', flag: '🇦🇺', unit: 'A$', decimals: 2 },
+    CAD: { name: '캐나다 달러', flag: '🇨🇦', unit: 'C$', decimals: 2 },
+    HKD: { name: '홍콩 달러', flag: '🇭🇰', unit: 'HK$', decimals: 2 },
+    SGD: { name: '싱가포르 달러', flag: '🇸🇬', unit: 'S$', decimals: 2 },
+    THB: { name: '태국 바트', flag: '🇹🇭', unit: '฿', decimals: 2 },
+    VND: { name: '베트남 동', flag: '🇻🇳', unit: '₫', decimals: 0 },
+  };
+
+  // rates: KRW per 1 unit of foreign currency (fallback)
+  const FALLBACK_RATES = {
+    USD: 1370, JPY: 9.2, EUR: 1490, GBP: 1730,
+    CNY: 189, AUD: 880, CAD: 1005, HKD: 175,
+    SGD: 1015, THB: 39, VND: 0.054,
+  };
+
+  let rates = { ...FALLBACK_RATES };
+  let lastUpdated = '';
+
+  async function fetchRates() {
+    try {
+      // Free, no-key API
+      const res = await fetch('https://api.frankfurter.app/latest?base=USD&symbols=KRW,JPY,EUR,GBP,CNY,AUD,CAD,HKD,SGD,THB,VND');
+      if (!res.ok) throw new Error('fetch failed');
+      const data = await res.json();
+      const usdToKrw = data.rates.KRW;
+      // Convert all to KRW-per-1-unit
+      rates = {};
+      for (const [cur, val] of Object.entries(data.rates)) {
+        if (cur === 'KRW') continue;
+        rates[cur] = usdToKrw / val;
+      }
+      rates.USD = usdToKrw;
+      lastUpdated = new Date().toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' });
+      buildRateTable();
+      convert('from');
+    } catch (e) {
+      // Use fallback silently
+      rates = { ...FALLBACK_RATES };
+      lastUpdated = '참고용 (실시간 아님)';
+      buildRateTable();
+      convert('from');
+      document.getElementById('rate-bar').className = 'rate-bar error';
+      document.getElementById('rate-bar').querySelector('.rate-text').textContent = '실시간 환율 불러오기 실패 — 참고용 환율 표시 중';
+    }
+  }
+
+  function getRate(from, to) {
+    if (from === to) return 1;
+    if (from === 'KRW') return 1 / rates[to];
+    if (to === 'KRW') return rates[from];
+    return rates[from] / rates[to];
+  }
+
+  function fmtAmount(val, currency) {
+    const c = CURRENCIES[currency];
+    if (val >= 10000000 && currency === 'KRW') return (val / 10000000).toFixed(2) + '천만원';
+    if (val >= 10000 && currency === 'KRW') return Math.round(val).toLocaleString('ko-KR') + '원';
+    return val.toFixed(c.decimals).replace(/\B(?=(\d{3})+(?!\d))/g, ',') + ' ' + currency;
+  }
+
+  function convert(dir) {
+    const from = document.getElementById('from-currency').value;
+    const to = document.getElementById('to-currency').value;
+    const rate = getRate(from, to);
+
+    if (dir === 'from') {
+      const amt = parseFloat(document.getElementById('from-amount').value) || 0;
+      const result = amt * rate;
+      const toC = CURRENCIES[to];
+      document.getElementById('to-amount').value = result.toFixed(toC.decimals);
+    }
+
+    // Rate bar
+    const rateBar = document.getElementById('rate-bar');
+    if (lastUpdated && !rateBar.classList.contains('error')) {
+      rateBar.className = 'rate-bar';
+      const rateDisplay = from === 'KRW'
+        ? `1 KRW = ${(1/rates[to]).toFixed(CURRENCIES[to].decimals + 2)} ${to}`
+        : `1 ${from} = ${rates[from] ? rates[from].toLocaleString('ko-KR', {maximumFractionDigits: 2}) : '—'} KRW`;
+      rateBar.querySelector('.rate-text').textContent = rateDisplay;
+      rateBar.querySelector('.rate-time').textContent = `기준 ${lastUpdated}`;
+    }
+
+    updateFee();
+  }
+
+  function updateFee() {
+    const from = document.getElementById('from-currency').value;
+    const to = document.getElementById('to-currency').value;
+    const amt = parseFloat(document.getElementById('from-amount').value) || 0;
+    const fee = parseFloat(document.getElementById('fee-slider').value);
+    document.getElementById('fee-display').textContent = fee.toFixed(1) + '%';
+
+    const rate = getRate(from, to);
+    const before = amt * rate;
+    const feeAmt = before * (fee / 100);
+    const after = before - feeAmt;
+
+    document.getElementById('res-before').textContent = fmtAmount(before, to);
+    document.getElementById('res-after').textContent = fmtAmount(after, to);
+    document.getElementById('res-fee').textContent = fmtAmount(feeAmt, to);
+  }
+
+  function swapCurrencies() {
+    const fromSel = document.getElementById('from-currency');
+    const toSel = document.getElementById('to-currency');
+    const temp = fromSel.value;
+    fromSel.value = toSel.value;
+    toSel.value = temp;
+    convert('from');
+  }
+
+  function onCurrencyChange() {
+    convert('from');
+  }
+
+  function buildRateTable() {
+    const tbody = document.getElementById('rate-table-body');
+    const tableRates = ['USD','JPY','EUR','GBP','CNY','AUD','CAD','HKD','SGD','THB','VND'];
+    tbody.innerHTML = tableRates.map(cur => {
+      const c = CURRENCIES[cur];
+      const r = rates[cur];
+      let display, unit;
+      if (cur === 'JPY') { display = (r * 100).toLocaleString('ko-KR', {maximumFractionDigits: 2}); unit = '100엔당'; }
+      else if (cur === 'VND') { display = (r * 100).toFixed(2); unit = '100동당'; }
+      else { display = r ? r.toLocaleString('ko-KR', {maximumFractionDigits: 2}) : '—'; unit = '1' + cur + '당'; }
+      return `<tr class="clickable-row" onclick="quickSet('${cur}')">
+        <td><span class="flag">${c.flag}</span><span class="currency-name">${cur}</span> <span class="currency-sub">${c.name}</span></td>
+        <td class="rate-val">${display} <span class="rate-unit">원 / ${unit}</span></td>
+      </tr>`;
+    }).join('');
+    document.getElementById('rate-source-note').textContent =
+      `데이터: Frankfurter API (ECB 기준) · 업데이트: ${lastUpdated}`;
+  }
+
+  function quickSet(cur) {
+    document.getElementById('from-currency').value = 'KRW';
+    document.getElementById('to-currency').value = cur;
+    document.getElementById('from-amount').value = cur === 'JPY' ? 100000 : cur === 'VND' ? 100000 : 100000;
+    convert('from');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  fetchRates();
+</script>
+</body>
+</html>
