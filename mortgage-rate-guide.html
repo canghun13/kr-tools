@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 주담대 금리 비교 — 은행별 최저금리·우대조건 총정리 | MoneyDecoded</title>
+<meta name="description" content="2026년 주택담보대출 금리 비교. 시중은행·인터넷은행 최저금리, 고정 vs 변동 선택법, 우대금리 받는 조건까지 한 번에 정리.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #f5f5f0;
+    --surface: #ffffff;
+    --surface2: #f9f9f7;
+    --border: #e8e8e4;
+    --text: #1a1a1a;
+    --text2: #666660;
+    --text3: #999994;
+    --accent: #2563eb;
+    --accent-light: #eff6ff;
+    --green: #16a34a;
+    --green-light: #f0fdf4;
+    --orange: #ea580c;
+    --orange-light: #fff7ed;
+    --red: #dc2626;
+    --red-light: #fef2f2;
+    --yellow-light: #fefce8;
+    --radius: 12px;
+    --shadow: 0 1px 3px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.04);
+    --shadow-md: 0 4px 16px rgba(0,0,0,.08);
+  }
+  body { font-family: 'Pretendard', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; font-size: 15px; }
+
+  nav { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 24px; display: flex; align-items: center; height: 52px; gap: 16px; position: sticky; top: 0; z-index: 100; }
+  .nav-logo { font-weight: 700; font-size: 15px; color: var(--text); text-decoration: none; }
+  .nav-links { display: flex; gap: 16px; margin-left: auto; }
+  .nav-links a { font-size: 13px; color: var(--text2); text-decoration: none; }
+  .nav-links a:hover { color: var(--accent); }
+
+  .hero { background: linear-gradient(135deg, #0f2942 0%, #1d4ed8 100%); color: #fff; padding: 48px 24px 40px; text-align: center; }
+  .hero-badge { display: inline-block; font-size: 12px; font-weight: 600; background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.25); padding: 4px 12px; border-radius: 20px; margin-bottom: 16px; }
+  .hero h1 { font-size: clamp(22px, 4vw, 32px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.35; margin-bottom: 10px; }
+  .hero h1 em { font-style: normal; color: #93c5fd; }
+  .hero p { font-size: 14px; opacity: .85; max-width: 500px; margin: 0 auto; }
+
+  .container { max-width: 720px; margin: 0 auto; padding: 32px 16px 60px; }
+
+  .toc { background: var(--accent-light); border: 1px solid #bfdbfe; border-radius: var(--radius); padding: 18px 22px; margin-bottom: 32px; }
+  .toc-title { font-weight: 700; font-size: 13px; color: var(--accent); margin-bottom: 8px; }
+  .toc ol { padding-left: 18px; }
+  .toc li { margin-bottom: 3px; }
+  .toc a { color: var(--accent); text-decoration: none; font-size: 13px; }
+  .toc a:hover { text-decoration: underline; }
+
+  section { margin-bottom: 40px; }
+  .section-num { display: inline-block; background: var(--accent); color: #fff; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-bottom: 8px; letter-spacing: .05em; }
+  h2 { font-size: 19px; font-weight: 700; margin-bottom: 12px; line-height: 1.4; letter-spacing: -0.01em; }
+  h3 { font-size: 16px; font-weight: 700; margin: 20px 0 10px; }
+  p { margin-bottom: 12px; color: #374151; font-size: 14px; }
+
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 22px; margin-bottom: 14px; box-shadow: var(--shadow); }
+
+  .key-box { border-radius: var(--radius); padding: 16px 18px; margin-bottom: 14px; border-left: 4px solid; }
+  .key-box.green { background: var(--green-light); border-color: var(--green); }
+  .key-box.orange { background: var(--orange-light); border-color: var(--orange); }
+  .key-box.blue { background: var(--accent-light); border-color: var(--accent); }
+  .key-box.red { background: var(--red-light); border-color: var(--red); }
+  .key-box.yellow { background: var(--yellow-light); border-color: #ca8a04; }
+  .key-box strong { display: block; font-size: 13px; margin-bottom: 4px; }
+  .key-box p { margin: 0; font-size: 13px; }
+
+  .table-wrap { overflow-x: auto; margin-bottom: 14px; -webkit-overflow-scrolling: touch; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 480px; }
+  th { background: #f1f5f9; padding: 9px 12px; text-align: left; font-weight: 600; border-bottom: 2px solid var(--border); white-space: nowrap; }
+  td { padding: 9px 12px; border-bottom: 1px solid var(--border); }
+  tr:last-child td { border-bottom: none; }
+  .tag-green { background: var(--green-light); color: var(--green); padding: 2px 7px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+  .tag-blue { background: var(--accent-light); color: var(--accent); padding: 2px 7px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+  .tag-orange { background: var(--orange-light); color: var(--orange); padding: 2px 7px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+
+  /* 금리 비교 카드 */
+  .rate-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin-bottom: 16px; }
+  .rate-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; box-shadow: var(--shadow); }
+  .rate-card.best { border-color: var(--green); background: var(--green-light); }
+  .rate-bank { font-size: 13px; font-weight: 600; color: var(--text2); margin-bottom: 6px; }
+  .rate-val { font-size: 24px; font-weight: 800; color: var(--text); letter-spacing: -0.02em; }
+  .rate-card.best .rate-val { color: var(--green); }
+  .rate-type { font-size: 11px; color: var(--text3); margin-top: 3px; }
+  .rate-badge { display: inline-block; font-size: 10px; font-weight: 700; background: var(--green); color: #fff; padding: 1px 6px; border-radius: 3px; margin-bottom: 6px; }
+
+  /* 비교 */
+  .vs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+  .vs-card { border-radius: var(--radius); padding: 16px; border: 1px solid; }
+  .vs-card.a { background: var(--accent-light); border-color: #bfdbfe; }
+  .vs-card.b { background: var(--orange-light); border-color: #fed7aa; }
+  .vs-label { font-size: 12px; font-weight: 700; margin-bottom: 8px; }
+  .vs-card.a .vs-label { color: var(--accent); }
+  .vs-card.b .vs-label { color: var(--orange); }
+  .vs-title { font-size: 15px; font-weight: 800; margin-bottom: 6px; }
+  .vs-list { font-size: 12px; color: #4b5563; line-height: 1.8; }
+
+  /* 체크리스트 */
+  .checklist { list-style: none; }
+  .checklist li { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li::before { content: "✓"; color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+  /* 이자 시뮬 */
+  .sim-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); margin-bottom: 16px; }
+  .sim-header { background: #1d4ed8; color: #fff; padding: 12px 18px; font-size: 13px; font-weight: 600; }
+  .sim-body { padding: 16px 18px; }
+  .sim-row { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+  .sim-row:last-child { border-bottom: none; }
+  .sim-row .label { color: var(--text2); }
+  .sim-row .val { font-weight: 700; }
+  .sim-row.highlight .val { color: var(--red); font-size: 15px; }
+  .sim-row.good .val { color: var(--green); }
+
+  /* 요약 */
+  .summary { background: linear-gradient(135deg, #0f2942, #1d4ed8); color: #fff; border-radius: var(--radius); padding: 22px; margin-bottom: 32px; }
+  .summary h3 { color: #fff; margin-top: 0; font-size: 15px; margin-bottom: 14px; }
+  .summary-list { list-style: none; }
+  .summary-list li { padding: 5px 0; font-size: 13px; display: flex; align-items: flex-start; gap: 8px; }
+  .summary-list li::before { content: "✓"; color: #86efac; font-weight: 700; flex-shrink: 0; }
+
+  /* CTA */
+  .cta-wrap { display: flex; flex-direction: column; gap: 10px; margin-top: 32px; }
+  .cta-btn { display: flex; align-items: center; gap: 12px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 18px; text-decoration: none; color: var(--text); box-shadow: var(--shadow); transition: box-shadow .15s, transform .15s; }
+  .cta-btn:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); }
+  .cta-icon { font-size: 22px; flex-shrink: 0; }
+  .cta-text strong { display: block; font-size: 14px; margin-bottom: 2px; }
+  .cta-text span { font-size: 12px; color: var(--text2); }
+  .cta-arrow { margin-left: auto; color: var(--text3); }
+
+  /* FAQ */
+  .faq-item { border: 1px solid var(--border); border-radius: 10px; margin-bottom: 8px; overflow: hidden; }
+  .faq-q { padding: 14px 16px; font-size: 14px; font-weight: 500; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: var(--surface); user-select: none; width: 100%; border: none; text-align: left; color: var(--text); font-family: inherit; }
+  .faq-q:hover { background: var(--surface2); }
+  .faq-q .arrow { transition: transform 0.2s; color: var(--text3); font-size: 12px; }
+  .faq-item.open .arrow { transform: rotate(180deg); }
+  .faq-a { display: none; padding: 0 16px 14px; font-size: 13px; color: var(--text2); line-height: 1.7; background: var(--surface); }
+  .faq-item.open .faq-a { display: block; }
+
+  footer { background: var(--surface); border-top: 1px solid var(--border); padding: 24px; text-align: center; margin-top: 48px; }
+  .footer-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 10px; }
+  .footer-links a { font-size: 13px; color: var(--text2); text-decoration: none; }
+  footer p { font-size: 12px; color: var(--text3); }
+
+  @media (max-width: 480px) {
+    .vs-grid { grid-template-columns: 1fr; }
+    .rate-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://kr-tools.moneydecoded.net" class="nav-logo">MoneyDecoded 🇰🇷</a>
+  <div class="nav-links">
+    <a href="https://kr-tools.moneydecoded.net/mortgage-calculator.html">주담대 계산기</a>
+    <a href="https://kr-tools.moneydecoded.net">계산기 모음</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-badge">2026년 최신 기준</div>
+  <h1>2026 주담대 금리 비교<br><em>은행별 최저금리·우대조건 총정리</em></h1>
+  <p>금리 0.1%p 차이가 10년이면 수백만 원입니다. 내게 맞는 은행·상품 고르는 법 정리했습니다.</p>
+</div>
+
+<div class="container">
+
+  <div class="toc">
+    <div class="toc-title">📋 이 페이지에서 다루는 내용</div>
+    <ol>
+      <li><a href="#rate-table">2026 은행별 주담대 금리 현황</a></li>
+      <li><a href="#fixed-vs-variable">고정 vs 변동금리 — 어떤 게 유리할까?</a></li>
+      <li><a href="#interest-diff">금리 차이가 만드는 이자 차이</a></li>
+      <li><a href="#discount">우대금리 받는 법</a></li>
+      <li><a href="#checklist">대출 전 체크리스트</a></li>
+      <li><a href="#faq">자주 묻는 질문</a></li>
+    </ol>
+  </div>
+
+  <!-- SECTION 1 -->
+  <section id="rate-table">
+    <div class="section-num">01</div>
+    <h2>2026 은행별 주담대 금리 현황</h2>
+    <p>아래 금리는 2026년 4월 기준 각 은행 공시 기준금리입니다. 우대금리 적용 전 기준이며, 실제 적용 금리는 신용도·LTV 등에 따라 달라집니다.</p>
+
+    <div class="key-box yellow">
+      <strong>📌 금리는 매일 변동됩니다</strong>
+      <p>아래 표는 참고용이며, 실제 금리는 각 은행 앱·홈페이지에서 직접 확인하세요. 대출 비교는 <strong>같은 날 여러 은행에 동시 조회</strong>하는 게 정확합니다.</p>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-top:0; font-size:14px; color:var(--text2)">시중은행 (혼합형 5년 고정 기준)</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>은행</th><th>최저금리</th><th>최고금리</th><th>특징</th></tr>
+          <tr><td>KB국민은행</td><td>3.45%</td><td>5.20%</td><td><span class="tag-blue">대면·비대면</span></td></tr>
+          <tr><td>신한은행</td><td>3.38%</td><td>5.10%</td><td><span class="tag-blue">대면·비대면</span></td></tr>
+          <tr><td>하나은행</td><td>3.42%</td><td>5.15%</td><td><span class="tag-blue">대면·비대면</span></td></tr>
+          <tr><td>우리은행</td><td>3.50%</td><td>5.25%</td><td><span class="tag-blue">대면·비대면</span></td></tr>
+          <tr><td>NH농협은행</td><td>3.40%</td><td>5.05%</td><td><span class="tag-blue">대면·비대면</span></td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-top:0; font-size:14px; color:var(--text2)">인터넷은행 (변동형 기준)</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>은행</th><th>최저금리</th><th>최고금리</th><th>특징</th></tr>
+          <tr><td>카카오뱅크</td><td><strong>3.10%</strong></td><td>4.80%</td><td><span class="tag-green">비대면 최저</span></td></tr>
+          <tr><td>케이뱅크</td><td>3.25%</td><td>4.95%</td><td><span class="tag-green">비대면</span></td></tr>
+          <tr><td>토스뱅크</td><td>3.30%</td><td>5.00%</td><td><span class="tag-green">비대면</span></td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-top:0; font-size:14px; color:var(--text2)">정책금융 (정부 지원 상품)</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>상품</th><th>금리</th><th>조건</th></tr>
+          <tr><td>디딤돌대출</td><td><strong>2.35~3.95%</strong></td><td>무주택·연소득 6천만원 이하</td></tr>
+          <tr><td>보금자리론</td><td><strong>3.05~3.65%</strong></td><td>무주택·연소득 7천만원 이하</td></tr>
+          <tr><td>신생아특례대출</td><td><strong>1.6~3.3%</strong></td><td>2년 내 출산 가구</td></tr>
+        </table>
+      </div>
+      <p style="font-size:12px; color:var(--text3); margin:8px 0 0">※ 정책금융 상품은 조건이 맞으면 시중은행보다 훨씬 유리합니다. 먼저 확인하세요.</p>
+    </div>
+
+    <div class="key-box green">
+      <strong>💡 정책금융 먼저 확인하세요</strong>
+      <p>디딤돌·보금자리·신생아특례 조건에 해당하면 시중은행보다 1~2%p 낮은 금리를 받을 수 있습니다. 자격 요건 먼저 체크하는 게 순서입니다.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 2 -->
+  <section id="fixed-vs-variable">
+    <div class="section-num">02</div>
+    <h2>고정 vs 변동금리 — 어떤 게 유리할까?</h2>
+
+    <div class="vs-grid">
+      <div class="vs-card a">
+        <div class="vs-label">📌 고정금리</div>
+        <div class="vs-title">안정성 우선</div>
+        <div class="vs-list">
+          대출 기간 내내 금리 동일<br>
+          월 상환액 예측 가능<br>
+          금리 상승기에 유리<br>
+          초기 금리 다소 높음
+        </div>
+      </div>
+      <div class="vs-card b">
+        <div class="vs-label">📈 변동금리</div>
+        <div class="vs-title">초기 절약 우선</div>
+        <div class="vs-list">
+          시장금리 따라 변동<br>
+          초기 금리 낮은 경우 많음<br>
+          금리 하락기에 유리<br>
+          상환액 예측 어려움
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-top:0">상황별 추천</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>상황</th><th>추천</th><th>이유</th></tr>
+          <tr><td>10년 이상 장기 대출</td><td><span class="tag-blue">고정</span></td><td>금리 변동 리스크 차단</td></tr>
+          <tr><td>5년 이내 갚을 계획</td><td><span class="tag-orange">변동</span></td><td>초기 낮은 금리 활용</td></tr>
+          <tr><td>금리 하락 예상 시</td><td><span class="tag-orange">변동</span></td><td>금리 하락 수혜</td></tr>
+          <tr><td>소득 불안정</td><td><span class="tag-blue">고정</span></td><td>월 상환액 고정으로 계획 수립</td></tr>
+          <tr><td>신생아·정책금융</td><td><span class="tag-green">고정</span></td><td>낮은 고정금리 확정</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="key-box blue">
+      <strong>💡 혼합형도 있습니다</strong>
+      <p>5년 고정 후 변동으로 전환되는 혼합형(혼합금리)이 가장 일반적입니다. 초기 5년은 고정, 이후 6개월마다 조정됩니다. 시중은행 주담대 대부분이 이 방식입니다.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 3 -->
+  <section id="interest-diff">
+    <div class="section-num">03</div>
+    <h2>금리 차이가 만드는 이자 차이</h2>
+    <p>대출 3억원, 30년 원리금균등 기준으로 금리별 이자를 계산했습니다.</p>
+
+    <div class="sim-box">
+      <div class="sim-header">💰 대출 3억원 · 30년 · 원리금균등 기준</div>
+      <div class="sim-body">
+        <div class="sim-row">
+          <span class="label">금리 3.0% (정책금융 수준)</span>
+          <span class="val good">총 이자 약 1억 5,520만원</span>
+        </div>
+        <div class="sim-row">
+          <span class="label">금리 3.5% (인터넷은행 수준)</span>
+          <span class="val">총 이자 약 1억 8,480만원</span>
+        </div>
+        <div class="sim-row">
+          <span class="label">금리 4.0% (시중은행 평균)</span>
+          <span class="val">총 이자 약 2억 1,580만원</span>
+        </div>
+        <div class="sim-row highlight">
+          <span class="label">금리 4.5% (우대 미적용)</span>
+          <span class="val">총 이자 약 2억 4,820만원</span>
+        </div>
+        <div class="sim-row" style="background:#fef2f2; margin-top:8px; border-radius:6px; padding: 8px 0;">
+          <span class="label" style="color:var(--red); font-weight:600; padding-left:4px">3.0% vs 4.5% 차이</span>
+          <span class="val" style="color:var(--red); padding-right:4px">약 9,300만원 차이</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="key-box orange">
+      <strong>📌 0.5%p 차이 = 30년간 약 3,000만원</strong>
+      <p>금리 협상과 우대금리 챙기기가 단순히 월 몇만 원 절약이 아닌 수천만 원의 차이를 만듭니다. 귀찮아도 꼭 비교하세요.</p>
+    </div>
+
+    <div class="key-box blue">
+      <strong>💡 내 대출 이자 직접 계산하려면</strong>
+      <p>대출금액·금리·기간을 입력하면 월 상환액과 총 이자를 자동으로 계산해드립니다.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 4 -->
+  <section id="discount">
+    <div class="section-num">04</div>
+    <h2>우대금리 받는 법</h2>
+    <p>은행마다 다르지만 일반적으로 아래 조건을 갖추면 0.1~0.5%p씩 우대금리를 적용받을 수 있습니다.</p>
+
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <tr><th>우대 조건</th><th>우대폭</th><th>비고</th></tr>
+          <tr><td>급여이체 연결</td><td>최대 0.2%p</td><td>해당 은행 급여이체 설정</td></tr>
+          <tr><td>자동이체 등록</td><td>0.1%p</td><td>공과금·관리비 등</td></tr>
+          <tr><td>신용카드 사용</td><td>최대 0.2%p</td><td>해당 은행 카드 월 일정 사용</td></tr>
+          <tr><td>청약저축 보유</td><td>0.1%p</td><td>주택청약종합저축</td></tr>
+          <tr><td>인터넷·모바일 신청</td><td>0.1~0.2%p</td><td>비대면 채널 이용</td></tr>
+          <tr><td>장기거래 고객</td><td>0.1%p</td><td>일정 기간 이상 거래</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="key-box green">
+      <strong>💡 우대금리 최대 1%p 이상도 가능</strong>
+      <p>조건을 모두 갖추면 기준금리 대비 0.5~1%p 이상 낮아질 수 있습니다. 대출 전에 거래 은행 우대 조건 목록 꼭 확인하세요.</p>
+    </div>
+
+    <div class="key-box yellow">
+      <strong>📌 여러 은행 동시 조회해도 신용점수 안 떨어집니다</strong>
+      <p>2019년부터 주담대 대출 조회는 단기간 다수 조회해도 신용점수에 영향이 없습니다. 눈치 보지 말고 여러 곳 비교하세요.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 5 -->
+  <section id="checklist">
+    <div class="section-num">05</div>
+    <h2>대출 전 체크리스트</h2>
+
+    <div class="card">
+      <ul class="checklist">
+        <li>정책금융 자격(디딤돌·보금자리·신생아특례) 먼저 확인했다</li>
+        <li>3개 이상 은행 동시에 금리 비교했다</li>
+        <li>우대금리 조건 목록 확인하고 최대한 갖췄다</li>
+        <li>고정 vs 변동 vs 혼합 중 내 상황에 맞는 유형 선택했다</li>
+        <li>DSR 40% 규제 확인 — 연소득 대비 원리금 상환액 40% 이내인지 체크했다</li>
+        <li>중도상환수수료 조건 확인했다 (3년 이내 상환 시 최대 1.5%)</li>
+        <li>주담대 계산기로 월 상환액·총 이자 미리 계산해봤다</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SUMMARY -->
+  <div class="summary">
+    <h3>✅ 핵심 요약</h3>
+    <ul class="summary-list">
+      <li>정책금융(디딤돌·보금자리·신생아특례) 조건 되면 무조건 먼저 신청</li>
+      <li>인터넷은행이 시중은행보다 평균 0.2~0.3%p 낮은 경향</li>
+      <li>금리 0.5%p 차이 → 30년간 약 3,000만원 이자 차이</li>
+      <li>여러 은행 동시 조회해도 신용점수 영향 없음</li>
+      <li>우대금리 조건 모두 갖추면 최대 1%p 이상 추가 인하 가능</li>
+      <li>장기 대출은 고정·혼합, 단기 상환 계획이면 변동 유리</li>
+    </ul>
+  </div>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <h2>자주 묻는 질문</h2>
+    <div class="faq-item">
+      <button class="faq-q">주담대 금리는 어디서 비교하나요? <span class="arrow">▼</span></button>
+      <div class="faq-a">금융감독원 금융소비자포털(fine.fss.or.kr)에서 은행별 대출금리를 비교할 수 있습니다. 또는 각 은행 앱에서 직접 조회하거나, 네이버페이·카카오페이 금융에서도 비교 서비스를 제공합니다.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">DSR이 뭔가요? 어떻게 계산하나요? <span class="arrow">▼</span></button>
+      <div class="faq-a">DSR(총부채원리금상환비율)은 연소득 대비 모든 대출의 연간 원리금 상환액 비율입니다. 현재 규제는 DSR 40% 이내로, 연소득 5,000만원이면 연간 상환액이 2,000만원을 넘을 수 없습니다. 아래 주담대 계산기에서 DSR도 자동으로 계산됩니다.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">신용점수가 낮으면 금리가 많이 오르나요? <span class="arrow">▼</span></button>
+      <div class="faq-a">네, 신용점수가 낮을수록 가산금리가 붙어 대출 금리가 올라갑니다. 주담대는 담보가 있어 신용대출보다 영향이 적지만, 신용점수 800점 이상을 유지하는 게 최저금리 적용에 유리합니다. 대출 전 6개월 이상 신용 관리를 하면 효과가 있습니다.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">중도상환수수료는 얼마나 되나요? <span class="arrow">▼</span></button>
+      <div class="faq-a">일반적으로 대출 후 3년 이내 상환 시 잔액의 0.6~1.5% 수준입니다. 3년이 지나면 수수료 없이 상환 가능합니다. 단, 인터넷은행이나 특정 상품은 수수료 면제 조건이 다를 수 있으니 계약 전 확인하세요.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">LTV, DTI는 무엇인가요? <span class="arrow">▼</span></button>
+      <div class="faq-a">LTV(담보인정비율)는 주택 가격 대비 대출 가능 금액 비율입니다. 수도권 기준 일반적으로 60~70%가 한도입니다. DTI(총부채상환비율)는 연소득 대비 연간 원리금 상환액 비율로, 주담대는 보통 40~60% 적용됩니다. DSR과 DTI 중 더 엄격한 기준이 적용됩니다.</div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-wrap">
+    <a href="https://kr-tools.moneydecoded.net/mortgage-calculator.html" class="cta-btn">
+      <div class="cta-icon">🏠</div>
+      <div class="cta-text">
+        <strong>주담대 계산기</strong>
+        <span>월 상환액·총 이자·DSR 자동 계산</span>
+      </div>
+      <div class="cta-arrow">→</div>
+    </a>
+    <a href="https://kr-tools.moneydecoded.net/salary-calculator.html" class="cta-btn">
+      <div class="cta-icon">💰</div>
+      <div class="cta-text">
+        <strong>연봉 실수령액 계산기</strong>
+        <span>내 월급으로 DSR 계산해보기</span>
+      </div>
+      <div class="cta-arrow">→</div>
+    </a>
+    <a href="https://kr-tools.moneydecoded.net" class="cta-btn">
+      <div class="cta-icon">🧮</div>
+      <div class="cta-text">
+        <strong>한국어 계산기 모음</strong>
+        <span>퇴직금·청약·환율·최저임금 계산기</span>
+      </div>
+      <div class="cta-arrow">→</div>
+    </a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="https://kr-tools.moneydecoded.net">한국어 도구</a>
+    <a href="https://kr-tools.moneydecoded.net/mortgage-calculator.html">주담대 계산기</a>
+    <a href="https://kr-tools.moneydecoded.net/salary-calculator.html">연봉계산기</a>
+    <a href="https://www.moneydecoded.net/p/privacy-policy.html">개인정보처리방침</a>
+  </div>
+  <p>© 2026 MoneyDecoded — 이 정보는 참고용이며 실제 금리는 각 금융기관에서 확인하세요.</p>
+</footer>
+
+<script>
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => btn.closest('.faq-item').classList.toggle('open'));
+  });
+</script>
+
+</body>
+</html>
