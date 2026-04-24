@@ -370,7 +370,14 @@
   .bar-principal { background: var(--accent); }
   .bar-interest { background: #f0997b; }
   .chart-val { width: 80px; font-family: var(--mono); font-size: 12px; font-weight: 600; color: var(--text); text-align: right; flex-shrink: 0; }
-
+  .cta-section { max-width: 800px; margin: 0 auto; padding: 0 1.5rem 2rem; }
+  .cta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin-top: 12px; }
+  .cta-link { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border: 1px solid var(--border); border-radius: var(--radius); text-decoration: none; color: var(--text); background: var(--surface); }
+  .cta-link:hover { border-color: var(--accent); }
+  .cta-link-icon { font-size: 20px; background: var(--accent-bg); width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .cta-link-name { font-size: 13px; font-weight: 600; }
+  .cta-link-desc { font-size: 12px; color: var(--text-muted); }
+  .cta-link-arrow { margin-left: auto; color: var(--text-hint); }
   /* Footer */
   footer {
     max-width: 800px;
@@ -567,7 +574,29 @@
     </div>
   </div>
 </div>
-
+<div class="cta-section">
+  <div class="card">
+    <div class="card-title">함께 확인하면 좋은 정보</div>
+    <div class="cta-grid">
+      <a href="https://kr-tools.moneydecoded.net/mortgage-rate-guide.html" class="cta-link">
+        <span class="cta-link-icon">📉</span>
+        <div>
+          <div class="cta-link-name">2026 주담대 금리 비교</div>
+          <div class="cta-link-desc">은행별 최저금리·우대조건 총정리</div>
+        </div>
+        <span class="cta-link-arrow">→</span>
+      </a>
+      <a href="https://kr-tools.moneydecoded.net/salary-calculator.html" class="cta-link">
+        <span class="cta-link-icon">💰</span>
+        <div>
+          <div class="cta-link-name">연봉 실수령액 계산기</div>
+          <div class="cta-link-desc">내 월급으로 DSR 확인하기</div>
+        </div>
+        <span class="cta-link-arrow">→</span>
+      </a>
+    </div>
+  </div>
+</div>
 <footer>
   <p>본 계산기는 참고용이며 실제 대출 조건(거치기간, 중도상환수수료, 우대금리 등)에 따라 결과가 달라질 수 있습니다.</p>
   <p style="margin-top:4px;">DSR(총부채원리금상환비율) 기준: 은행권 40%, 비은행권 50% (2024년 기준). 실제 심사는 금융기관 기준을 따릅니다.</p>
