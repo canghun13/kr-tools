@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 연봉 실수령액 표 | 연봉별 세후 월급 한눈에 보기</title>
+<meta name="description" content="2026년 연봉별 실수령액 표. 연봉 2400만원부터 1억원까지 세후 월급, 4대보험, 소득세를 한눈에 확인하세요.">
+<meta property="og:title" content="2026 연봉 실수령액 표 — MoneyDecoded">
+<meta property="og:description" content="연봉 2400만원~1억원 세후 월급 완전 정리">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f4ef;
+    --paper: #fdfbf7;
+    --ink: #1a1714;
+    --ink-light: #6b6560;
+    --accent: #c8401a;
+    --accent-light: #f0e8e3;
+    --border: #e0dbd3;
+    --green: #2a6e4a;
+    --green-light: #e8f3ed;
+    --row-hover: #f2ede6;
+    --highlight: #fff3cd;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Noto Serif KR', serif;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* Header */
+  header {
+    background: var(--ink);
+    color: #f7f4ef;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 52px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .logo {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    color: #f7f4ef;
+    text-decoration: none;
+    opacity: 0.9;
+  }
+
+  .logo span { color: var(--accent); opacity: 1; }
+
+  nav a {
+    color: #f7f4ef;
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    opacity: 0.6;
+    margin-left: 20px;
+    transition: opacity 0.2s;
+  }
+  nav a:hover { opacity: 1; }
+
+  /* Hero */
+  .hero {
+    background: var(--paper);
+    border-bottom: 1px solid var(--border);
+    padding: 56px 24px 40px;
+    text-align: center;
+  }
+
+  .hero-label {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    background: var(--accent-light);
+    padding: 4px 12px;
+    border-radius: 2px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    font-size: clamp(26px, 5vw, 42px);
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+    color: var(--ink);
+  }
+
+  h1 em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  .hero-sub {
+    color: var(--ink-light);
+    font-size: 15px;
+    max-width: 480px;
+    margin: 0 auto 28px;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-light);
+    letter-spacing: 0.05em;
+  }
+
+  .hero-meta span::before {
+    content: "— ";
+    color: var(--border);
+  }
+
+  /* Quick jump */
+  .quick-jump {
+    background: var(--accent-light);
+    border-top: 2px solid var(--accent);
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-size: 13px;
+  }
+
+  .quick-jump strong {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+  }
+
+  .quick-jump a {
+    color: var(--ink);
+    text-decoration: none;
+    padding: 4px 10px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    background: white;
+    font-size: 12px;
+    font-family: 'DM Mono', monospace;
+    transition: all 0.15s;
+  }
+
+  .quick-jump a:hover {
+    background: var(--ink);
+    color: white;
+    border-color: var(--ink);
+  }
+
+  /* Main content */
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 48px 20px 80px;
+  }
+
+  /* Info box */
+  .info-box {
+    background: var(--green-light);
+    border-left: 3px solid var(--green);
+    padding: 16px 20px;
+    border-radius: 0 4px 4px 0;
+    margin-bottom: 36px;
+    font-size: 14px;
+    color: var(--ink);
+  }
+
+  .info-box strong { color: var(--green); }
+
+  /* Section title */
+  .section-title {
+    font-size: 13px;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.1em;
+    color: var(--ink-light);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-title::before {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+
+  /* Table */
+  .table-wrap {
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    margin-bottom: 48px;
+    background: var(--paper);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+
+  thead th {
+    background: var(--ink);
+    color: #f7f4ef;
+    padding: 12px 16px;
+    text-align: right;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  thead th:first-child { text-align: left; }
+
+  tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s;
+    cursor: default;
+  }
+
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: var(--row-hover); }
+
+  /* Highlight popular rows */
+  tbody tr.popular {
+    background: var(--highlight);
+  }
+  tbody tr.popular:hover { background: #ffe8a0; }
+
+  td {
+    padding: 11px 16px;
+    text-align: right;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+
+  td:first-child {
+    text-align: left;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .salary-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .popular-badge {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.05em;
+    background: var(--accent);
+    color: white;
+    padding: 2px 6px;
+    border-radius: 2px;
+  }
+
+  .take-home {
+    font-weight: 700;
+    color: var(--green);
+    font-size: 15px;
+  }
+
+  .deduction { color: var(--accent); }
+
+  /* Assumption box */
+  .assumption {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 20px 24px;
+    margin-bottom: 40px;
+    font-size: 13px;
+    color: var(--ink-light);
+  }
+
+  .assumption h3 {
+    font-size: 13px;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+
+  .assumption ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 6px;
+  }
+
+  .assumption li::before {
+    content: "· ";
+    color: var(--accent);
+  }
+
+  /* CTA */
+  .cta-box {
+    background: var(--ink);
+    color: #f7f4ef;
+    border-radius: 4px;
+    padding: 32px 28px;
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .cta-box h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+
+  .cta-box p {
+    font-size: 14px;
+    opacity: 0.65;
+    margin-bottom: 20px;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    text-decoration: none;
+    padding: 12px 28px;
+    border-radius: 2px;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    transition: opacity 0.2s;
+  }
+
+  .cta-btn:hover { opacity: 0.85; }
+
+  /* FAQ */
+  .faq { margin-bottom: 48px; }
+
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+    padding: 18px 0;
+  }
+
+  .faq-q {
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 8px;
+    color: var(--ink);
+  }
+
+  .faq-a {
+    font-size: 14px;
+    color: var(--ink-light);
+    line-height: 1.8;
+  }
+
+  /* Footer */
+  footer {
+    background: var(--ink);
+    color: #f7f4ef;
+    text-align: center;
+    padding: 28px 20px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    opacity: 0.9;
+  }
+
+  footer a { color: #f7f4ef; opacity: 0.5; text-decoration: none; margin: 0 8px; }
+  footer a:hover { opacity: 1; }
+
+  @media (max-width: 600px) {
+    .hero { padding: 36px 16px 28px; }
+    .container { padding: 32px 16px 60px; }
+    td, thead th { padding: 10px 10px; font-size: 13px; }
+    .take-home { font-size: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="https://kr-tools.moneydecoded.net" class="logo">Money<span>Decoded</span></a>
+  <nav>
+    <a href="https://kr-tools.moneydecoded.net/salary-calculator.html">계산기</a>
+    <a href="https://kr-tools.moneydecoded.net">계산기 모음</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <div class="hero-label">2026 최신 기준</div>
+  <h1>연봉별 <em>실수령액</em> 표<br>세후 월급 한눈에 보기</h1>
+  <p class="hero-sub">연봉 2,400만원부터 1억원까지 — 4대보험·소득세 공제 후 실제로 받는 월급을 정리했습니다.</p>
+  <div class="hero-meta">
+    <span>2026년 4대보험 요율 적용</span>
+    <span>비과세 식대 20만원 포함</span>
+    <span>부양가족 본인 1인 기준</span>
+  </div>
+</div>
+
+<div class="quick-jump">
+  <strong>바로가기</strong>
+  <a href="#table-2000">2천만원대</a>
+  <a href="#table-3000">3천만원대</a>
+  <a href="#table-4000">4천만원대</a>
+  <a href="#table-5000">5천만원대</a>
+  <a href="#table-6000">6천~1억</a>
+</div>
+
+<div class="container">
+
+  <div class="info-box">
+    <strong>📌 이 표는 참고용입니다.</strong> 실제 실수령액은 부양가족 수, 비과세 항목, 지역건강보험 여부 등에 따라 달라질 수 있습니다.
+    정확한 계산은 아래 <a href="https://kr-tools.moneydecoded.net/salary-calculator.html">연봉 실수령액 계산기</a>를 이용해주세요.
+  </div>
+
+  <!-- 공제 기준 -->
+  <div class="assumption">
+    <h3>계산 기준 (2026년)</h3>
+    <ul>
+      <li>국민연금 4.5%</li>
+      <li>건강보험 3.545%</li>
+      <li>장기요양보험 건보의 12.95%</li>
+      <li>고용보험 0.9%</li>
+      <li>비과세 식대 월 20만원</li>
+      <li>부양가족 본인 1인</li>
+      <li>20세 이하 자녀 0명</li>
+      <li>근로소득세 간이세액표 적용</li>
+    </ul>
+  </div>
+
+  <!-- 2천만원대 -->
+  <div id="table-2000" class="section-title">연봉 2,400 ~ 2,900만원</div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>연봉</th>
+          <th>세전 월급</th>
+          <th>국민연금</th>
+          <th>건강보험</th>
+          <th>고용보험</th>
+          <th>소득세+지방세</th>
+          <th>총 공제액</th>
+          <th>실수령액 (월)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="salary-label">2,400만원</div></td>
+          <td>2,000,000</td>
+          <td>81,000</td>
+          <td>63,800</td>
+          <td>16,200</td>
+          <td>11,430</td>
+          <td class="deduction">172,430</td>
+          <td class="take-home">1,827,570</td>
+        </tr>
+        <tr>
+          <td><div class="salary-label">2,500만원</div></td>
+          <td>2,083,333</td>
+          <td>84,380</td>
+          <td>66,540</td>
+          <td>16,880</td>
+          <td>15,120</td>
+          <td class="deduction">182,920</td>
+          <td class="take-home">1,900,413</td>
+        </tr>
+        <tr class="popular">
+          <td><div class="salary-label">2,600만원 <span class="popular-badge">인기</span></div></td>
+          <td>2,166,667</td>
+          <td>87,750</td>
+          <td>69,190</td>
+          <td>17,550</td>
+          <td>19,030</td>
+          <td class="deduction">193,520</td>
+          <td class="take-home">1,973,147</td>
+        </tr>
+        <tr>
+          <td><div class="salary-label">2,700만원</div></td>
+          <td>2,250,000</td>
+          <td>91,130</td>
+          <td>71,840</td>
+          <td>18,230</td>
+          <td>23,170</td>
+          <td class="deduction">204,370</td>
+          <td class="take-home">2,045,630</td>
+        </tr>
+        <tr>
+          <td><div class="salary-label">2,800만원</div></td>
+          <td>2,333,333</td>
+          <td>94,500</td>
+          <td>74,490</td>
+          <td>18,900</td>
+          <td>27,500</td>
+          <td class="deduction">215,390</td>
+          <td class="take-home">2,117,943</td>
+        </tr>
+        <tr>
+          <td><div class="salary-label">2,900만원</div></td>
+          <td>2,416,667</td>
+          <td>97,880</td>
+          <td>77,140</td>
+          <td>19,570</td>
+          <td>32,010</td>
+          <td class="deduction">226,600</td>
+          <td class="take-home">2,190,067</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 3천만원대 -->
+  <div id="table-3000" class="section-title">연봉 3,000 ~ 3,900만원</div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>연봉</th>
+          <th>세전 월급</th>
+          <th>국민연금</th>
+          <th>건강보험</th>
+          <th>고용보험</th>
+          <th>소득세+지방세</th>
+          <th>총 공제액</th>
+          <th>실수령액 (월)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="popular">
+          <td><div class="salary-label">3,000만원 <span class="popular-badge">인기</span></div></td>
+          <td>2,500,000</td>
+          <td>101,250</td>
+          <td>79,790</td>
+          <td>20,250</td>
+          <td>36,740</td>
+          <td class="deduction">238,030</td>
+          <td class="take-home">2,261,970</td>
+        </tr>
+        <tr>
+          <td><div class="salary-label">3,200만원</div></td>
+          <td>2,666,667</td>
+          <td>108,000</td>
+          <td>85,100</td>
+          <td>21,600</td>
+          <td>46,640</td>
+          <td class="deduction">261,340</td>
+          <td class="take-home">2,405,327</td>
+        </tr>
+        <tr>
+          <td><div class="salary-label">3,400만원</div></td>
+          <td>2,833,333</td>
+          <td>114,750</td>
+          <td>90,390</td>
+          <td>22,950</td>
+          <td>57,530</td>
+          <td class="deduction">285,620</td>
+          <td class="take-home">2,547,713</td>
+        </tr>
+        <tr class="popular">
+          <td><div class="salary-label">3,600만원 <span class="popular-badge">인기</span></div></td>
+          <td>3,000,000</td>
+          <td>121,500</td>
+          <td>95,720</td>
+          <td>24,300</td>
+          <td>69,080</td>
+          <td class="deduction">310,600</td>
+          <td class="take-home">2,689,400</td>
+        </tr>
+        <tr>
+          <td><div class="salary-label">3,800만원</div></td>
+          <td>3,166,667</td>
+          <td>128,250</td>
+          <td>101,010</td>
+          <td>25,650</td>
+          <td>82,170</td>
+          <td class="deduction">337,080</td>
+          <td class="take-home">2,829,587</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 4천만원대 -->
+  <div id="table-4000" class="section-title">연봉 4,000 ~ 4,900만원</div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>연봉</th>
+          <th>세전 월급</th>
+          <th>국민연금</th>
+          <th>건강보험</th>
+          <th>고용보험</th>
+          <th>소득세+지방세</th>
+          <th>총 공제액</th>
+          <th>실수령액 (월)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="popular">
+          <td><div class="salary-label">4,000만원 <span class="popular-badge">인기</span></div></td>
+          <td>3,333,333</td>
+          <td>135,000</td>
+          <td>106,340</td>
+          <td>27,000</td>
+          <td>96,360</td>
+          <td class="deduction">364,700</td>
+          <td class="take-home">2,968,633</td>
+        </tr>
+        <tr>
+          <td><div class="salary-label">4,200만원</div></td>
+          <td>3,500,000</td>
+          <td>141,750</td>
+          <td>111,630</td>
+          <td>28,350</td>
+          <td>111,760</td>
+          <td class="deduction">393,490</td>
+          <td class="take-home">3,106,510</td>
+        </tr>
+        <tr>
+          <td><div class="salary-label">4,500만원</div></td>
+          <td>3,750,000</td>
+          <td>151,880</td>
+          <td>119,570</td>
+          <td>30,380</td>
+          <td>136,400</td>
+          <td class="deduction">438,230</td>
+          <td class="take-home">3,311,770</td>
+        </tr>
+        <tr class="popular">
+          <td><div class="salary-label">4,800만원 <span class="popular-badge">인기</span></div></td>
+          <td>4,000,000</td>
+          <td>162,000</td>
+          <td>127,620</td>
+          <td>32,400</td>
+          <td>164,010</td>
+          <td class="deduction">486,030</td>
+          <td class="take-home">3,513,970</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 5천만원대 -->
+  <div id="table-5000" class="section-title">연봉 5,000 ~ 5,900만원</div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>연봉</th>
+          <th>세전 월급</th>
+          <th>국민연금</th>
+          <th>건강보험</th>
+          <th>고용보험</th>
+          <th>소득세+지방세</th>
+          <th>총 공제액</th>
+          <th>실수령액 (월)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="popular">
+          <td><div class="salary-label">5,000만원 <span class="popular-badge">인기</span></div></td>
+          <td>4,166,667</td>
+          <td>168,750</td>
+          <td>132,910</td>
+          <td>33,750</td>
+          <td>186,450</td>
+          <td class="deduction">521,860</td>
+          <td class="take-home">3,644,807</td>
+        </tr>
+        <tr>
+          <td><div class="salary-label">5,200만원</div></td>
+          <td>4,333,333</td>
+          <td>175,500</td>
+          <td>138,200</td>
+          <td>35,100</td>
+          <td>210,980</td>
+          <td class="deduction">559,780</td>
+          <td class="take-home">3,773,553</td>
+        </tr>
+        <tr>
+          <td><div class="salary-label">5,500만원</div></td>
+          <td>4,583,333</td>
+          <td>185,630</td>
+          <td>146,140</td>
+          <td>37,130</td>
+          <td>248,820</td>
+          <td class="deduction">617,720</td>
+          <td class="take-home">3,965,613</td>
+        </tr>
+        <tr>
+          <td><div class="salary-label">5,800만원</div></td>
+          <td>4,833,333</td>
+          <td>195,750</td>
+          <td>154,080</td>
+          <td>39,150</td>
+          <td>290,520</td>
+          <td class="deduction">679,500</td>
+          <td class="take-home">4,153,833</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 6천~1억 -->
+  <div id="table-6000" class="section-title">연봉 6,000만원 ~ 1억원</div>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>연봉</th>
+          <th>세전 월급</th>
+          <th>국민연금</th>
+          <th>건강보험</th>
+          <th>고용보험</th>
+          <th>소득세+지방세</th>
+          <th>총 공제액</th>
+          <th>실수령액 (월)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><div class="salary-label">6,000만원</div></td>
+          <td>5,000,000</td>
+          <td>202,500</td>
+          <td>159,380</td>
+          <td>40,500</td>
+          <td>326,590</td>
+          <td class="deduction">728,970</td>
+          <td class="take-home">4,271,030</td>
+        </tr>
+        <tr>
+          <td><div class="salary-label">6,500만원</div></td>
+          <td>5,416,667</td>
+          <td>219,380</td>
+          <td>172,710</td>
+          <td>43,880</td>
+          <td>396,330</td>
+          <td class="deduction">832,300</td>
+          <td class="take-home">4,584,367</td>
+        </tr>
+        <tr class="popular">
+          <td><div class="salary-label">7,000만원 <span class="popular-badge">인기</span></div></td>
+          <td>5,833,333</td>
+          <td>236,250</td>
+          <td>186,020</td>
+          <td>47,250</td>
+          <td>470,580</td>
+          <td class="deduction">940,100</td>
+          <td class="take-home">4,893,233</td>
+        </tr>
+        <tr>
+          <td><div class="salary-label">8,000만원</div></td>
+          <td>6,666,667</td>
+          <td>248,850</td>
+          <td>212,640</td>
+          <td>54,000</td>
+          <td>641,300</td>
+          <td class="deduction">1,156,790</td>
+          <td class="take-home">5,509,877</td>
+        </tr>
+        <tr>
+          <td><div class="salary-label">9,000만원</div></td>
+          <td>7,500,000</td>
+          <td>248,850</td>
+          <td>239,260</td>
+          <td>60,750</td>
+          <td>851,400</td>
+          <td class="deduction">1,400,260</td>
+          <td class="take-home">6,099,740</td>
+        </tr>
+        <tr class="popular">
+          <td><div class="salary-label">1억원 <span class="popular-badge">인기</span></div></td>
+          <td>8,333,333</td>
+          <td>248,850</td>
+          <td>265,880</td>
+          <td>67,500</td>
+          <td>1,086,230</td>
+          <td class="deduction">1,668,460</td>
+          <td class="take-home">6,664,873</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-box">
+    <h3>내 정확한 실수령액이 궁금하다면?</h3>
+    <p>부양가족 수, 비과세 항목까지 반영한 정확한 계산을 해보세요.</p>
+    <a href="https://kr-tools.moneydecoded.net/salary-calculator.html" class="cta-btn">연봉 실수령액 계산기 →</a>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq">
+    <div class="section-title">자주 묻는 질문</div>
+
+    <div class="faq-item">
+      <div class="faq-q">실수령액이 표와 다르게 나왔어요.</div>
+      <div class="faq-a">이 표는 부양가족 1인(본인), 비과세 식대 20만원 기준입니다. 부양가족이 있거나 비과세 항목이 다르면 실수령액이 달라집니다. 정확한 계산은 위의 계산기를 이용해주세요.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">국민연금 상한액은 얼마인가요?</div>
+      <div class="faq-a">2026년 기준 국민연금 기준소득월액 상한은 617만원입니다. 월급이 이를 초과해도 국민연금은 248,850원으로 고정됩니다. 연봉 8천만원 이상부터 이 상한이 적용됩니다.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">연봉과 세전 월급이 단순히 12 나누기가 아닌 이유는?</div>
+      <div class="faq-a">맞습니다. 연봉을 12로 나눈 값이 세전 월급입니다. 다만 상여금·성과급이 별도 지급되는 경우 월 실수령액이 달라질 수 있습니다.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">퇴직금은 실수령액에 포함되나요?</div>
+      <div class="faq-a">아닙니다. 이 표는 매월 받는 급여만 기준입니다. 퇴직금 계산은 <a href="https://kr-tools.moneydecoded.net/severance-calculator.html">퇴직금 계산기</a>를 이용해주세요.</div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div>© 2026 MoneyDecoded.net — 이 정보는 참고용이며 정확한 세무 상담은 전문가에게 문의하세요.</div>
+  <div style="margin-top:8px">
+    <a href="https://kr-tools.moneydecoded.net">계산기 모음</a>
+    <a href="https://kr-tools.moneydecoded.net/salary-calculator.html">연봉계산기</a>
+    <a href="https://kr-tools.moneydecoded.net/mortgage-calculator.html">주담대계산기</a>
+  </div>
+</footer>
+
+</body>
+</html>
