@@ -1,0 +1,1025 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026 최저임금 총정리 — 시급·월급·연봉 환산표 | MoneyDecoded</title>
+<meta name="description" content="2026년 최저임금 10,030원 완벽 정리. 시급·일급·주급·월급·연봉 환산표, 주휴수당 계산, 위반 신고 방법까지.">
+<meta property="og:title" content="2026 최저임금 총정리 | MoneyDecoded">
+<meta property="og:description" content="2026년 최저임금 10,030원 — 시급부터 연봉까지 한눈에">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0d0d;
+    --surface: #161616;
+    --surface2: #1e1e1e;
+    --surface3: #252525;
+    --border: #2e2e2e;
+    --text: #e8e8e4;
+    --text2: #a0a09a;
+    --text3: #606058;
+    --accent: #f5c842;
+    --accent-dark: #c9a02e;
+    --accent-dim: rgba(245,200,66,0.1);
+    --green: #4ade80;
+    --green-dim: rgba(74,222,128,0.1);
+    --red: #f87171;
+    --red-dim: rgba(248,113,113,0.1);
+    --blue: #60a5fa;
+    --blue-dim: rgba(96,165,250,0.1);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'IBM Plex Sans KR', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 15px;
+  }
+
+  /* NAV */
+  nav {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    height: 52px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-logo {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { margin-left: auto; display: flex; gap: 20px; }
+  .nav-links a {
+    font-size: 12px;
+    color: var(--text3);
+    text-decoration: none;
+    font-family: 'IBM Plex Mono', monospace;
+    transition: color 0.15s;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  /* HERO */
+  .hero {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 64px 24px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: "₩";
+    position: absolute;
+    font-size: 320px;
+    font-weight: 700;
+    color: rgba(245,200,66,0.03);
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+    font-family: 'IBM Plex Mono', monospace;
+    line-height: 1;
+  }
+
+  .year-badge {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 4px 12px;
+    border-radius: 2px;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    font-size: clamp(28px, 6vw, 52px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    color: var(--text);
+  }
+
+  .wage-big {
+    display: block;
+    font-size: clamp(48px, 10vw, 88px);
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--accent);
+    letter-spacing: -0.04em;
+    line-height: 1;
+    margin: 8px 0 16px;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-sub {
+    font-size: 14px;
+    color: var(--text2);
+    max-width: 440px;
+    margin: 0 auto 32px;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 0;
+    justify-content: center;
+    flex-wrap: wrap;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    max-width: 560px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+
+  .hero-stat {
+    flex: 1;
+    min-width: 120px;
+    padding: 16px 20px;
+    border-right: 1px solid var(--border);
+    text-align: center;
+  }
+  .hero-stat:last-child { border-right: none; }
+
+  .hero-stat-val {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--accent);
+    display: block;
+  }
+  .hero-stat-label {
+    font-size: 11px;
+    color: var(--text3);
+    margin-top: 3px;
+    letter-spacing: 0.03em;
+  }
+
+  /* CONTAINER */
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 48px 20px 80px;
+  }
+
+  /* SECTION HEADER */
+  .sec-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    margin-top: 48px;
+  }
+  .sec-head:first-child { margin-top: 0; }
+
+  .sec-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    background: var(--accent-dim);
+    padding: 2px 8px;
+    border-radius: 2px;
+    letter-spacing: 0.08em;
+  }
+
+  .sec-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+
+  /* CONVERSION TABLE */
+  .conv-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  @media (max-width: 520px) { .conv-grid { grid-template-columns: 1fr; } }
+
+  .conv-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 20px 22px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: border-color 0.15s;
+  }
+  .conv-card:hover { border-color: var(--accent); }
+  .conv-card.featured {
+    background: var(--accent-dim);
+    border-color: var(--accent);
+    grid-column: 1 / -1;
+  }
+
+  .conv-label {
+    font-size: 12px;
+    color: var(--text3);
+    font-family: 'IBM Plex Mono', monospace;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+  }
+  .conv-val {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .conv-card.featured .conv-val {
+    font-size: 28px;
+    color: var(--accent);
+  }
+  .conv-note {
+    font-size: 11px;
+    color: var(--text3);
+    margin-top: 3px;
+  }
+  .conv-basis {
+    font-size: 11px;
+    color: var(--text3);
+    text-align: right;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  /* HISTORY TABLE */
+  .table-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 12px;
+  }
+
+  table { width: 100%; border-collapse: collapse; }
+
+  thead th {
+    background: var(--surface2);
+    padding: 11px 16px;
+    text-align: right;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--text3);
+    font-weight: 500;
+    border-bottom: 1px solid var(--border);
+  }
+  thead th:first-child { text-align: left; }
+
+  tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background 0.1s;
+  }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: var(--surface2); }
+  tbody tr.current-year { background: var(--accent-dim); }
+  tbody tr.current-year td { color: var(--accent); }
+  tbody tr.current-year td:first-child { font-weight: 700; }
+
+  td {
+    padding: 11px 16px;
+    text-align: right;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    color: var(--text2);
+  }
+  td:first-child { text-align: left; color: var(--text); font-size: 13px; }
+
+  .increase-badge {
+    display: inline-block;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 2px;
+    margin-left: 6px;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  .inc-up { background: var(--green-dim); color: var(--green); }
+
+  /* JUHYU BOX */
+  .juhyu-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+
+  .juhyu-header {
+    background: var(--surface2);
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .juhyu-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .juhyu-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    color: var(--green);
+    background: var(--green-dim);
+    padding: 3px 8px;
+    border-radius: 2px;
+  }
+
+  .juhyu-body { padding: 20px; }
+
+  .juhyu-calc {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    gap: 8px;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 16px;
+  }
+
+  @media (max-width: 520px) {
+    .juhyu-calc { grid-template-columns: 1fr; }
+    .juhyu-op { display: none; }
+  }
+
+  .juhyu-item { background: var(--surface2); border-radius: 4px; padding: 12px; }
+  .juhyu-item-label { font-size: 11px; color: var(--text3); margin-bottom: 4px; }
+  .juhyu-item-val {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .juhyu-item.result { background: var(--green-dim); border: 1px solid rgba(74,222,128,0.2); }
+  .juhyu-item.result .juhyu-item-val { color: var(--green); font-size: 18px; }
+  .juhyu-op { font-size: 20px; color: var(--text3); }
+
+  .juhyu-note {
+    font-size: 12px;
+    color: var(--text3);
+    line-height: 1.7;
+    background: var(--surface2);
+    padding: 12px 16px;
+    border-radius: 4px;
+  }
+
+  /* WORK HOURS TABLE */
+  .hours-table-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+
+  /* VIOLATION BOX */
+  .violation-box {
+    background: var(--red-dim);
+    border: 1px solid rgba(248,113,113,0.25);
+    border-radius: 4px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+  }
+
+  .violation-box h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--red);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .violation-box ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 14px;
+    color: var(--text2);
+  }
+
+  .violation-box li::before {
+    content: "→ ";
+    color: var(--red);
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  /* CTA */
+  .cta-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 40px 0;
+  }
+
+  @media (max-width: 520px) { .cta-row { grid-template-columns: 1fr; } }
+
+  .cta-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 20px;
+    text-decoration: none;
+    transition: all 0.15s;
+    display: block;
+  }
+  .cta-card:hover { border-color: var(--accent); background: var(--accent-dim); }
+
+  .cta-card-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+  .cta-card-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .cta-card-desc {
+    font-size: 12px;
+    color: var(--text3);
+  }
+
+  /* FAQ */
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .faq-q {
+    padding: 18px 0;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    user-select: none;
+  }
+
+  .faq-q:hover { color: var(--accent); }
+
+  .faq-arrow {
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--text3);
+    font-size: 12px;
+    transition: transform 0.2s;
+    flex-shrink: 0;
+  }
+
+  .faq-q.open .faq-arrow { transform: rotate(180deg); color: var(--accent); }
+
+  .faq-a {
+    display: none;
+    padding: 0 0 18px;
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.8;
+  }
+  .faq-a.show { display: block; }
+
+  /* DISCLAIMER */
+  .disclaimer {
+    font-size: 12px;
+    color: var(--text3);
+    text-align: center;
+    padding: 24px 0 0;
+    border-top: 1px solid var(--border);
+    line-height: 1.8;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 28px 24px;
+    text-align: center;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .footer-links a {
+    font-size: 12px;
+    color: var(--text3);
+    text-decoration: none;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  .footer-links a:hover { color: var(--text); }
+
+  footer p {
+    font-size: 11px;
+    color: var(--text3);
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  /* INTERACTIVE CALCULATOR */
+  .mini-calc {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+
+  .mini-calc-head {
+    background: var(--surface2);
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text2);
+    font-family: 'IBM Plex Mono', monospace;
+    letter-spacing: 0.05em;
+  }
+
+  .mini-calc-body { padding: 20px; }
+
+  .calc-row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+
+  .calc-field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1;
+    min-width: 120px;
+  }
+
+  .calc-field label {
+    font-size: 11px;
+    color: var(--text3);
+    font-family: 'IBM Plex Mono', monospace;
+    letter-spacing: 0.05em;
+  }
+
+  .calc-field input, .calc-field select {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 9px 12px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 15px;
+    color: var(--text);
+    transition: border-color 0.15s;
+    width: 100%;
+    appearance: none;
+  }
+
+  .calc-field input:focus, .calc-field select:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+
+  .calc-result-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  @media (max-width: 480px) { .calc-result-row { grid-template-columns: 1fr; } }
+
+  .calc-result-item {
+    background: var(--surface2);
+    border-radius: 4px;
+    padding: 14px;
+    text-align: center;
+  }
+
+  .calc-result-item.main {
+    background: var(--accent-dim);
+    border: 1px solid rgba(245,200,66,0.2);
+  }
+
+  .calc-result-label {
+    font-size: 10px;
+    color: var(--text3);
+    font-family: 'IBM Plex Mono', monospace;
+    margin-bottom: 5px;
+    letter-spacing: 0.05em;
+  }
+
+  .calc-result-val {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .calc-result-item.main .calc-result-val {
+    font-size: 20px;
+    color: var(--accent);
+  }
+
+  a { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://kr-tools.moneydecoded.net" class="nav-logo">Money<span>Decoded</span></a>
+  <div class="nav-links">
+    <a href="https://kr-tools.moneydecoded.net/salary-calculator.html">연봉계산기</a>
+    <a href="https://kr-tools.moneydecoded.net">계산기 모음</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="year-badge">2026 확정</div>
+  <h1>최저임금</h1>
+  <span class="wage-big">10,030원</span>
+  <p class="hero-sub">2026년 1월 1일부터 적용 — 전년 대비 170원(1.7%) 인상</p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <span class="hero-stat-val">80,240원</span>
+      <div class="hero-stat-label">하루 8시간 기준</div>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-val">2,096,270원</span>
+      <div class="hero-stat-label">월 209시간 기준</div>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-val">25,155,240원</span>
+      <div class="hero-stat-label">연간 환산 (세전)</div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- 환산표 -->
+  <div class="sec-head">
+    <span class="sec-num">01</span>
+    <span class="sec-title">시급 → 월급 → 연봉 환산표</span>
+  </div>
+
+  <div class="conv-grid">
+    <div class="conv-card">
+      <div>
+        <div class="conv-label">시급</div>
+        <div class="conv-val">10,030원</div>
+        <div class="conv-note">2026년 법정 최저</div>
+      </div>
+      <div class="conv-basis">1시간</div>
+    </div>
+    <div class="conv-card">
+      <div>
+        <div class="conv-label">일급</div>
+        <div class="conv-val">80,240원</div>
+        <div class="conv-note">10,030 × 8시간</div>
+      </div>
+      <div class="conv-basis">8h 기준</div>
+    </div>
+    <div class="conv-card">
+      <div>
+        <div class="conv-label">주급 (주휴수당 포함)</div>
+        <div class="conv-val">481,440원</div>
+        <div class="conv-note">10,030 × 48시간 (40+8 주휴)</div>
+      </div>
+      <div class="conv-basis">주 40h 기준</div>
+    </div>
+    <div class="conv-card">
+      <div>
+        <div class="conv-label">월급 (주휴수당 포함)</div>
+        <div class="conv-val">2,096,270원</div>
+        <div class="conv-note">10,030 × 209시간</div>
+      </div>
+      <div class="conv-basis">월 209h 기준</div>
+    </div>
+    <div class="conv-card featured">
+      <div>
+        <div class="conv-label">연봉 환산 (세전)</div>
+        <div class="conv-val">25,155,240원</div>
+        <div class="conv-note">월 2,096,270 × 12개월</div>
+      </div>
+      <div class="conv-basis">주 40h / 월 209h</div>
+    </div>
+  </div>
+
+  <!-- 내 알바비 계산기 -->
+  <div class="sec-head">
+    <span class="sec-num">02</span>
+    <span class="sec-title">내 알바비 계산기</span>
+  </div>
+
+  <div class="mini-calc">
+    <div class="mini-calc-head">// 실제 받을 금액 계산</div>
+    <div class="mini-calc-body">
+      <div class="calc-row">
+        <div class="calc-field">
+          <label>시급 (원)</label>
+          <input type="number" id="hourly" value="10030" min="10030" oninput="calcWage()">
+        </div>
+        <div class="calc-field">
+          <label>하루 근무시간</label>
+          <input type="number" id="dailyHours" value="8" min="1" max="24" oninput="calcWage()">
+        </div>
+        <div class="calc-field">
+          <label>주 근무일수</label>
+          <select id="weekDays" onchange="calcWage()">
+            <option value="5">주 5일</option>
+            <option value="4">주 4일</option>
+            <option value="3">주 3일</option>
+            <option value="6">주 6일</option>
+            <option value="7">주 7일</option>
+          </select>
+        </div>
+      </div>
+      <div class="calc-result-row">
+        <div class="calc-result-item">
+          <div class="calc-result-label">일급</div>
+          <div class="calc-result-val" id="r-daily">80,240원</div>
+        </div>
+        <div class="calc-result-item">
+          <div class="calc-result-label">주급 (주휴 포함)</div>
+          <div class="calc-result-val" id="r-weekly">481,440원</div>
+        </div>
+        <div class="calc-result-item main">
+          <div class="calc-result-label">월급 (주휴 포함)</div>
+          <div class="calc-result-val" id="r-monthly">2,096,270원</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 주휴수당 -->
+  <div class="sec-head">
+    <span class="sec-num">03</span>
+    <span class="sec-title">주휴수당이란?</span>
+  </div>
+
+  <div class="juhyu-box">
+    <div class="juhyu-header">
+      <div class="juhyu-title">주 15시간 이상 근무 시 의무 지급</div>
+      <div class="juhyu-tag">근로기준법 제55조</div>
+    </div>
+    <div class="juhyu-body">
+      <div class="juhyu-calc">
+        <div class="juhyu-item">
+          <div class="juhyu-item-label">1주 소정근로시간</div>
+          <div class="juhyu-item-val">40시간</div>
+        </div>
+        <div class="juhyu-op">÷</div>
+        <div class="juhyu-item">
+          <div class="juhyu-item-label">기준시간</div>
+          <div class="juhyu-item-val">40시간</div>
+        </div>
+        <div class="juhyu-op">×</div>
+        <div class="juhyu-item result">
+          <div class="juhyu-item-label">주휴수당</div>
+          <div class="juhyu-item-val">10,030원<br><small style="font-size:11px;font-weight:400">× 8시간 = 80,240원</small></div>
+        </div>
+      </div>
+      <div class="juhyu-note">
+        · 주 15시간 미만 근무자는 주휴수당 없음<br>
+        · 단시간 근로자: (주 소정근로시간 ÷ 40) × 8 × 시급<br>
+        · 주휴수당 미지급 시 사업주 2년 이하 징역 또는 2천만원 이하 벌금
+      </div>
+    </div>
+  </div>
+
+  <!-- 연도별 변화 -->
+  <div class="sec-head">
+    <span class="sec-num">04</span>
+    <span class="sec-title">최저임금 연도별 변화</span>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>연도</th>
+          <th>시급</th>
+          <th>인상액</th>
+          <th>인상률</th>
+          <th>월급 환산</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="current-year">
+          <td>2026년 <span class="increase-badge inc-up">현재</span></td>
+          <td>10,030원</td>
+          <td>+170원</td>
+          <td>1.7%</td>
+          <td>2,096,270원</td>
+        </tr>
+        <tr>
+          <td>2025년</td>
+          <td>9,860원</td>
+          <td>+240원</td>
+          <td>2.5%</td>
+          <td>2,060,740원</td>
+        </tr>
+        <tr>
+          <td>2024년</td>
+          <td>9,620원</td>
+          <td>+460원</td>
+          <td>5.0%</td>
+          <td>2,010,580원</td>
+        </tr>
+        <tr>
+          <td>2023년</td>
+          <td>9,160원</td>
+          <td>+460원</td>
+          <td>5.3%</td>
+          <td>1,914,440원</td>
+        </tr>
+        <tr>
+          <td>2022년</td>
+          <td>9,160원</td>
+          <td>+440원</td>
+          <td>5.1%</td>
+          <td>1,914,440원</td>
+        </tr>
+        <tr>
+          <td>2021년</td>
+          <td>8,720원</td>
+          <td>+130원</td>
+          <td>1.5%</td>
+          <td>1,822,480원</td>
+        </tr>
+        <tr>
+          <td>2020년</td>
+          <td>8,590원</td>
+          <td>+240원</td>
+          <td>2.9%</td>
+          <td>1,795,310원</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 위반 -->
+  <div class="sec-head">
+    <span class="sec-num">05</span>
+    <span class="sec-title">최저임금 위반 신고 방법</span>
+  </div>
+
+  <div class="violation-box">
+    <h3>⚠ 최저임금 미달 시 처벌</h3>
+    <ul>
+      <li>3년 이하 징역 또는 2천만원 이하 벌금 (근로기준법 제109조)</li>
+      <li>신고: 고용노동부 고객상담센터 <strong>1350</strong> (평일 09:00~18:00)</li>
+      <li>온라인 신고: 고용노동부 민원마당 (minwon.moel.go.kr)</li>
+      <li>익명 신고 가능, 신고인 정보 보호</li>
+    </ul>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-row">
+    <a href="https://kr-tools.moneydecoded.net/salary-calculator.html" class="cta-card">
+      <div class="cta-card-label">관련 계산기</div>
+      <div class="cta-card-title">연봉 실수령액 계산기</div>
+      <div class="cta-card-desc">세금·4대보험 공제 후 실제 월급 계산</div>
+    </a>
+    <a href="https://kr-tools.moneydecoded.net/salary-table-2026.html" class="cta-card">
+      <div class="cta-card-label">참고 자료</div>
+      <div class="cta-card-title">연봉별 실수령액 표</div>
+      <div class="cta-card-desc">2400만원~1억원 구간 한눈에 비교</div>
+    </a>
+  </div>
+
+  <!-- FAQ -->
+  <div class="sec-head">
+    <span class="sec-num">06</span>
+    <span class="sec-title">자주 묻는 질문</span>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      월 209시간은 어떻게 계산하나요?
+      <span class="faq-arrow">▾</span>
+    </div>
+    <div class="faq-a">
+      주 5일, 하루 8시간 근무 기준입니다. 주 40시간 + 주휴 8시간 = 주 48시간, 1년 52주를 12개월로 나누면 월 평균 근무주수가 약 4.345주입니다. 48시간 × 4.345 ≈ 209시간이 됩니다.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      수습 기간에도 최저임금을 받아야 하나요?
+      <span class="faq-arrow">▾</span>
+    </div>
+    <div class="faq-a">
+      원칙적으로 수습 기간에도 최저임금 이상을 지급해야 합니다. 단, 1년 이상 근로계약을 체결한 경우 수습 시작 후 3개월 이내에 한해 최저임금의 90%까지 감액 지급이 가능합니다. 단순 노무직은 감액 불가합니다.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      식대·교통비도 최저임금에 포함되나요?
+      <span class="faq-arrow">▾</span>
+    </div>
+    <div class="faq-a">
+      2024년부터 매월 1회 이상 정기적으로 지급하는 식대·교통비·숙박비 등 복리후생비는 최저임금 산입 범위에 포함됩니다. 단, 최저임금액의 일정 비율을 초과하는 부분만 포함되므로 실질적인 영향은 크지 않습니다.
+    </div>
+  </div>
+
+  <div class="faq-item">
+    <div class="faq-q" onclick="toggleFaq(this)">
+      아르바이트도 4대보험에 가입해야 하나요?
+      <span class="faq-arrow">▾</span>
+    </div>
+    <div class="faq-a">
+      주 15시간 이상 근무하면 고용보험과 산재보험 의무 가입 대상입니다. 건강보험과 국민연금은 월 8일 이상 또는 월 60시간 이상 근무 시 가입 의무가 생깁니다. 단기 알바도 산재보험은 의무 가입입니다.
+    </div>
+  </div>
+
+  <p class="disclaimer">
+    이 페이지의 정보는 2026년 고용노동부 고시 기준입니다. 최신 정보는 고용노동부(moel.go.kr)에서 확인하세요.<br>
+    © 2026 MoneyDecoded.net
+  </p>
+
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="https://kr-tools.moneydecoded.net">한국어 도구 모음</a>
+    <a href="https://kr-tools.moneydecoded.net/salary-calculator.html">연봉계산기</a>
+    <a href="https://kr-tools.moneydecoded.net/severance-calculator.html">퇴직금계산기</a>
+    <a href="https://kr-tools.moneydecoded.net/mortgage-calculator.html">주담대계산기</a>
+    <a href="https://www.moneydecoded.net">블로그</a>
+  </div>
+  <p>© 2026 MoneyDecoded.net — 본 내용은 참고용이며 법적 효력이 없습니다.</p>
+</footer>
+
+<script>
+function fmt(n) {
+  return Math.round(n).toLocaleString('ko-KR') + '원';
+}
+
+function calcWage() {
+  const hourly = parseFloat(document.getElementById('hourly').value) || 10030;
+  const dailyH = parseFloat(document.getElementById('dailyHours').value) || 8;
+  const weekDays = parseInt(document.getElementById('weekDays').value) || 5;
+
+  const weeklyHours = dailyH * weekDays;
+  const daily = hourly * dailyH;
+
+  // 주휴수당: 주 15시간 이상이면 (주소정근로시간/40) * 8 * 시급
+  let juhyu = 0;
+  if (weeklyHours >= 15) {
+    juhyu = (weeklyHours / 40) * 8 * hourly;
+  }
+
+  const weekly = daily * weekDays + juhyu;
+
+  // 월급: (주소정근로시간 + 주휴시간) * (52/12) * 시급
+  const weeklyTotal = weeklyHours + (weeklyHours >= 15 ? (weeklyHours / 40) * 8 : 0);
+  const monthly = weeklyTotal * (52 / 12) * hourly;
+
+  document.getElementById('r-daily').textContent = fmt(daily);
+  document.getElementById('r-weekly').textContent = fmt(weekly);
+  document.getElementById('r-monthly').textContent = fmt(monthly);
+}
+
+function toggleFaq(el) {
+  el.classList.toggle('open');
+  el.nextElementSibling.classList.toggle('show');
+}
+
+calcWage();
+</script>
+</body>
+</html>
