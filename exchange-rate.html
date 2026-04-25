@@ -165,6 +165,15 @@
   .clickable-row { cursor: pointer; transition: background 0.1s; }
   .clickable-row:hover { background: var(--accent-light); }
 
+  .cta-wrap { display: flex; flex-direction: column; gap: 10px; padding: 24px 0 8px; max-width: 720px; margin: 0 auto; }
+  .cta-btn { display: flex; align-items: center; gap: 12px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 18px; text-decoration: none; color: var(--text); box-shadow: var(--shadow); transition: box-shadow .15s, transform .15s; }
+  .cta-btn:hover { box-shadow: 0 4px 16px rgba(0,0,0,.08); transform: translateY(-1px); }
+  .cta-icon { font-size: 22px; flex-shrink: 0; }
+  .cta-text strong { display: block; font-size: 14px; margin-bottom: 2px; }
+  .cta-text span { font-size: 12px; color: var(--text2); }
+  .cta-arrow { margin-left: auto; color: var(--text3); }
+  .cta-label { font-size: 11px; font-weight: 700; color: var(--text3); text-transform: uppercase; letter-spacing: 0.08em; max-width: 720px; margin: 0 auto; padding: 0 0 10px; }
+
   footer {
     background: var(--surface); border-top: 1px solid var(--border);
     padding: 24px; text-align: center;
@@ -296,9 +305,39 @@
 
 </div>
 
+<div style="background:var(--bg); border-top: 1px solid var(--border); padding: 24px 16px 8px;">
+  <div class="cta-label">함께 보면 좋은 정보</div>
+  <div class="cta-wrap" style="padding-top:0;">
+    <a href="https://kr-tools.moneydecoded.net/exchange-rate-guide.html" class="cta-btn">
+      <div class="cta-icon">💡</div>
+      <div class="cta-text">
+        <strong>환율 우대 받는 법</strong>
+        <span>수수료 최대 90% 아끼는 환전 꿀팁 총정리</span>
+      </div>
+      <div class="cta-arrow">→</div>
+    </a>
+    <a href="https://tools.moneydecoded.net/remittance-compare.html" class="cta-btn">
+      <div class="cta-icon">✈️</div>
+      <div class="cta-text">
+        <strong>해외송금 수수료 비교</strong>
+        <span>Wise · Remitly · OFX 가장 저렴한 방법 찾기</span>
+      </div>
+      <div class="cta-arrow">→</div>
+    </a>
+    <a href="https://kr-tools.moneydecoded.net/" class="cta-btn">
+      <div class="cta-icon">🧮</div>
+      <div class="cta-text">
+        <strong>한국어 계산기 모음</strong>
+        <span>연봉·퇴직금·청약·주담대 전체 계산기 보기</span>
+      </div>
+      <div class="cta-arrow">→</div>
+    </a>
+  </div>
+</div>
+
 <footer>
   <p>환율은 참고용이며 실제 환전 시 금융기관 고시 환율이 적용됩니다.<br>
-  <a href="https://kr-tools.moneydecoded.net">← 모든 계산기</a> · <a href="https://tools.moneydecoded.net/remittance-compare.html">해외송금 수수료 비교</a></p>
+  <a href="https://www.moneydecoded.net/p/privacy-policy.html">개인정보처리방침</a></p>
 </footer>
 
 <script>
