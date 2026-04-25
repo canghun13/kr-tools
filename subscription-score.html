@@ -271,6 +271,33 @@
   }
   footer p { font-size: 12px; color: var(--text3); }
   footer a { color: var(--text3); text-decoration: underline; }
+
+  .cta-section {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 32px 16px;
+  }
+  .cta-inner { max-width: 800px; margin: 0 auto; }
+  .cta-title {
+    font-size: 11px; font-weight: 700;
+    color: var(--text3); text-transform: uppercase;
+    letter-spacing: 0.08em; margin-bottom: 14px;
+  }
+  .cta-grid { display: flex; flex-direction: column; gap: 10px; }
+  .cta-card {
+    display: flex; align-items: center; gap: 14px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    text-decoration: none; color: var(--text);
+    transition: border-color 0.15s;
+  }
+  .cta-card:hover { border-color: var(--accent); }
+  .cta-icon { font-size: 22px; flex-shrink: 0; }
+  .cta-name { font-size: 14px; font-weight: 600; }
+  .cta-desc { font-size: 12px; color: var(--text2); margin-top: 2px; }
+  .cta-arrow { margin-left: auto; color: var(--text3); font-size: 16px; flex-shrink: 0; }
 </style>
 </head>
 <body>
@@ -410,6 +437,38 @@
 
     <div class="info-note">
       📌 수도권 인기 단지 당첨 가점은 보통 <strong>60~70점대</strong> 이상입니다.
+    </div>
+  </div>
+</div>
+
+<div class="cta-section">
+  <div class="cta-inner">
+    <div class="cta-title">함께 보면 좋은 정보</div>
+    <div class="cta-grid">
+      <a href="https://kr-tools.moneydecoded.net/subscription-score-guide.html" class="cta-card">
+        <div class="cta-icon">📈</div>
+        <div class="cta-text">
+          <div class="cta-name">청약 가점 높이는 법</div>
+          <div class="cta-desc">무주택 기간·부양가족 점수 올리는 전략</div>
+        </div>
+        <span class="cta-arrow">→</span>
+      </a>
+      <a href="https://kr-tools.moneydecoded.net/mortgage-calculator.html" class="cta-card">
+        <div class="cta-icon">🏠</div>
+        <div class="cta-text">
+          <div class="cta-name">주담대 계산기</div>
+          <div class="cta-desc">월 상환액·총 이자·DSR 한번에 계산</div>
+        </div>
+        <span class="cta-arrow">→</span>
+      </a>
+      <a href="https://kr-tools.moneydecoded.net/" class="cta-card">
+        <div class="cta-icon">🧮</div>
+        <div class="cta-text">
+          <div class="cta-name">한국어 계산기 모음</div>
+          <div class="cta-desc">연봉·퇴직금·환율 등 전체 계산기 보기</div>
+        </div>
+        <span class="cta-arrow">→</span>
+      </a>
     </div>
   </div>
 </div>
