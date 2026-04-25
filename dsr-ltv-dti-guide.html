@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DSR·LTV·DTI 쉽게 이해하기 2026 — 대출 한도 계산법 총정리 | MoneyDecoded</title>
+<meta name="description" content="DSR, LTV, DTI 개념을 쉽게 설명합니다. 2026년 기준 내 대출 한도 계산법, 규제 적용 방식, 한도 늘리는 전략까지 총정리.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #f5f5f0;
+    --surface: #ffffff;
+    --surface2: #f9f9f7;
+    --border: #e8e8e4;
+    --text: #1a1a1a;
+    --text2: #666660;
+    --text3: #999994;
+    --accent: #2563eb;
+    --accent-light: #eff6ff;
+    --green: #16a34a;
+    --green-light: #f0fdf4;
+    --orange: #ea580c;
+    --orange-light: #fff7ed;
+    --red: #dc2626;
+    --red-light: #fef2f2;
+    --yellow-light: #fefce8;
+    --radius: 12px;
+    --shadow: 0 1px 3px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.04);
+    --shadow-md: 0 4px 16px rgba(0,0,0,.08);
+  }
+  body { font-family: 'Pretendard', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; font-size: 15px; }
+
+  nav { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 24px; display: flex; align-items: center; height: 52px; gap: 16px; position: sticky; top: 0; z-index: 100; }
+  .nav-logo { font-weight: 700; font-size: 15px; color: var(--text); text-decoration: none; }
+  .nav-links { display: flex; gap: 16px; margin-left: auto; }
+  .nav-links a { font-size: 13px; color: var(--text2); text-decoration: none; }
+  .nav-links a:hover { color: var(--accent); }
+
+  .hero { background: linear-gradient(135deg, #0c1a2e 0%, #1e40af 100%); color: #fff; padding: 48px 24px 40px; text-align: center; }
+  .hero-badge { display: inline-block; font-size: 12px; font-weight: 600; background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.25); padding: 4px 12px; border-radius: 20px; margin-bottom: 16px; }
+  .hero h1 { font-size: clamp(22px, 4vw, 32px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.35; margin-bottom: 10px; }
+  .hero h1 em { font-style: normal; color: #93c5fd; }
+  .hero p { font-size: 14px; opacity: .85; max-width: 500px; margin: 0 auto; }
+
+  .container { max-width: 720px; margin: 0 auto; padding: 32px 16px 60px; }
+
+  .toc { background: var(--accent-light); border: 1px solid #bfdbfe; border-radius: var(--radius); padding: 18px 22px; margin-bottom: 32px; }
+  .toc-title { font-weight: 700; font-size: 13px; color: var(--accent); margin-bottom: 8px; }
+  .toc ol { padding-left: 18px; }
+  .toc li { margin-bottom: 3px; }
+  .toc a { color: var(--accent); text-decoration: none; font-size: 13px; }
+  .toc a:hover { text-decoration: underline; }
+
+  section { margin-bottom: 40px; }
+  .section-num { display: inline-block; background: var(--accent); color: #fff; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-bottom: 8px; letter-spacing: .05em; }
+  h2 { font-size: 19px; font-weight: 700; margin-bottom: 12px; line-height: 1.4; letter-spacing: -0.01em; }
+  h3 { font-size: 16px; font-weight: 700; margin: 20px 0 10px; }
+  p { margin-bottom: 12px; color: #374151; font-size: 14px; }
+
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 22px; margin-bottom: 14px; box-shadow: var(--shadow); }
+
+  .key-box { border-radius: var(--radius); padding: 16px 18px; margin-bottom: 14px; border-left: 4px solid; }
+  .key-box.green { background: var(--green-light); border-color: var(--green); }
+  .key-box.orange { background: var(--orange-light); border-color: var(--orange); }
+  .key-box.blue { background: var(--accent-light); border-color: var(--accent); }
+  .key-box.red { background: var(--red-light); border-color: var(--red); }
+  .key-box.yellow { background: var(--yellow-light); border-color: #ca8a04; }
+  .key-box strong { display: block; font-size: 13px; margin-bottom: 4px; }
+  .key-box p { margin: 0; font-size: 13px; }
+
+  .table-wrap { overflow-x: auto; margin-bottom: 14px; -webkit-overflow-scrolling: touch; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 480px; }
+  th { background: #f1f5f9; padding: 9px 12px; text-align: left; font-weight: 600; border-bottom: 2px solid var(--border); white-space: nowrap; }
+  td { padding: 9px 12px; border-bottom: 1px solid var(--border); }
+  tr:last-child td { border-bottom: none; }
+  .tag-green { background: var(--green-light); color: var(--green); padding: 2px 7px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+  .tag-blue { background: var(--accent-light); color: var(--accent); padding: 2px 7px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+  .tag-orange { background: var(--orange-light); color: var(--orange); padding: 2px 7px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+  .tag-red { background: var(--red-light); color: var(--red); padding: 2px 7px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+
+  /* 개념 카드 3개 */
+  .concept-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px; }
+  .concept-card { border-radius: var(--radius); padding: 18px 16px; text-align: center; border: 2px solid; }
+  .concept-card.ltv { background: #eff6ff; border-color: #93c5fd; }
+  .concept-card.dsr { background: #fef2f2; border-color: #fca5a5; }
+  .concept-card.dti { background: #fff7ed; border-color: #fdba74; }
+  .concept-abbr { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 4px; }
+  .concept-card.ltv .concept-abbr { color: var(--accent); }
+  .concept-card.dsr .concept-abbr { color: var(--red); }
+  .concept-card.dti .concept-abbr { color: var(--orange); }
+  .concept-full { font-size: 11px; font-weight: 600; color: var(--text3); margin-bottom: 8px; }
+  .concept-desc { font-size: 12px; color: var(--text2); line-height: 1.5; }
+
+  .formula-box { background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; margin-bottom: 14px; font-size: 14px; }
+  .formula-box .formula { font-size: 16px; font-weight: 700; color: var(--accent); margin: 8px 0; text-align: center; }
+  .formula-box .formula-label { font-size: 12px; color: var(--text3); text-align: center; }
+
+  .sim-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); margin-bottom: 16px; }
+  .sim-header { background: #1e40af; color: #fff; padding: 12px 18px; font-size: 13px; font-weight: 600; }
+  .sim-body { padding: 16px 18px; }
+  .sim-row { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+  .sim-row:last-child { border-bottom: none; }
+  .sim-row .label { color: var(--text2); }
+  .sim-row .val { font-weight: 700; }
+  .sim-row.highlight .val { color: var(--accent); font-size: 15px; }
+  .sim-row.bad .val { color: var(--red); }
+  .sim-row.good .val { color: var(--green); }
+
+  .checklist { list-style: none; }
+  .checklist li { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li::before { content: "✓"; color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+  .summary { background: linear-gradient(135deg, #0c1a2e, #1e40af); color: #fff; border-radius: var(--radius); padding: 22px; margin-bottom: 32px; }
+  .summary h3 { color: #fff; margin-top: 0; font-size: 15px; margin-bottom: 14px; }
+  .summary-list { list-style: none; }
+  .summary-list li { padding: 5px 0; font-size: 13px; display: flex; align-items: flex-start; gap: 8px; }
+  .summary-list li::before { content: "✓"; color: #93c5fd; font-weight: 700; flex-shrink: 0; }
+
+  .cta-wrap { display: flex; flex-direction: column; gap: 10px; margin-top: 32px; }
+  .cta-btn { display: flex; align-items: center; gap: 12px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 18px; text-decoration: none; color: var(--text); box-shadow: var(--shadow); transition: box-shadow .15s, transform .15s; }
+  .cta-btn:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); }
+  .cta-icon { font-size: 22px; flex-shrink: 0; }
+  .cta-text strong { display: block; font-size: 14px; margin-bottom: 2px; }
+  .cta-text span { font-size: 12px; color: var(--text2); }
+  .cta-arrow { margin-left: auto; color: var(--text3); }
+
+  .faq-item { border: 1px solid var(--border); border-radius: 10px; margin-bottom: 8px; overflow: hidden; }
+  .faq-q { padding: 14px 16px; font-size: 14px; font-weight: 500; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: var(--surface); user-select: none; width: 100%; border: none; text-align: left; color: var(--text); font-family: inherit; }
+  .faq-q:hover { background: var(--surface2); }
+  .faq-q .arrow { transition: transform 0.2s; color: var(--text3); font-size: 12px; }
+  .faq-item.open .arrow { transform: rotate(180deg); }
+  .faq-a { display: none; padding: 0 16px 14px; font-size: 13px; color: var(--text2); line-height: 1.7; background: var(--surface); }
+  .faq-item.open .faq-a { display: block; }
+
+  footer { background: var(--surface); border-top: 1px solid var(--border); padding: 24px; text-align: center; margin-top: 48px; }
+  .footer-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 10px; }
+  .footer-links a { font-size: 13px; color: var(--text2); text-decoration: none; }
+  footer p { font-size: 12px; color: var(--text3); }
+
+  @media (max-width: 520px) {
+    .concept-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://kr-tools.moneydecoded.net" class="nav-logo">MoneyDecoded 🇰🇷</a>
+  <div class="nav-links">
+    <a href="https://kr-tools.moneydecoded.net/mortgage-calculator.html">주담대</a>
+    <a href="https://kr-tools.moneydecoded.net/salary-calculator.html">연봉</a>
+    <a href="https://www.moneydecoded.net">블로그</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-badge">2026년 기준 · 무료</div>
+  <h1>DSR · LTV · DTI<br><em>대출 규제 완벽 이해하기</em></h1>
+  <p>세 가지 개념만 알면 내 대출 한도가 보입니다. 계산법부터 한도 늘리는 전략까지.</p>
+</div>
+
+<div class="container">
+
+  <div class="toc">
+    <div class="toc-title">📋 목차</div>
+    <ol>
+      <li><a href="#overview">세 가지 규제 한눈에 보기</a></li>
+      <li><a href="#ltv">LTV — 집값 대비 대출 한도</a></li>
+      <li><a href="#dsr">DSR — 소득 대비 전체 대출 상환액</a></li>
+      <li><a href="#dti">DTI — DSR과 뭐가 다른가</a></li>
+      <li><a href="#sim">내 한도 시뮬레이션</a></li>
+      <li><a href="#strategy">대출 한도 늘리는 전략</a></li>
+      <li><a href="#faq">자주 묻는 질문</a></li>
+    </ol>
+  </div>
+
+  <!-- SECTION 1 -->
+  <section id="overview">
+    <div class="section-num">01</div>
+    <h2>세 가지 규제 한눈에 보기</h2>
+
+    <p>주택담보대출을 받을 때 반드시 넘어야 하는 세 가지 규제입니다. 각각 다른 기준으로 대출 한도를 제한합니다.</p>
+
+    <div class="concept-grid">
+      <div class="concept-card ltv">
+        <div class="concept-abbr">LTV</div>
+        <div class="concept-full">Loan To Value</div>
+        <div class="concept-desc">담보인정비율<br>집값 대비<br>대출 가능 금액</div>
+      </div>
+      <div class="concept-card dsr">
+        <div class="concept-abbr">DSR</div>
+        <div class="concept-full">Debt Service Ratio</div>
+        <div class="concept-desc">총부채원리금상환비율<br>소득 대비<br>전체 대출 상환액</div>
+      </div>
+      <div class="concept-card dti">
+        <div class="concept-abbr">DTI</div>
+        <div class="concept-full">Debt To Income</div>
+        <div class="concept-desc">총부채상환비율<br>소득 대비<br>주담대 상환액</div>
+      </div>
+    </div>
+
+    <div class="key-box blue">
+      <strong>💡 세 가지 모두 충족해야 대출 가능</strong>
+      <p>LTV·DSR·DTI 중 하나라도 한도를 초과하면 대출이 제한됩니다. 셋 중 가장 빡빡한 기준이 실제 한도를 결정합니다. 현재는 DSR 규제가 실질적으로 가장 강력한 제약으로 작용합니다.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 2 -->
+  <section id="ltv">
+    <div class="section-num">02</div>
+    <h2>LTV — 집값 대비 대출 한도</h2>
+
+    <div class="formula-box">
+      <div>LTV 계산식</div>
+      <div class="formula">LTV = 대출금액 ÷ 주택 감정가 × 100</div>
+      <div class="formula-label">예: 5억 집에 3억 대출 → LTV = 60%</div>
+    </div>
+
+    <p>LTV는 주택 가격 대비 얼마까지 빌릴 수 있는지를 제한합니다. 지역·주택 가격·대출자 조건에 따라 한도가 달라집니다.</p>
+
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <tr><th>구분</th><th>LTV 한도</th><th>비고</th></tr>
+          <tr><td>수도권 일반</td><td>70%</td><td>규제지역 외</td></tr>
+          <tr><td>수도권 규제지역</td><td>50%</td><td>투기과열지구 등</td></tr>
+          <tr><td>비수도권 일반</td><td>80%</td><td>지방 기준</td></tr>
+          <tr><td>디딤돌 대출</td><td>최대 80%</td><td>생애최초 최대 80%</td></tr>
+          <tr><td>보금자리론</td><td>최대 70%</td><td>소득 기준 충족 시</td></tr>
+          <tr><td>2주택 이상 보유자</td><td><span class="tag-red">0% (대출 불가)</span></td><td>규제지역 기준</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="key-box orange">
+      <strong>⚠️ 감정가 vs 실거래가 — 다를 수 있습니다</strong>
+      <p>LTV는 실거래가가 아닌 은행 감정가를 기준으로 합니다. 감정가가 실거래가보다 낮게 나오면 LTV 한도가 생각보다 적게 잡힐 수 있습니다. 대출 전 감정가 확인이 필수입니다.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 3 -->
+  <section id="dsr">
+    <div class="section-num">03</div>
+    <h2>DSR — 소득 대비 전체 대출 상환액</h2>
+
+    <div class="formula-box">
+      <div>DSR 계산식</div>
+      <div class="formula">DSR = 연간 전체 대출 원리금 상환액 ÷ 연소득 × 100</div>
+      <div class="formula-label">예: 연소득 5,000만원, 연간 상환액 2,000만원 → DSR = 40%</div>
+    </div>
+
+    <p>DSR은 가장 강력한 대출 규제입니다. 주담대뿐 아니라 신용대출·자동차 할부·카드론 등 <strong>모든 대출의 원리금</strong>을 합산해서 계산합니다.</p>
+
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <tr><th>구분</th><th>DSR 한도</th><th>적용 대상</th></tr>
+          <tr><td>은행권 주담대</td><td><span class="tag-red">40%</span></td><td>총대출 1억 초과 시 적용</td></tr>
+          <tr><td>비은행권 (저축은행 등)</td><td>50%</td><td>총대출 1억 초과 시 적용</td></tr>
+          <tr><td>정책금융 (디딤돌·보금자리)</td><td>DSR 적용 제외</td><td>소득·자산 심사로 대체</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="key-box red">
+      <strong>⚠️ 기존 대출이 있으면 DSR 한도가 빨리 찹니다</strong>
+      <p>신용대출 3,000만원, 자동차 할부 월 30만원이 있다면 이미 연간 수백만 원이 DSR에 잡힙니다. 주담대 받기 전 기존 소액 대출을 정리하면 DSR 여유가 생깁니다.</p>
+    </div>
+
+    <h3>DSR 40% 기준 연소득별 최대 대출 가능액</h3>
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <tr><th>연소득</th><th>연간 최대 상환 가능액</th><th>30년 원리금균등 기준 대출 한도 (금리 4%)</th></tr>
+          <tr><td>4,000만원</td><td>1,600만원</td><td>약 2억 7,000만원</td></tr>
+          <tr><td>5,000만원</td><td>2,000만원</td><td>약 3억 4,000만원</td></tr>
+          <tr><td>6,000만원</td><td>2,400만원</td><td>약 4억 1,000만원</td></tr>
+          <tr><td>8,000만원</td><td>3,200만원</td><td>약 5억 4,000만원</td></tr>
+          <tr><td>1억원</td><td>4,000만원</td><td>약 6억 8,000만원</td></tr>
+        </table>
+      </div>
+    </div>
+    <p style="font-size:12px; color:var(--text3);">※ 다른 대출 없을 때 기준. 기존 대출 있으면 한도 감소. 실제 한도는 은행별로 다를 수 있습니다.</p>
+  </section>
+
+  <!-- SECTION 4 -->
+  <section id="dti">
+    <div class="section-num">04</div>
+    <h2>DTI — DSR과 뭐가 다른가</h2>
+
+    <div class="formula-box">
+      <div>DTI 계산식</div>
+      <div class="formula">DTI = (주담대 연간 원리금 + 기타 대출 연간 이자) ÷ 연소득 × 100</div>
+      <div class="formula-label">기타 대출은 이자만 포함 — DSR보다 유리한 규제</div>
+    </div>
+
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <tr><th>구분</th><th>DSR</th><th>DTI</th></tr>
+          <tr><td>주담대</td><td>원금 + 이자</td><td>원금 + 이자</td></tr>
+          <tr><td>기타 대출 (신용대출 등)</td><td><span class="tag-red">원금 + 이자 전부</span></td><td><span class="tag-green">이자만</span></td></tr>
+          <tr><td>엄격도</td><td>더 엄격</td><td>상대적으로 유리</td></tr>
+          <tr><td>현재 적용</td><td>주력 규제</td><td>일부 상품에 병행 적용</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="key-box blue">
+      <strong>💡 현재는 DSR이 사실상 주력 규제</strong>
+      <p>2021년 이후 DSR이 강화되면서 DTI보다 DSR이 실질적으로 더 강한 규제로 작용합니다. DSR 40%를 충족하면 대부분의 경우 DTI도 자동으로 충족됩니다. DSR 계산에 집중하세요.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 5 -->
+  <section id="sim">
+    <div class="section-num">05</div>
+    <h2>내 한도 시뮬레이션</h2>
+
+    <p>연소득 6,000만원, 신용대출 3,000만원(금리 5%, 3년 분할 상환) 보유 중, 5억 아파트 매입 시나리오입니다.</p>
+
+    <div class="sim-box">
+      <div class="sim-header">🏠 LTV 한도 계산 (수도권 일반, LTV 70%)</div>
+      <div class="sim-body">
+        <div class="sim-row">
+          <span class="label">주택 감정가</span>
+          <span class="val">5억원</span>
+        </div>
+        <div class="sim-row highlight">
+          <span class="label">LTV 70% 기준 최대 대출</span>
+          <span class="val">3억 5,000만원</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sim-box">
+      <div class="sim-header">📊 DSR 한도 계산 (은행권, DSR 40%)</div>
+      <div class="sim-body">
+        <div class="sim-row">
+          <span class="label">연소득</span>
+          <span class="val">6,000만원</span>
+        </div>
+        <div class="sim-row">
+          <span class="label">DSR 40% 연간 상환 가능액</span>
+          <span class="val">2,400만원</span>
+        </div>
+        <div class="sim-row bad">
+          <span class="label">기존 신용대출 연간 상환액 (원리금)</span>
+          <span class="val">약 1,200만원 차감</span>
+        </div>
+        <div class="sim-row">
+          <span class="label">주담대에 쓸 수 있는 연간 상환액</span>
+          <span class="val">약 1,200만원</span>
+        </div>
+        <div class="sim-row highlight">
+          <span class="label">DSR 기준 주담대 최대 한도 (30년, 금리 4%)</span>
+          <span class="val">약 2억원</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="key-box red">
+      <strong>⚠️ 실제 한도는 LTV 3.5억이 아닌 DSR 기준 2억</strong>
+      <p>LTV로는 3억 5천이 가능해 보여도 DSR이 발목을 잡으면 실제 대출은 2억까지만 됩니다. 기존 신용대출을 미리 갚으면 DSR 여유가 늘어나 주담대 한도가 올라갑니다.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 6 -->
+  <section id="strategy">
+    <div class="section-num">06</div>
+    <h2>대출 한도 늘리는 전략</h2>
+
+    <div class="card">
+      <ul class="checklist">
+        <li><strong>기존 소액 대출 먼저 정리:</strong> 신용대출·카드론·자동차 할부가 DSR을 잠식합니다. 주담대 신청 전 정리하면 한도가 늘어납니다.</li>
+        <li><strong>정책금융 우선 확인:</strong> 디딤돌·보금자리·신생아특례 대출은 DSR 적용 제외. 조건 되면 무조건 먼저 신청하세요.</li>
+        <li><strong>소득 증빙 꼼꼼히:</strong> 근로소득 외 임대소득·사업소득·금융소득이 있으면 합산 가능. 종합소득세 신고 내역 준비하세요.</li>
+        <li><strong>공동명의 검토:</strong> 배우자와 공동명의로 대출하면 합산 소득 기준으로 DSR 계산. 한도가 늘어날 수 있습니다.</li>
+        <li><strong>대출 기간 늘리기:</strong> 30년→40년으로 늘리면 월 상환액이 줄어 DSR 여유가 생깁니다. 단 총 이자는 증가합니다.</li>
+        <li><strong>비규제지역 물건 검토:</strong> 규제지역(LTV 50%)보다 비규제지역(LTV 70~80%)이 같은 집값에서 더 많이 빌릴 수 있습니다.</li>
+      </ul>
+    </div>
+
+    <div class="summary">
+      <h3>✅ 핵심 요약</h3>
+      <ul class="summary-list">
+        <li>LTV: 집값 대비 대출 한도 (수도권 일반 70%, 규제지역 50%)</li>
+        <li>DSR: 연소득 대비 전체 대출 원리금 40% 이내 — 현재 가장 강한 규제</li>
+        <li>DTI: DSR과 비슷하지만 기타 대출은 이자만 계산 — 상대적으로 유리</li>
+        <li>세 규제 중 가장 빡빡한 기준이 실제 대출 한도를 결정</li>
+        <li>기존 대출 정리 → DSR 여유 확보 → 주담대 한도 상승</li>
+        <li>정책금융(디딤돌·보금자리)은 DSR 제외 — 조건 되면 최우선</li>
+        <li>공동명의·기간 연장으로 DSR 한도 활용 가능</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <h2>자주 묻는 질문</h2>
+    <div class="faq-item">
+      <button class="faq-q">DSR 계산 시 연소득은 어떻게 잡히나요? <span class="arrow">▼</span></button>
+      <div class="faq-a">근로소득자는 근로소득원천징수영수증의 총급여액을 기준으로 합니다. 사업소득자는 종합소득세 신고 소득을 기준으로 하며, 인정 비율이 달라질 수 있습니다. 임대소득·금융소득 등 다른 소득이 있으면 합산 가능하므로 서류를 꼼꼼히 챙기는 게 중요합니다.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">전세자금대출도 DSR에 포함되나요? <span class="arrow">▼</span></button>
+      <div class="faq-a">전세자금대출은 원칙적으로 DSR에 포함되지만, 상환 방식에 따라 계산이 달라집니다. 일시상환 전세자금대출은 만기 시 일시 상환을 가정해 연간 이자만 반영되는 경우가 많습니다. 금융기관마다 적용 방식이 다를 수 있으므로 사전 상담을 권장합니다.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">규제지역은 어디인가요? <span class="arrow">▼</span></button>
+      <div class="faq-a">규제지역은 투기과열지구와 조정대상지역으로 나뉩니다. 2026년 현재 서울 전역과 일부 경기 지역이 포함되어 있으며, 부동산 시장 상황에 따라 수시로 변경됩니다. 국토교통부 홈페이지나 은행 상담을 통해 최신 규제지역을 확인하는 것이 정확합니다.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">디딤돌 대출은 DSR이 적용 안 되나요? <span class="arrow">▼</span></button>
+      <div class="faq-a">맞습니다. 디딤돌·보금자리론·신생아특례 등 정책금융 상품은 DSR 규제 적용 대상에서 제외됩니다. 대신 소득·자산·주택 가격 기준으로 별도 심사를 받습니다. 조건에 해당된다면 일반 주담대보다 훨씬 유리하므로 정책금융을 우선 검토하세요.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">DSR이 초과되면 대출이 아예 안 되나요? <span class="arrow">▼</span></button>
+      <div class="faq-a">은행권(1금융권)에서는 DSR 40%를 초과하면 대출이 불가합니다. 다만 저축은행·캐피탈 등 2금융권은 DSR 50%까지 허용합니다. 금리가 높아지는 단점이 있으므로 신중하게 판단하세요. 또한 대출 한도를 줄여서 DSR 40% 이내로 맞추는 방법도 있습니다.</div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-wrap">
+    <a href="https://kr-tools.moneydecoded.net/mortgage-calculator.html" class="cta-btn">
+      <div class="cta-icon">🏠</div>
+      <div class="cta-text">
+        <strong>주담대 계산기</strong>
+        <span>월 상환액·총 이자·DSR 자동 계산</span>
+      </div>
+      <div class="cta-arrow">→</div>
+    </a>
+    <a href="https://kr-tools.moneydecoded.net/mortgage-rate-guide.html" class="cta-btn">
+      <div class="cta-icon">📉</div>
+      <div class="cta-text">
+        <strong>2026 주담대 금리 비교</strong>
+        <span>은행별 최저금리·우대조건 총정리</span>
+      </div>
+      <div class="cta-arrow">→</div>
+    </a>
+    <a href="https://kr-tools.moneydecoded.net/salary-calculator.html" class="cta-btn">
+      <div class="cta-icon">💰</div>
+      <div class="cta-text">
+        <strong>연봉 실수령액 계산기</strong>
+        <span>내 연소득 확인하고 DSR 여유 계산해보기</span>
+      </div>
+      <div class="cta-arrow">→</div>
+    </a>
+    <a href="https://kr-tools.moneydecoded.net/" class="cta-btn">
+      <div class="cta-icon">🧮</div>
+      <div class="cta-text">
+        <strong>한국어 계산기 모음</strong>
+        <span>청약·퇴직금·환율 전체 계산기 보기</span>
+      </div>
+      <div class="cta-arrow">→</div>
+    </a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="https://kr-tools.moneydecoded.net">한국어 도구</a>
+    <a href="https://kr-tools.moneydecoded.net/mortgage-calculator.html">주담대 계산기</a>
+    <a href="https://kr-tools.moneydecoded.net/mortgage-rate-guide.html">주담대 금리 비교</a>
+    <a href="https://www.moneydecoded.net/p/privacy-policy.html">개인정보처리방침</a>
+  </div>
+  <p>© 2026 MoneyDecoded — 이 정보는 참고용이며 실제 대출 한도는 금융기관에서 확인하세요.</p>
+</footer>
+
+<script>
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => btn.closest('.faq-item').classList.toggle('open'));
+  });
+</script>
+
+</body>
+</html>

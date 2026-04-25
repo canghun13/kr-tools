@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>연말정산 환급 많이 받는 법 2026 — 공제 항목 총정리 | MoneyDecoded</title>
+<meta name="description" content="2026년 연말정산 환급 최대화 방법. 소득공제·세액공제 항목 총정리, IRP·연금저축 활용법, 13월의 월급 받는 전략까지.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #f5f5f0;
+    --surface: #ffffff;
+    --surface2: #f9f9f7;
+    --border: #e8e8e4;
+    --text: #1a1a1a;
+    --text2: #666660;
+    --text3: #999994;
+    --accent: #2563eb;
+    --accent-light: #eff6ff;
+    --green: #16a34a;
+    --green-light: #f0fdf4;
+    --orange: #ea580c;
+    --orange-light: #fff7ed;
+    --red: #dc2626;
+    --red-light: #fef2f2;
+    --yellow-light: #fefce8;
+    --radius: 12px;
+    --shadow: 0 1px 3px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.04);
+    --shadow-md: 0 4px 16px rgba(0,0,0,.08);
+  }
+  body { font-family: 'Pretendard', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; font-size: 15px; }
+
+  nav { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 24px; display: flex; align-items: center; height: 52px; gap: 16px; position: sticky; top: 0; z-index: 100; }
+  .nav-logo { font-weight: 700; font-size: 15px; color: var(--text); text-decoration: none; }
+  .nav-links { display: flex; gap: 16px; margin-left: auto; }
+  .nav-links a { font-size: 13px; color: var(--text2); text-decoration: none; }
+  .nav-links a:hover { color: var(--accent); }
+
+  .hero { background: linear-gradient(135deg, #1e1b4b 0%, #4f46e5 100%); color: #fff; padding: 48px 24px 40px; text-align: center; }
+  .hero-badge { display: inline-block; font-size: 12px; font-weight: 600; background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.25); padding: 4px 12px; border-radius: 20px; margin-bottom: 16px; }
+  .hero h1 { font-size: clamp(22px, 4vw, 32px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.35; margin-bottom: 10px; }
+  .hero h1 em { font-style: normal; color: #c4b5fd; }
+  .hero p { font-size: 14px; opacity: .85; max-width: 500px; margin: 0 auto; }
+
+  .container { max-width: 720px; margin: 0 auto; padding: 32px 16px 60px; }
+
+  .toc { background: var(--accent-light); border: 1px solid #bfdbfe; border-radius: var(--radius); padding: 18px 22px; margin-bottom: 32px; }
+  .toc-title { font-weight: 700; font-size: 13px; color: var(--accent); margin-bottom: 8px; }
+  .toc ol { padding-left: 18px; }
+  .toc li { margin-bottom: 3px; }
+  .toc a { color: var(--accent); text-decoration: none; font-size: 13px; }
+  .toc a:hover { text-decoration: underline; }
+
+  section { margin-bottom: 40px; }
+  .section-num { display: inline-block; background: var(--accent); color: #fff; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-bottom: 8px; letter-spacing: .05em; }
+  h2 { font-size: 19px; font-weight: 700; margin-bottom: 12px; line-height: 1.4; letter-spacing: -0.01em; }
+  h3 { font-size: 16px; font-weight: 700; margin: 20px 0 10px; }
+  p { margin-bottom: 12px; color: #374151; font-size: 14px; }
+
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 22px; margin-bottom: 14px; box-shadow: var(--shadow); }
+
+  .key-box { border-radius: var(--radius); padding: 16px 18px; margin-bottom: 14px; border-left: 4px solid; }
+  .key-box.green { background: var(--green-light); border-color: var(--green); }
+  .key-box.orange { background: var(--orange-light); border-color: var(--orange); }
+  .key-box.blue { background: var(--accent-light); border-color: var(--accent); }
+  .key-box.red { background: var(--red-light); border-color: var(--red); }
+  .key-box.yellow { background: var(--yellow-light); border-color: #ca8a04; }
+  .key-box strong { display: block; font-size: 13px; margin-bottom: 4px; }
+  .key-box p { margin: 0; font-size: 13px; }
+
+  .table-wrap { overflow-x: auto; margin-bottom: 14px; -webkit-overflow-scrolling: touch; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 480px; }
+  th { background: #f1f5f9; padding: 9px 12px; text-align: left; font-weight: 600; border-bottom: 2px solid var(--border); white-space: nowrap; }
+  td { padding: 9px 12px; border-bottom: 1px solid var(--border); }
+  tr:last-child td { border-bottom: none; }
+  .tag-green { background: var(--green-light); color: var(--green); padding: 2px 7px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+  .tag-blue { background: var(--accent-light); color: var(--accent); padding: 2px 7px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+  .tag-orange { background: var(--orange-light); color: var(--orange); padding: 2px 7px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+  .tag-red { background: var(--red-light); color: var(--red); padding: 2px 7px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+
+  .vs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+  .vs-card { border-radius: var(--radius); padding: 16px; border: 1px solid; }
+  .vs-card.a { background: var(--accent-light); border-color: #bfdbfe; }
+  .vs-card.b { background: var(--green-light); border-color: #bbf7d0; }
+  .vs-label { font-size: 12px; font-weight: 700; margin-bottom: 8px; }
+  .vs-card.a .vs-label { color: var(--accent); }
+  .vs-card.b .vs-label { color: var(--green); }
+  .vs-title { font-size: 15px; font-weight: 800; margin-bottom: 6px; }
+  .vs-list { font-size: 12px; color: #4b5563; line-height: 1.8; }
+
+  .checklist { list-style: none; }
+  .checklist li { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li::before { content: "✓"; color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+  .sim-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); margin-bottom: 16px; }
+  .sim-header { background: #4f46e5; color: #fff; padding: 12px 18px; font-size: 13px; font-weight: 600; }
+  .sim-body { padding: 16px 18px; }
+  .sim-row { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+  .sim-row:last-child { border-bottom: none; }
+  .sim-row .label { color: var(--text2); }
+  .sim-row .val { font-weight: 700; }
+  .sim-row.highlight .val { color: var(--green); font-size: 15px; }
+  .sim-row.bad .val { color: var(--red); }
+
+  .summary { background: linear-gradient(135deg, #1e1b4b, #4f46e5); color: #fff; border-radius: var(--radius); padding: 22px; margin-bottom: 32px; }
+  .summary h3 { color: #fff; margin-top: 0; font-size: 15px; margin-bottom: 14px; }
+  .summary-list { list-style: none; }
+  .summary-list li { padding: 5px 0; font-size: 13px; display: flex; align-items: flex-start; gap: 8px; }
+  .summary-list li::before { content: "✓"; color: #c4b5fd; font-weight: 700; flex-shrink: 0; }
+
+  .cta-wrap { display: flex; flex-direction: column; gap: 10px; margin-top: 32px; }
+  .cta-btn { display: flex; align-items: center; gap: 12px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 18px; text-decoration: none; color: var(--text); box-shadow: var(--shadow); transition: box-shadow .15s, transform .15s; }
+  .cta-btn:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); }
+  .cta-icon { font-size: 22px; flex-shrink: 0; }
+  .cta-text strong { display: block; font-size: 14px; margin-bottom: 2px; }
+  .cta-text span { font-size: 12px; color: var(--text2); }
+  .cta-arrow { margin-left: auto; color: var(--text3); }
+
+  .faq-item { border: 1px solid var(--border); border-radius: 10px; margin-bottom: 8px; overflow: hidden; }
+  .faq-q { padding: 14px 16px; font-size: 14px; font-weight: 500; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: var(--surface); user-select: none; width: 100%; border: none; text-align: left; color: var(--text); font-family: inherit; }
+  .faq-q:hover { background: var(--surface2); }
+  .faq-q .arrow { transition: transform 0.2s; color: var(--text3); font-size: 12px; }
+  .faq-item.open .arrow { transform: rotate(180deg); }
+  .faq-a { display: none; padding: 0 16px 14px; font-size: 13px; color: var(--text2); line-height: 1.7; background: var(--surface); }
+  .faq-item.open .faq-a { display: block; }
+
+  footer { background: var(--surface); border-top: 1px solid var(--border); padding: 24px; text-align: center; margin-top: 48px; }
+  .footer-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 10px; }
+  .footer-links a { font-size: 13px; color: var(--text2); text-decoration: none; }
+  footer p { font-size: 12px; color: var(--text3); }
+
+  @media (max-width: 480px) {
+    .vs-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://kr-tools.moneydecoded.net" class="nav-logo">MoneyDecoded 🇰🇷</a>
+  <div class="nav-links">
+    <a href="https://kr-tools.moneydecoded.net/salary-calculator.html">연봉</a>
+    <a href="https://kr-tools.moneydecoded.net/salary-table-2026.html">실수령표</a>
+    <a href="https://www.moneydecoded.net">블로그</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-badge">2026년 기준 · 무료</div>
+  <h1>연말정산 환급 많이 받는 법 —<br><em>13월의 월급 완전 공략</em></h1>
+  <p>소득공제·세액공제 항목 총정리. IRP·연금저축·카드 활용법까지 한 번에.</p>
+</div>
+
+<div class="container">
+
+  <div class="toc">
+    <div class="toc-title">📋 목차</div>
+    <ol>
+      <li><a href="#basic">소득공제 vs 세액공제 차이 이해하기</a></li>
+      <li><a href="#deduction">핵심 소득공제 항목</a></li>
+      <li><a href="#tax-credit">핵심 세액공제 항목</a></li>
+      <li><a href="#irp">IRP·연금저축으로 최대 환급받기</a></li>
+      <li><a href="#card">카드 공제 전략</a></li>
+      <li><a href="#checklist">연말정산 준비 체크리스트</a></li>
+      <li><a href="#faq">자주 묻는 질문</a></li>
+    </ol>
+  </div>
+
+  <!-- SECTION 1 -->
+  <section id="basic">
+    <div class="section-num">01</div>
+    <h2>소득공제 vs 세액공제 차이 이해하기</h2>
+
+    <p>연말정산에서 가장 헷갈리는 개념이 소득공제와 세액공제의 차이입니다. 두 가지를 구분하면 어디에 집중해야 할지 전략이 보입니다.</p>
+
+    <div class="vs-grid">
+      <div class="vs-card a">
+        <div class="vs-label">📉 소득공제</div>
+        <div class="vs-title">과세소득을 줄임</div>
+        <div class="vs-list">
+          • 세금 계산 전 소득에서 차감<br>
+          • 소득이 높을수록 절세 효과 큼<br>
+          • 대표 항목: 인적공제, 카드공제, 주택청약<br>
+          • 절세액 = 공제액 × 세율
+        </div>
+      </div>
+      <div class="vs-card b">
+        <div class="vs-label">💸 세액공제</div>
+        <div class="vs-title">세금 자체를 줄임</div>
+        <div class="vs-list">
+          • 계산된 세금에서 직접 차감<br>
+          • 소득에 상관없이 동일 효과<br>
+          • 대표 항목: IRP, 의료비, 교육비<br>
+          • 절세액 = 공제액 × 공제율(12~15%)
+        </div>
+      </div>
+    </div>
+
+    <div class="key-box blue">
+      <strong>💡 연봉 5,500만원 이하라면 세액공제에 집중</strong>
+      <p>세율이 낮은 구간은 소득공제 효과가 적습니다. IRP·연금저축 같은 세액공제 항목을 먼저 채우는 게 유리합니다. 연봉이 높을수록 소득공제도 챙길수록 이득입니다.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 2 -->
+  <section id="deduction">
+    <div class="section-num">02</div>
+    <h2>핵심 소득공제 항목</h2>
+
+    <h3>인적공제 — 놓치기 쉬운 가장 큰 항목</h3>
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <tr><th>공제 항목</th><th>공제액</th><th>조건</th></tr>
+          <tr><td>기본공제 (본인)</td><td>150만원</td><td>자동 적용</td></tr>
+          <tr><td>기본공제 (배우자)</td><td>150만원</td><td>소득 100만원 이하</td></tr>
+          <tr><td>기본공제 (부양가족)</td><td>1인당 150만원</td><td>소득 100만원 이하, 만 60세↑ 부모 / 만 20세↓ 자녀</td></tr>
+          <tr><td>경로우대공제</td><td>1인당 100만원</td><td>만 70세 이상 부양가족</td></tr>
+          <tr><td>장애인공제</td><td>1인당 200만원</td><td>장애인 부양가족</td></tr>
+          <tr><td>한부모공제</td><td>100만원</td><td>배우자 없는 한부모 (부녀자공제와 중복 불가)</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="key-box orange">
+      <strong>⚠️ 부모님 공제는 형제자매 중 한 명만 가능</strong>
+      <p>부모님을 부양가족으로 올릴 수 있는 사람은 형제자매 중 1명뿐입니다. 연봉이 가장 높은 사람이 공제받는 게 절세 효과가 큽니다. 미리 협의하세요.</p>
+    </div>
+
+    <h3>신용카드·체크카드 소득공제</h3>
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <tr><th>사용 수단</th><th>공제율</th><th>한도</th></tr>
+          <tr><td>신용카드</td><td>15%</td><td rowspan="5">총급여 7,000만원 이하: 300만원<br>총급여 7,000만원~1.2억: 250만원<br>총급여 1.2억 초과: 200만원</td></tr>
+          <tr><td>체크카드·현금영수증</td><td><span class="tag-green">30%</span></td></tr>
+          <tr><td>전통시장</td><td><span class="tag-green">40%</span></td></tr>
+          <tr><td>대중교통</td><td><span class="tag-green">40%</span></td></tr>
+          <tr><td>도서·공연·영화</td><td>30%</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="key-box green">
+      <strong>💡 카드 공제 전략: 연봉의 25% 초과분부터 공제</strong>
+      <p>카드 공제는 총급여의 25%를 초과한 사용액부터 적용됩니다. 연봉 5,000만원이면 1,250만원 초과분부터 공제 대상입니다. 25%까지는 포인트 좋은 신용카드, 초과분은 체크카드·현금영수증으로 전략적으로 사용하세요.</p>
+    </div>
+
+    <h3>주택 관련 소득공제</h3>
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <tr><th>항목</th><th>공제액/한도</th><th>조건</th></tr>
+          <tr><td>주택청약종합저축</td><td>납입액의 40%, 최대 96만원</td><td>총급여 7,000만원 이하 무주택 세대주</td></tr>
+          <tr><td>주택임차차입금 원리금상환액</td><td>상환액의 40%, 최대 400만원</td><td>무주택 세대주, 전세·월세 대출</td></tr>
+          <tr><td>장기주택저당차입금 이자상환액</td><td>최대 300~2,000만원</td><td>1주택 세대주, 고정금리·비거치식 조건 따라 차등</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3 -->
+  <section id="tax-credit">
+    <div class="section-num">03</div>
+    <h2>핵심 세액공제 항목</h2>
+
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <tr><th>항목</th><th>공제율</th><th>한도</th></tr>
+          <tr><td>IRP·연금저축</td><td>15% (5,500만원 이하) / 12%</td><td>연 900만원 (IRP 포함)</td></tr>
+          <tr><td>의료비</td><td>15% (난임 30%)</td><td>총급여 3% 초과분, 한도 없음</td></tr>
+          <tr><td>교육비 (본인)</td><td>15%</td><td>한도 없음</td></tr>
+          <tr><td>교육비 (자녀)</td><td>15%</td><td>1인당 300만원 (대학생)</td></tr>
+          <tr><td>기부금</td><td>15~30%</td><td>종류에 따라 한도 상이</td></tr>
+          <tr><td>월세 세액공제</td><td>15% (5,500만원 이하) / 12%</td><td>연 1,000만원</td></tr>
+          <tr><td>자녀 세액공제</td><td>1명 25만원 / 2명 55만원 / 3명↑ 추가 30만원</td><td>만 8세~20세 자녀</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="key-box blue">
+      <strong>💡 의료비는 총급여 3% 초과분부터 — 가족 몰아주기 전략</strong>
+      <p>의료비 공제는 총급여의 3%를 초과해야 공제가 시작됩니다. 연봉 5,000만원이면 150만원 초과분부터 대상입니다. 가족 중 연봉이 낮은 사람에게 의료비를 몰아주면 3% 기준선을 빨리 넘겨 공제를 더 받을 수 있습니다.</p>
+    </div>
+
+    <div class="key-box yellow">
+      <strong>📌 월세 세액공제 — 계약서·이체 내역 꼭 챙기세요</strong>
+      <p>월세 세액공제는 총급여 8,000만원 이하 무주택자가 대상입니다. 임대차계약서, 주민등록등본, 월세 이체 내역만 있으면 됩니다. 현금으로 냈다면 집주인에게 현금영수증 발급 요청하거나 주택임차료 현금영수증 신청을 국세청에 직접 할 수 있습니다.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 4 -->
+  <section id="irp">
+    <div class="section-num">04</div>
+    <h2>IRP·연금저축으로 최대 환급받기</h2>
+
+    <p>연말정산에서 가장 확실하게 환급액을 늘리는 방법은 IRP(개인형퇴직연금)와 연금저축입니다. 납입액의 최대 15%를 세액공제해줍니다.</p>
+
+    <div class="sim-box">
+      <div class="sim-header">💰 IRP + 연금저축 세액공제 시뮬레이션 (연봉 5,000만원 기준)</div>
+      <div class="sim-body">
+        <div class="sim-row">
+          <span class="label">연금저축 납입액</span>
+          <span class="val">600만원</span>
+        </div>
+        <div class="sim-row">
+          <span class="label">IRP 추가 납입액</span>
+          <span class="val">300만원</span>
+        </div>
+        <div class="sim-row">
+          <span class="label">합산 납입액 (한도 900만원)</span>
+          <span class="val">900만원</span>
+        </div>
+        <div class="sim-row">
+          <span class="label">적용 공제율 (5,500만원 이하)</span>
+          <span class="val">15%</span>
+        </div>
+        <div class="sim-row highlight">
+          <span class="label">세액공제액 (환급 기대액)</span>
+          <span class="val">135만원</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <tr><th>구분</th><th>연금저축</th><th>IRP</th></tr>
+          <tr><td>연간 한도</td><td>600만원</td><td>900만원 (연금저축 포함 합산)</td></tr>
+          <tr><td>공제율</td><td>15% (5,500만원 이하) / 12%</td><td>동일</td></tr>
+          <tr><td>중도 인출</td><td>가능 (세금 부과)</td><td>불가 (퇴직·55세 이후만)</td></tr>
+          <tr><td>투자 가능 상품</td><td>펀드·ETF 등</td><td>예금·펀드·ETF 등</td></tr>
+          <tr><td>전략</td><td>유연성 필요 시 우선</td><td>추가 납입으로 한도 채우기</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="key-box green">
+      <strong>💡 12월 말 IRP 납입해도 당해 공제 가능</strong>
+      <p>IRP와 연금저축은 12월 31일까지 납입하면 당해 연도 세액공제가 적용됩니다. 여유 자금이 있다면 연말에 집중 납입하는 전략도 유효합니다. 단, 중도 해지 시 공제받은 세금을 토해내야 하므로 여유 자금으로만 납입하세요.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 5 -->
+  <section id="card">
+    <div class="section-num">05</div>
+    <h2>카드 공제 전략</h2>
+
+    <p>카드 공제는 사용 수단에 따라 공제율이 다르기 때문에 전략적으로 사용하면 환급액을 더 늘릴 수 있습니다.</p>
+
+    <div class="sim-box">
+      <div class="sim-header">📊 연봉 5,000만원 카드 공제 시뮬레이션</div>
+      <div class="sim-body">
+        <div class="sim-row">
+          <span class="label">총급여 25% 기준선</span>
+          <span class="val">1,250만원</span>
+        </div>
+        <div class="sim-row bad">
+          <span class="label">신용카드만 2,000만원 사용 시 공제액</span>
+          <span class="val">약 112만원 (750만원 × 15%)</span>
+        </div>
+        <div class="sim-row highlight">
+          <span class="label">신용카드 1,250만원 + 체크카드 750만원 사용 시</span>
+          <span class="val">약 225만원 (750만원 × 30%)</span>
+        </div>
+      </div>
+    </div>
+
+    <h3>카드 공제 극대화 전략</h3>
+    <div class="card">
+      <ul class="checklist">
+        <li><strong>연봉 25%까지는 신용카드:</strong> 할인·포인트 혜택이 많은 신용카드를 사용하고, 25% 초과분부터 체크카드나 현금영수증으로 전환.</li>
+        <li><strong>전통시장·대중교통 적극 활용:</strong> 공제율 40%로 가장 높음. 대중교통은 교통카드 실적도 포함.</li>
+        <li><strong>의료비·학원비는 카드로:</strong> 현금 지출보다 카드가 공제 증빙이 자동으로 잡힘.</li>
+        <li><strong>가족 카드 합산 가능:</strong> 배우자·자녀·부모님 카드 사용액도 생계를 같이하면 합산 가능.</li>
+        <li><strong>현금영수증 꼭 챙기기:</strong> 현금 사용 시 반드시 현금영수증 요청. 체크카드와 동일하게 30% 공제.</li>
+      </ul>
+    </div>
+
+    <div class="key-box orange">
+      <strong>⚠️ 보험료·교육비·세금은 카드 공제 대상 아님</strong>
+      <p>신용카드로 결제해도 공제 대상에서 빠지는 항목이 있습니다. 보험료, 학교 납입금, 국세·지방세, 아파트 관리비(일부), 상품권 구매 등은 카드 공제에 포함되지 않습니다.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 6 -->
+  <section id="checklist">
+    <div class="section-num">06</div>
+    <h2>연말정산 준비 체크리스트</h2>
+
+    <div class="card">
+      <ul class="checklist">
+        <li>IRP·연금저축 납입액 연 900만원 한도까지 채웠다</li>
+        <li>부양가족(부모님·자녀) 공제 대상자 확인하고 인적공제 등록했다</li>
+        <li>연봉 25% 기준선 확인하고 카드 사용 전략 점검했다</li>
+        <li>월세 거주 중이라면 임대차계약서·이체 내역 준비했다</li>
+        <li>의료비 지출이 많은 가족에게 몰아주기 전략 협의했다</li>
+        <li>기부금 영수증 발급 여부 확인했다</li>
+        <li>주택청약종합저축 납입 실적 확인했다 (무주택자)</li>
+        <li>홈택스 간소화 서비스(1월 중순 오픈) 자료 미리 확인할 준비했다</li>
+      </ul>
+    </div>
+
+    <div class="summary">
+      <h3>✅ 핵심 요약</h3>
+      <ul class="summary-list">
+        <li>IRP + 연금저축 연 900만원 납입 → 최대 135만원 세액공제 (연봉 5,500만원 이하)</li>
+        <li>카드는 연봉 25%까지 신용카드, 초과분은 체크카드·현금영수증</li>
+        <li>전통시장·대중교통 공제율 40% — 적극 활용</li>
+        <li>부모님 부양가족 공제는 형제 중 연봉 높은 사람이 받는 게 유리</li>
+        <li>월세 세액공제 최대 15% — 계약서·이체 내역만 있으면 가능</li>
+        <li>의료비는 가족 중 연봉 낮은 사람에게 몰아주기</li>
+        <li>12월 말 IRP 납입도 당해 공제 가능 — 여유 자금 있으면 연말 집중 납입</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <h2>자주 묻는 질문</h2>
+    <div class="faq-item">
+      <button class="faq-q">연말정산 환급금은 언제 받나요? <span class="arrow">▼</span></button>
+      <div class="faq-a">보통 2월 급여일에 환급금이 지급됩니다. 회사마다 다르지만 2월 말~3월 초에 정산 결과가 반영되는 경우가 많습니다. 환급이 아닌 추가 납부가 나올 경우도 동일하게 2월 급여에서 차감됩니다.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">IRP는 중간에 해지하면 어떻게 되나요? <span class="arrow">▼</span></button>
+      <div class="faq-a">IRP를 중도 해지하면 공제받은 세금을 기타소득세(16.5%)로 추징당합니다. 납입액에서 공제받은 금액만큼 다시 세금을 내야 하므로 실질 수익이 크게 줄어듭니다. 긴급 자금이 필요한 상황이라면 IRP보다 유연한 연금저축을 먼저 활용하는 게 좋습니다.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">맞벌이 부부는 어떻게 공제를 나누는 게 유리한가요? <span class="arrow">▼</span></button>
+      <div class="faq-a">일반적으로 연봉이 높은 배우자에게 소득공제 항목을 몰아주는 게 유리합니다. 다만 의료비는 총급여 3% 초과분부터 공제되므로 연봉이 낮은 배우자에게 몰아주는 게 유리할 수 있습니다. 자녀 공제도 한 명의 배우자에게 몰아주는 것이 원칙입니다.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">연말정산 간소화 서비스는 언제 이용하나요? <span class="arrow">▼</span></button>
+      <div class="faq-a">국세청 홈택스의 연말정산 간소화 서비스는 매년 1월 15일경 오픈합니다. 카드 사용액, 의료비, 교육비 등 대부분의 공제 자료가 자동으로 조회됩니다. 다만 일부 간병비, 중고생 교복 구입비, 안경 구입비 등은 직접 영수증을 챙겨야 합니다.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">프리랜서·사업자도 연말정산을 하나요? <span class="arrow">▼</span></button>
+      <div class="faq-a">프리랜서·사업자는 연말정산 대신 5월에 종합소득세 신고를 합니다. 근로소득이 있는 직장인만 회사를 통해 연말정산을 진행합니다. 다만 근로소득과 사업소득이 동시에 있는 경우에는 종합소득세 신고 시 합산해서 신고해야 합니다.</div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-wrap">
+    <a href="https://kr-tools.moneydecoded.net/salary-calculator.html" class="cta-btn">
+      <div class="cta-icon">💰</div>
+      <div class="cta-text">
+        <strong>연봉 실수령액 계산기</strong>
+        <span>4대보험·소득세 공제 후 실제 월급 계산</span>
+      </div>
+      <div class="cta-arrow">→</div>
+    </a>
+    <a href="https://kr-tools.moneydecoded.net/salary-table-2026.html" class="cta-btn">
+      <div class="cta-icon">📊</div>
+      <div class="cta-text">
+        <strong>연봉별 실수령액 표</strong>
+        <span>2400만~1억원 구간 세후 월급 한눈에 비교</span>
+      </div>
+      <div class="cta-arrow">→</div>
+    </a>
+    <a href="https://kr-tools.moneydecoded.net/" class="cta-btn">
+      <div class="cta-icon">🧮</div>
+      <div class="cta-text">
+        <strong>한국어 계산기 모음</strong>
+        <span>퇴직금·청약·환율·주담대 전체 계산기 보기</span>
+      </div>
+      <div class="cta-arrow">→</div>
+    </a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="https://kr-tools.moneydecoded.net">한국어 도구</a>
+    <a href="https://kr-tools.moneydecoded.net/salary-calculator.html">연봉계산기</a>
+    <a href="https://kr-tools.moneydecoded.net/severance-tax-guide.html">퇴직금 세금 절약법</a>
+    <a href="https://www.moneydecoded.net/p/privacy-policy.html">개인정보처리방침</a>
+  </div>
+  <p>© 2026 MoneyDecoded — 이 정보는 참고용이며 실제 세금은 국세청·세무사에게 확인하세요.</p>
+</footer>
+
+<script>
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => btn.closest('.faq-item').classList.toggle('open'));
+  });
+</script>
+
+</body>
+</html>
