@@ -35,7 +35,7 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- 정보성 페이지 -->
+  <!-- 정보성 페이지 — 급여·세금 -->
   <url>
     <loc>https://kr-tools.moneydecoded.net/salary-table-2026.html</loc>
     <changefreq>yearly</changefreq>
@@ -52,6 +52,18 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://kr-tools.moneydecoded.net/year-end-tax-guide.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kr-tools.moneydecoded.net/social-insurance-guide.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- 정보성 페이지 — 대출·부동산 -->
+  <url>
     <loc>https://kr-tools.moneydecoded.net/mortgage-rate-guide.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -62,17 +74,19 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://kr-tools.moneydecoded.net/exchange-rate-guide.html</loc>
+    <loc>https://kr-tools.moneydecoded.net/dsr-ltv-dti-guide.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://kr-tools.moneydecoded.net/year-end-tax-guide.html</loc>
+    <loc>https://kr-tools.moneydecoded.net/subscription-special-guide.html</loc>
     <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
+
+  <!-- 정보성 페이지 — 해외송금·환율 -->
   <url>
-    <loc>https://kr-tools.moneydecoded.net/dsr-ltv-dti-guide.html</loc>
+    <loc>https://kr-tools.moneydecoded.net/exchange-rate-guide.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>

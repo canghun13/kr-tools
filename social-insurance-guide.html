@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4대보험 계산 구조 정리 2026 — 공제액·요율 완벽 이해 | MoneyDecoded</title>
+<meta name="description" content="2026년 4대보험 요율과 계산 방법 총정리. 국민연금·건강보험·고용보험·산재보험 공제액 계산법, 직장인·사업자 부담 비율까지.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #f5f5f0;
+    --surface: #ffffff;
+    --surface2: #f9f9f7;
+    --border: #e8e8e4;
+    --text: #1a1a1a;
+    --text2: #666660;
+    --text3: #999994;
+    --accent: #2563eb;
+    --accent-light: #eff6ff;
+    --green: #16a34a;
+    --green-light: #f0fdf4;
+    --orange: #ea580c;
+    --orange-light: #fff7ed;
+    --red: #dc2626;
+    --red-light: #fef2f2;
+    --yellow-light: #fefce8;
+    --teal: #0d9488;
+    --teal-light: #f0fdfa;
+    --radius: 12px;
+    --shadow: 0 1px 3px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.04);
+    --shadow-md: 0 4px 16px rgba(0,0,0,.08);
+  }
+  body { font-family: 'Pretendard', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; font-size: 15px; }
+
+  nav { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 24px; display: flex; align-items: center; height: 52px; gap: 16px; position: sticky; top: 0; z-index: 100; }
+  .nav-logo { font-weight: 700; font-size: 15px; color: var(--text); text-decoration: none; }
+  .nav-links { display: flex; gap: 16px; margin-left: auto; }
+  .nav-links a { font-size: 13px; color: var(--text2); text-decoration: none; }
+  .nav-links a:hover { color: var(--accent); }
+
+  .hero { background: linear-gradient(135deg, #0f2d2a 0%, #0d9488 100%); color: #fff; padding: 48px 24px 40px; text-align: center; }
+  .hero-badge { display: inline-block; font-size: 12px; font-weight: 600; background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.25); padding: 4px 12px; border-radius: 20px; margin-bottom: 16px; }
+  .hero h1 { font-size: clamp(22px, 4vw, 32px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.35; margin-bottom: 10px; }
+  .hero h1 em { font-style: normal; color: #99f6e4; }
+  .hero p { font-size: 14px; opacity: .85; max-width: 500px; margin: 0 auto; }
+
+  .container { max-width: 720px; margin: 0 auto; padding: 32px 16px 60px; }
+
+  .toc { background: var(--accent-light); border: 1px solid #bfdbfe; border-radius: var(--radius); padding: 18px 22px; margin-bottom: 32px; }
+  .toc-title { font-weight: 700; font-size: 13px; color: var(--accent); margin-bottom: 8px; }
+  .toc ol { padding-left: 18px; }
+  .toc li { margin-bottom: 3px; }
+  .toc a { color: var(--accent); text-decoration: none; font-size: 13px; }
+  .toc a:hover { text-decoration: underline; }
+
+  section { margin-bottom: 40px; }
+  .section-num { display: inline-block; background: var(--accent); color: #fff; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-bottom: 8px; letter-spacing: .05em; }
+  h2 { font-size: 19px; font-weight: 700; margin-bottom: 12px; line-height: 1.4; letter-spacing: -0.01em; }
+  h3 { font-size: 16px; font-weight: 700; margin: 20px 0 10px; }
+  p { margin-bottom: 12px; color: #374151; font-size: 14px; }
+
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 22px; margin-bottom: 14px; box-shadow: var(--shadow); }
+
+  .key-box { border-radius: var(--radius); padding: 16px 18px; margin-bottom: 14px; border-left: 4px solid; }
+  .key-box.green { background: var(--green-light); border-color: var(--green); }
+  .key-box.orange { background: var(--orange-light); border-color: var(--orange); }
+  .key-box.blue { background: var(--accent-light); border-color: var(--accent); }
+  .key-box.red { background: var(--red-light); border-color: var(--red); }
+  .key-box.yellow { background: var(--yellow-light); border-color: #ca8a04; }
+  .key-box.teal { background: var(--teal-light); border-color: var(--teal); }
+  .key-box strong { display: block; font-size: 13px; margin-bottom: 4px; }
+  .key-box p { margin: 0; font-size: 13px; }
+
+  .table-wrap { overflow-x: auto; margin-bottom: 14px; -webkit-overflow-scrolling: touch; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 480px; }
+  th { background: #f1f5f9; padding: 9px 12px; text-align: left; font-weight: 600; border-bottom: 2px solid var(--border); white-space: nowrap; }
+  td { padding: 9px 12px; border-bottom: 1px solid var(--border); }
+  tr:last-child td { border-bottom: none; }
+  .tag-green { background: var(--green-light); color: var(--green); padding: 2px 7px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+  .tag-blue { background: var(--accent-light); color: var(--accent); padding: 2px 7px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+  .tag-orange { background: var(--orange-light); color: var(--orange); padding: 2px 7px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+  .tag-teal { background: var(--teal-light); color: var(--teal); padding: 2px 7px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+
+  /* 4대보험 카드 */
+  .insurance-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 20px; }
+  .ins-card { border-radius: var(--radius); padding: 18px; border: 1px solid; }
+  .ins-card.pension { background: #eff6ff; border-color: #93c5fd; }
+  .ins-card.health { background: var(--green-light); border-color: #86efac; }
+  .ins-card.employ { background: var(--orange-light); border-color: #fdba74; }
+  .ins-card.industry { background: var(--teal-light); border-color: #5eead4; }
+  .ins-name { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+  .ins-card.pension .ins-name { color: var(--accent); }
+  .ins-card.health .ins-name { color: var(--green); }
+  .ins-card.employ .ins-name { color: var(--orange); }
+  .ins-card.industry .ins-name { color: var(--teal); }
+  .ins-rate { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; margin-bottom: 4px; }
+  .ins-sub { font-size: 11px; color: var(--text3); line-height: 1.5; }
+
+  .sim-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); margin-bottom: 16px; }
+  .sim-header { background: #0d9488; color: #fff; padding: 12px 18px; font-size: 13px; font-weight: 600; }
+  .sim-body { padding: 16px 18px; }
+  .sim-row { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+  .sim-row:last-child { border-bottom: none; }
+  .sim-row .label { color: var(--text2); }
+  .sim-row .val { font-weight: 700; }
+  .sim-row.highlight .val { color: var(--teal); font-size: 15px; }
+  .sim-row.total { background: #f0fdfa; margin: 0 -18px; padding: 10px 18px; }
+  .sim-row.total .label { font-weight: 700; color: var(--text); }
+  .sim-row.total .val { color: var(--red); font-size: 15px; }
+
+  .checklist { list-style: none; }
+  .checklist li { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li::before { content: "✓"; color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+  .summary { background: linear-gradient(135deg, #0f2d2a, #0d9488); color: #fff; border-radius: var(--radius); padding: 22px; margin-bottom: 32px; }
+  .summary h3 { color: #fff; margin-top: 0; font-size: 15px; margin-bottom: 14px; }
+  .summary-list { list-style: none; }
+  .summary-list li { padding: 5px 0; font-size: 13px; display: flex; align-items: flex-start; gap: 8px; }
+  .summary-list li::before { content: "✓"; color: #99f6e4; font-weight: 700; flex-shrink: 0; }
+
+  .cta-wrap { display: flex; flex-direction: column; gap: 10px; margin-top: 32px; }
+  .cta-btn { display: flex; align-items: center; gap: 12px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 18px; text-decoration: none; color: var(--text); box-shadow: var(--shadow); transition: box-shadow .15s, transform .15s; }
+  .cta-btn:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); }
+  .cta-icon { font-size: 22px; flex-shrink: 0; }
+  .cta-text strong { display: block; font-size: 14px; margin-bottom: 2px; }
+  .cta-text span { font-size: 12px; color: var(--text2); }
+  .cta-arrow { margin-left: auto; color: var(--text3); }
+
+  .faq-item { border: 1px solid var(--border); border-radius: 10px; margin-bottom: 8px; overflow: hidden; }
+  .faq-q { padding: 14px 16px; font-size: 14px; font-weight: 500; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: var(--surface); user-select: none; width: 100%; border: none; text-align: left; color: var(--text); font-family: inherit; }
+  .faq-q:hover { background: var(--surface2); }
+  .faq-q .arrow { transition: transform 0.2s; color: var(--text3); font-size: 12px; }
+  .faq-item.open .arrow { transform: rotate(180deg); }
+  .faq-a { display: none; padding: 0 16px 14px; font-size: 13px; color: var(--text2); line-height: 1.7; background: var(--surface); }
+  .faq-item.open .faq-a { display: block; }
+
+  footer { background: var(--surface); border-top: 1px solid var(--border); padding: 24px; text-align: center; margin-top: 48px; }
+  .footer-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 10px; }
+  .footer-links a { font-size: 13px; color: var(--text2); text-decoration: none; }
+  footer p { font-size: 12px; color: var(--text3); }
+
+  @media (max-width: 480px) {
+    .insurance-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://kr-tools.moneydecoded.net" class="nav-logo">MoneyDecoded 🇰🇷</a>
+  <div class="nav-links">
+    <a href="https://kr-tools.moneydecoded.net/salary-calculator.html">연봉</a>
+    <a href="https://kr-tools.moneydecoded.net/salary-table-2026.html">실수령표</a>
+    <a href="https://www.moneydecoded.net">블로그</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-badge">2026년 기준 · 무료</div>
+  <h1>4대보험 계산 구조 정리 —<br><em>내 월급에서 얼마나 빠지나</em></h1>
+  <p>국민연금·건강보험·고용보험·산재보험 요율과 계산 방법을 한 번에 정리합니다.</p>
+</div>
+
+<div class="container">
+
+  <div class="toc">
+    <div class="toc-title">📋 목차</div>
+    <ol>
+      <li><a href="#overview">4대보험 한눈에 보기</a></li>
+      <li><a href="#pension">국민연금</a></li>
+      <li><a href="#health">건강보험</a></li>
+      <li><a href="#employ">고용보험</a></li>
+      <li><a href="#industry">산재보험</a></li>
+      <li><a href="#sim">월급별 공제액 시뮬레이션</a></li>
+      <li><a href="#freelancer">프리랜서·사업자 4대보험</a></li>
+      <li><a href="#faq">자주 묻는 질문</a></li>
+    </ol>
+  </div>
+
+  <!-- SECTION 1 -->
+  <section id="overview">
+    <div class="section-num">01</div>
+    <h2>4대보험 한눈에 보기</h2>
+
+    <p>직장인이라면 매달 월급에서 4대보험이 자동으로 공제됩니다. 근로자와 사업주가 각각 일정 비율씩 부담하는 구조입니다.</p>
+
+    <div class="insurance-grid">
+      <div class="ins-card pension">
+        <div class="ins-name">🏦 국민연금</div>
+        <div class="ins-rate">9%</div>
+        <div class="ins-sub">근로자 4.5% + 사업주 4.5%<br>기준소득월액 상·하한 있음</div>
+      </div>
+      <div class="ins-card health">
+        <div class="ins-name">🏥 건강보험</div>
+        <div class="ins-rate">7.09%</div>
+        <div class="ins-sub">근로자 3.545% + 사업주 3.545%<br>장기요양보험 별도 부과</div>
+      </div>
+      <div class="ins-card employ">
+        <div class="ins-name">💼 고용보험</div>
+        <div class="ins-rate">1.8%</div>
+        <div class="ins-sub">근로자 0.9% + 사업주 0.9%↑<br>사업주 추가 부담 있음</div>
+      </div>
+      <div class="ins-card industry">
+        <div class="ins-name">🦺 산재보험</div>
+        <div class="ins-rate">사업주 전액</div>
+        <div class="ins-sub">근로자 부담 없음<br>업종별 요율 상이</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <tr><th>보험 종류</th><th>전체 요율</th><th>근로자 부담</th><th>사업주 부담</th></tr>
+          <tr><td>국민연금</td><td>9.0%</td><td>4.5%</td><td>4.5%</td></tr>
+          <tr><td>건강보험</td><td>7.09%</td><td>3.545%</td><td>3.545%</td></tr>
+          <tr><td>장기요양보험</td><td>건강보험료의 12.95%</td><td>6.475%</td><td>6.475%</td></tr>
+          <tr><td>고용보험</td><td>1.8%~</td><td>0.9%</td><td>0.9%~ (규모별 상이)</td></tr>
+          <tr><td>산재보험</td><td>업종별 상이</td><td><span class="tag-green">없음</span></td><td>전액 부담</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="key-box blue">
+      <strong>💡 근로자가 실제 부담하는 4대보험은 월급의 약 9%</strong>
+      <p>국민연금 4.5% + 건강보험 3.545% + 장기요양 약 0.46% + 고용보험 0.9% = 약 9.4%. 월급 300만원이면 약 28만원이 4대보험으로 공제됩니다.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 2 -->
+  <section id="pension">
+    <div class="section-num">02</div>
+    <h2>국민연금</h2>
+
+    <p>노후 소득을 보장하기 위한 공적연금입니다. 소득의 9%를 납부하며 근로자와 사업주가 절반씩 부담합니다.</p>
+
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <tr><th>항목</th><th>내용</th></tr>
+          <tr><td>요율</td><td>기준소득월액의 9% (근로자 4.5% + 사업주 4.5%)</td></tr>
+          <tr><td>기준소득월액 하한</td><td>월 37만원 (이하도 37만원 기준 적용)</td></tr>
+          <tr><td>기준소득월액 상한</td><td>월 617만원 (초과분은 공제 없음)</td></tr>
+          <tr><td>최소 납부액 (근로자)</td><td>월 16,650원</td></tr>
+          <tr><td>최대 납부액 (근로자)</td><td>월 277,650원</td></tr>
+          <tr><td>수령 시작 나이</td><td>만 63세 (출생연도별 상이)</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="key-box orange">
+      <strong>⚠️ 월급 617만원 초과분은 국민연금 더 내지 않아요</strong>
+      <p>국민연금 상한선이 월 617만원이므로 월급이 아무리 높아도 근로자 기준 월 277,650원 이상은 공제되지 않습니다. 고소득자일수록 실질 부담 비율이 낮아지는 구조입니다.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 3 -->
+  <section id="health">
+    <div class="section-num">03</div>
+    <h2>건강보험</h2>
+
+    <p>의료비를 사회적으로 분담하는 보험입니다. 2026년 건강보험료율은 7.09%이며, 여기에 장기요양보험료가 추가로 부과됩니다.</p>
+
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <tr><th>항목</th><th>내용</th></tr>
+          <tr><td>건강보험 요율</td><td>보수월액의 7.09% (근로자 3.545% + 사업주 3.545%)</td></tr>
+          <tr><td>장기요양보험료</td><td>건강보험료의 12.95% (근로자·사업주 각 6.475%)</td></tr>
+          <tr><td>상한액</td><td>월 보수 119,625,106원 초과분 제외</td></tr>
+          <tr><td>피부양자 등록</td><td>소득·재산 기준 충족 시 가족 무료 등록 가능</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="key-box teal">
+      <strong>💡 장기요양보험료는 건강보험료에서 추가로 떼어 가요</strong>
+      <p>장기요양보험료는 건강보험료 금액의 12.95%입니다. 예를 들어 건강보험료가 10만원이면 장기요양보험료는 약 6,475원(근로자 부담분)이 추가 공제됩니다. 급여명세서에서 건강보험료와 장기요양보험료가 따로 표기되는 이유입니다.</p>
+    </div>
+
+    <div class="key-box green">
+      <strong>💡 피부양자 등록으로 가족 보험료 절약 가능</strong>
+      <p>소득이 없거나 적은 가족(배우자·부모·자녀 등)을 건강보험 피부양자로 등록하면 별도 보험료 없이 혜택을 받을 수 있습니다. 단, 연간 소득 2,000만원 초과 또는 재산이 일정 기준을 넘으면 피부양자 자격이 상실됩니다.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 4 -->
+  <section id="employ">
+    <div class="section-num">04</div>
+    <h2>고용보험</h2>
+
+    <p>실직 시 실업급여를 받기 위한 보험입니다. 근로자는 0.9%를 부담하며, 사업주는 규모에 따라 더 많이 냅니다.</p>
+
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <tr><th>구분</th><th>근로자</th><th>사업주</th></tr>
+          <tr><td>실업급여</td><td>0.9%</td><td>0.9%</td></tr>
+          <tr><td>고용안정·직업능력개발 (150인 미만)</td><td>없음</td><td>0.25%</td></tr>
+          <tr><td>고용안정·직업능력개발 (150~1,000인)</td><td>없음</td><td>0.45%</td></tr>
+          <tr><td>고용안정·직업능력개발 (1,000인 이상)</td><td>없음</td><td>0.65%</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="key-box yellow">
+      <strong>📌 실업급여는 6개월 이상 납부해야 수급 가능</strong>
+      <p>실업급여를 받으려면 퇴직 전 18개월 중 피보험 단위기간이 180일(약 6개월) 이상이어야 합니다. 자발적 퇴사는 원칙적으로 수급 불가이며, 권고사직·계약 만료·정당한 이직 사유가 있어야 합니다.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 5 -->
+  <section id="industry">
+    <div class="section-num">05</div>
+    <h2>산재보험</h2>
+
+    <p>업무 중 발생한 재해를 보상하기 위한 보험입니다. 사업주가 전액 부담하므로 근로자 월급에서는 공제되지 않습니다.</p>
+
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <tr><th>업종</th><th>산재보험 요율 (예시)</th></tr>
+          <tr><td>금융·보험업</td><td>0.7%</td></tr>
+          <tr><td>도소매업</td><td>0.9%</td></tr>
+          <tr><td>제조업 (일반)</td><td>1.0~1.5%</td></tr>
+          <tr><td>건설업</td><td>3.7%</td></tr>
+          <tr><td>광업</td><td>5.8%~</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="key-box blue">
+      <strong>💡 산재보험은 근로자 부담 없음 — 급여명세서에 없어도 정상</strong>
+      <p>산재보험료는 사업주가 100% 부담합니다. 급여명세서에 산재보험 항목이 없어도 이상한 게 아닙니다. 업무상 재해가 발생하면 치료비·휴업급여·장해급여 등을 받을 수 있습니다.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 6 -->
+  <section id="sim">
+    <div class="section-num">06</div>
+    <h2>월급별 공제액 시뮬레이션</h2>
+
+    <p>세전 월급 기준으로 4대보험 근로자 부담분을 계산한 예시입니다.</p>
+
+    <div class="sim-box">
+      <div class="sim-header">💰 월급 300만원 기준 (2026년)</div>
+      <div class="sim-body">
+        <div class="sim-row">
+          <span class="label">국민연금 (4.5%)</span>
+          <span class="val">135,000원</span>
+        </div>
+        <div class="sim-row">
+          <span class="label">건강보험 (3.545%)</span>
+          <span class="val">106,350원</span>
+        </div>
+        <div class="sim-row">
+          <span class="label">장기요양보험 (건강보험료의 6.475%)</span>
+          <span class="val">6,886원</span>
+        </div>
+        <div class="sim-row">
+          <span class="label">고용보험 (0.9%)</span>
+          <span class="val">27,000원</span>
+        </div>
+        <div class="sim-row total">
+          <span class="label">4대보험 합계</span>
+          <span class="val">275,236원</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <tr><th>세전 월급</th><th>국민연금</th><th>건강보험+장기요양</th><th>고용보험</th><th>합계</th></tr>
+          <tr><td>200만원</td><td>90,000원</td><td>75,490원</td><td>18,000원</td><td>약 183,490원</td></tr>
+          <tr><td>300만원</td><td>135,000원</td><td>113,236원</td><td>27,000원</td><td>약 275,236원</td></tr>
+          <tr><td>400만원</td><td>180,000원</td><td>150,982원</td><td>36,000원</td><td>약 366,982원</td></tr>
+          <tr><td>500만원</td><td>225,000원</td><td>188,727원</td><td>45,000원</td><td>약 458,727원</td></tr>
+          <tr><td>700만원↑</td><td>277,650원 (상한)</td><td>264,218원↑</td><td>63,000원↑</td><td>약 604,868원↑</td></tr>
+        </table>
+      </div>
+    </div>
+    <p style="font-size:12px;color:var(--text3);">※ 소득세·지방소득세 별도. 실제 공제액은 부양가족 수 등에 따라 다를 수 있습니다.</p>
+  </section>
+
+  <!-- SECTION 7 -->
+  <section id="freelancer">
+    <div class="section-num">07</div>
+    <h2>프리랜서·사업자 4대보험</h2>
+
+    <p>직장인과 달리 프리랜서나 사업자는 4대보험 구조가 다릅니다.</p>
+
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <tr><th>보험 종류</th><th>직장 가입자</th><th>지역 가입자 (프리랜서·사업자)</th></tr>
+          <tr><td>국민연금</td><td>월급의 4.5% (사업주 4.5% 별도)</td><td>소득 기준 9% 전액 본인 부담</td></tr>
+          <tr><td>건강보험</td><td>보수월액의 3.545%</td><td>소득+재산+자동차 등 종합 산정</td></tr>
+          <tr><td>고용보험</td><td>0.9% 공제</td><td>임의 가입 (일부 예술인·특수고용직 의무)</td></tr>
+          <tr><td>산재보험</td><td>사업주 전액 부담</td><td>임의 가입 가능</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="key-box orange">
+      <strong>⚠️ 프리랜서는 국민연금·건강보험 전액 본인 부담</strong>
+      <p>직장인은 사업주가 절반을 내주지만 프리랜서·사업자는 4대보험을 혼자 다 내야 합니다. 사실상 직장인보다 부담이 2배 가까이 됩니다. 소득이 불규칙하다면 국민연금 납부 예외 신청도 가능합니다.</p>
+    </div>
+
+    <div class="key-box green">
+      <strong>💡 배우자의 직장 건강보험 피부양자로 등록하면 절약 가능</strong>
+      <p>소득·재산 기준을 충족한다면 배우자의 직장 건강보험 피부양자로 등록해 건강보험료를 내지 않을 수 있습니다. 연 소득 2,000만원 이하, 재산 과표 3.6억 이하가 기준입니다.</p>
+    </div>
+
+    <div class="summary">
+      <h3>✅ 핵심 요약</h3>
+      <ul class="summary-list">
+        <li>근로자 4대보험 부담: 국민연금 4.5% + 건강보험 3.545% + 장기요양 약 0.46% + 고용보험 0.9% = 약 9.4%</li>
+        <li>산재보험은 사업주 전액 부담 — 근로자 공제 없음</li>
+        <li>국민연금 상한: 월 617만원 → 최대 근로자 부담 277,650원</li>
+        <li>장기요양보험료는 건강보험료의 12.95% 추가 부과</li>
+        <li>프리랜서·사업자는 4대보험 전액 본인 부담 — 직장인보다 부담 약 2배</li>
+        <li>소득 없는 가족은 건강보험 피부양자 등록으로 보험료 절약 가능</li>
+        <li>실업급여 수급하려면 퇴직 전 18개월 중 180일 이상 납부 필요</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <h2>자주 묻는 질문</h2>
+    <div class="faq-item">
+      <button class="faq-q">4대보험은 언제부터 가입되나요? <span class="arrow">▼</span></button>
+      <div class="faq-a">근로계약을 맺고 첫 출근한 날부터 자동으로 4대보험 가입 의무가 발생합니다. 수습 기간이라도 동일합니다. 사업주가 1개월 이상 고용하는 근로자는 모두 가입해야 하며, 1개월 미만 단기 알바나 월 60시간 미만 단시간 근로자는 일부 보험이 제외될 수 있습니다.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">국민연금을 많이 내면 나중에 더 받나요? <span class="arrow">▼</span></button>
+      <div class="faq-a">네, 국민연금은 납입액과 납부 기간이 많을수록 수령액이 늘어납니다. 다만 상한선(월 617만원)이 있어 그 이상 소득에서는 추가 납부가 없습니다. 임의가입이나 추납(과거 미납분 납부)으로 수령액을 늘리는 전략도 있습니다.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">건강보험 피부양자 자격이 박탈되면 어떻게 되나요? <span class="arrow">▼</span></button>
+      <div class="faq-a">피부양자 자격이 상실되면 지역 가입자로 전환되어 별도로 건강보험료를 납부해야 합니다. 소득·재산 기준이 초과되는 해의 11월부터 탈락이 적용됩니다. 프리랜서나 임대소득이 있는 분은 매년 소득 기준을 확인하는 게 좋습니다.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">이직 후 4대보험은 어떻게 처리되나요? <span class="arrow">▼</span></button>
+      <div class="faq-a">퇴직하면 직장 가입자 자격이 상실되고, 새 직장 취업 전까지 지역 가입자로 전환됩니다. 다음 직장에 입사하면 자동으로 직장 가입자로 재가입됩니다. 이직 공백 기간이 짧다면 임의계속가입을 통해 직장 가입자 보험료를 유지할 수도 있습니다.</dd>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">아르바이트생도 4대보험에 가입해야 하나요? <span class="arrow">▼</span></button>
+      <div class="faq-a">월 60시간 이상 근무하는 아르바이트생은 4대보험 가입 의무가 있습니다. 월 60시간 미만이라도 3개월 이상 계속 고용되면 고용보험·산재보험은 적용됩니다. 사업주가 가입을 거부하는 것은 불법이므로, 근로 조건에 맞게 가입 요청을 할 수 있습니다.</div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-wrap">
+    <a href="https://kr-tools.moneydecoded.net/salary-calculator.html" class="cta-btn">
+      <div class="cta-icon">💰</div>
+      <div class="cta-text">
+        <strong>연봉 실수령액 계산기</strong>
+        <span>4대보험·소득세 공제 후 실제 월급 자동 계산</span>
+      </div>
+      <div class="cta-arrow">→</div>
+    </a>
+    <a href="https://kr-tools.moneydecoded.net/salary-table-2026.html" class="cta-btn">
+      <div class="cta-icon">📊</div>
+      <div class="cta-text">
+        <strong>연봉별 실수령액 표</strong>
+        <span>2400만~1억원 구간 세후 월급 한눈에 비교</span>
+      </div>
+      <div class="cta-arrow">→</div>
+    </a>
+    <a href="https://kr-tools.moneydecoded.net/year-end-tax-guide.html" class="cta-btn">
+      <div class="cta-icon">🧾</div>
+      <div class="cta-text">
+        <strong>연말정산 환급 많이 받는 법</strong>
+        <span>IRP·연금저축·카드 공제 전략 총정리</span>
+      </div>
+      <div class="cta-arrow">→</div>
+    </a>
+    <a href="https://kr-tools.moneydecoded.net/" class="cta-btn">
+      <div class="cta-icon">🧮</div>
+      <div class="cta-text">
+        <strong>한국어 계산기 모음</strong>
+        <span>퇴직금·청약·환율·주담대 전체 계산기 보기</span>
+      </div>
+      <div class="cta-arrow">→</div>
+    </a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="https://kr-tools.moneydecoded.net">한국어 도구</a>
+    <a href="https://kr-tools.moneydecoded.net/salary-calculator.html">연봉계산기</a>
+    <a href="https://kr-tools.moneydecoded.net/minimum-wage-2026.html">최저임금</a>
+    <a href="https://www.moneydecoded.net/p/privacy-policy.html">개인정보처리방침</a>
+  </div>
+  <p>© 2026 MoneyDecoded — 이 정보는 참고용이며 실제 보험료는 4대사회보험 정보연계센터에서 확인하세요.</p>
+</footer>
+
+<script>
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => btn.closest('.faq-item').classList.toggle('open'));
+  });
+</script>
+
+</body>
+</html>
