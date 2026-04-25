@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>환율 우대 받는 법 2026 — 환전 수수료 줄이는 방법 총정리 | MoneyDecoded</title>
+<meta name="description" content="2026년 환율 우대 받는 방법. 은행·인터넷은행·환전소 비교, 환전 수수료 최대 90% 우대, 해외여행·유학생이 꼭 알아야 할 환전 꿀팁 총정리.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #f5f5f0;
+    --surface: #ffffff;
+    --surface2: #f9f9f7;
+    --border: #e8e8e4;
+    --text: #1a1a1a;
+    --text2: #666660;
+    --text3: #999994;
+    --accent: #2563eb;
+    --accent-light: #eff6ff;
+    --green: #16a34a;
+    --green-light: #f0fdf4;
+    --orange: #ea580c;
+    --orange-light: #fff7ed;
+    --red: #dc2626;
+    --red-light: #fef2f2;
+    --yellow-light: #fefce8;
+    --radius: 12px;
+    --shadow: 0 1px 3px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.04);
+    --shadow-md: 0 4px 16px rgba(0,0,0,.08);
+  }
+  body { font-family: 'Pretendard', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; font-size: 15px; }
+
+  nav { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 24px; display: flex; align-items: center; height: 52px; gap: 16px; position: sticky; top: 0; z-index: 100; }
+  .nav-logo { font-weight: 700; font-size: 15px; color: var(--text); text-decoration: none; }
+  .nav-links { display: flex; gap: 16px; margin-left: auto; }
+  .nav-links a { font-size: 13px; color: var(--text2); text-decoration: none; }
+  .nav-links a:hover { color: var(--accent); }
+
+  .hero { background: linear-gradient(135deg, #1a3a2a 0%, #16a34a 100%); color: #fff; padding: 48px 24px 40px; text-align: center; }
+  .hero-badge { display: inline-block; font-size: 12px; font-weight: 600; background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.25); padding: 4px 12px; border-radius: 20px; margin-bottom: 16px; }
+  .hero h1 { font-size: clamp(22px, 4vw, 32px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.35; margin-bottom: 10px; }
+  .hero h1 em { font-style: normal; color: #86efac; }
+  .hero p { font-size: 14px; opacity: .85; max-width: 500px; margin: 0 auto; }
+
+  .container { max-width: 720px; margin: 0 auto; padding: 32px 16px 60px; }
+
+  .toc { background: var(--accent-light); border: 1px solid #bfdbfe; border-radius: var(--radius); padding: 18px 22px; margin-bottom: 32px; }
+  .toc-title { font-weight: 700; font-size: 13px; color: var(--accent); margin-bottom: 8px; }
+  .toc ol { padding-left: 18px; }
+  .toc li { margin-bottom: 3px; }
+  .toc a { color: var(--accent); text-decoration: none; font-size: 13px; }
+  .toc a:hover { text-decoration: underline; }
+
+  section { margin-bottom: 40px; }
+  .section-num { display: inline-block; background: var(--accent); color: #fff; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-bottom: 8px; letter-spacing: .05em; }
+  h2 { font-size: 19px; font-weight: 700; margin-bottom: 12px; line-height: 1.4; letter-spacing: -0.01em; }
+  h3 { font-size: 16px; font-weight: 700; margin: 20px 0 10px; }
+  p { margin-bottom: 12px; color: #374151; font-size: 14px; }
+
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 22px; margin-bottom: 14px; box-shadow: var(--shadow); }
+
+  .key-box { border-radius: var(--radius); padding: 16px 18px; margin-bottom: 14px; border-left: 4px solid; }
+  .key-box.green { background: var(--green-light); border-color: var(--green); }
+  .key-box.orange { background: var(--orange-light); border-color: var(--orange); }
+  .key-box.blue { background: var(--accent-light); border-color: var(--accent); }
+  .key-box.red { background: var(--red-light); border-color: var(--red); }
+  .key-box.yellow { background: var(--yellow-light); border-color: #ca8a04; }
+  .key-box strong { display: block; font-size: 13px; margin-bottom: 4px; }
+  .key-box p { margin: 0; font-size: 13px; }
+
+  .table-wrap { overflow-x: auto; margin-bottom: 14px; -webkit-overflow-scrolling: touch; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 480px; }
+  th { background: #f1f5f9; padding: 9px 12px; text-align: left; font-weight: 600; border-bottom: 2px solid var(--border); white-space: nowrap; }
+  td { padding: 9px 12px; border-bottom: 1px solid var(--border); }
+  tr:last-child td { border-bottom: none; }
+  .tag-green { background: var(--green-light); color: var(--green); padding: 2px 7px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+  .tag-blue { background: var(--accent-light); color: var(--accent); padding: 2px 7px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+  .tag-orange { background: var(--orange-light); color: var(--orange); padding: 2px 7px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+
+  /* 채널 비교 카드 */
+  .channel-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin-bottom: 16px; }
+  .channel-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; box-shadow: var(--shadow); }
+  .channel-card.best { border-color: var(--green); background: var(--green-light); }
+  .channel-name { font-size: 13px; font-weight: 600; color: var(--text2); margin-bottom: 6px; }
+  .channel-rate { font-size: 22px; font-weight: 800; color: var(--text); letter-spacing: -0.02em; }
+  .channel-card.best .channel-rate { color: var(--green); }
+  .channel-sub { font-size: 11px; color: var(--text3); margin-top: 3px; }
+  .channel-badge { display: inline-block; font-size: 10px; font-weight: 700; background: var(--green); color: #fff; padding: 1px 6px; border-radius: 3px; margin-bottom: 6px; }
+
+  /* vs 비교 */
+  .vs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+  .vs-card { border-radius: var(--radius); padding: 16px; border: 1px solid; }
+  .vs-card.a { background: var(--accent-light); border-color: #bfdbfe; }
+  .vs-card.b { background: var(--orange-light); border-color: #fed7aa; }
+  .vs-label { font-size: 12px; font-weight: 700; margin-bottom: 8px; }
+  .vs-card.a .vs-label { color: var(--accent); }
+  .vs-card.b .vs-label { color: var(--orange); }
+  .vs-title { font-size: 15px; font-weight: 800; margin-bottom: 6px; }
+  .vs-list { font-size: 12px; color: #4b5563; line-height: 1.8; }
+
+  /* 체크리스트 */
+  .checklist { list-style: none; }
+  .checklist li { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li::before { content: "✓"; color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+  /* 시뮬 박스 */
+  .sim-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); margin-bottom: 16px; }
+  .sim-header { background: #16a34a; color: #fff; padding: 12px 18px; font-size: 13px; font-weight: 600; }
+  .sim-body { padding: 16px 18px; }
+  .sim-row { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+  .sim-row:last-child { border-bottom: none; }
+  .sim-row .label { color: var(--text2); }
+  .sim-row .val { font-weight: 700; }
+  .sim-row.highlight .val { color: var(--red); font-size: 15px; }
+  .sim-row.good .val { color: var(--green); }
+
+  /* 요약 */
+  .summary { background: linear-gradient(135deg, #1a3a2a, #16a34a); color: #fff; border-radius: var(--radius); padding: 22px; margin-bottom: 32px; }
+  .summary h3 { color: #fff; margin-top: 0; font-size: 15px; margin-bottom: 14px; }
+  .summary-list { list-style: none; }
+  .summary-list li { padding: 5px 0; font-size: 13px; display: flex; align-items: flex-start; gap: 8px; }
+  .summary-list li::before { content: "✓"; color: #86efac; font-weight: 700; flex-shrink: 0; }
+
+  /* CTA */
+  .cta-wrap { display: flex; flex-direction: column; gap: 10px; margin-top: 32px; }
+  .cta-btn { display: flex; align-items: center; gap: 12px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 18px; text-decoration: none; color: var(--text); box-shadow: var(--shadow); transition: box-shadow .15s, transform .15s; }
+  .cta-btn:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); }
+  .cta-icon { font-size: 22px; flex-shrink: 0; }
+  .cta-text strong { display: block; font-size: 14px; margin-bottom: 2px; }
+  .cta-text span { font-size: 12px; color: var(--text2); }
+  .cta-arrow { margin-left: auto; color: var(--text3); }
+
+  /* FAQ */
+  .faq-item { border: 1px solid var(--border); border-radius: 10px; margin-bottom: 8px; overflow: hidden; }
+  .faq-q { padding: 14px 16px; font-size: 14px; font-weight: 500; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: var(--surface); user-select: none; width: 100%; border: none; text-align: left; color: var(--text); font-family: inherit; }
+  .faq-q:hover { background: var(--surface2); }
+  .faq-q .arrow { transition: transform 0.2s; color: var(--text3); font-size: 12px; }
+  .faq-item.open .arrow { transform: rotate(180deg); }
+  .faq-a { display: none; padding: 0 16px 14px; font-size: 13px; color: var(--text2); line-height: 1.7; background: var(--surface); }
+  .faq-item.open .faq-a { display: block; }
+
+  footer { background: var(--surface); border-top: 1px solid var(--border); padding: 24px; text-align: center; margin-top: 48px; }
+  .footer-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 10px; }
+  .footer-links a { font-size: 13px; color: var(--text2); text-decoration: none; }
+  footer p { font-size: 12px; color: var(--text3); }
+
+  @media (max-width: 480px) {
+    .vs-grid { grid-template-columns: 1fr; }
+    .channel-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://kr-tools.moneydecoded.net" class="nav-logo">MoneyDecoded 🇰🇷</a>
+  <div class="nav-links">
+    <a href="https://kr-tools.moneydecoded.net/exchange-rate.html">환율 계산기</a>
+    <a href="https://kr-tools.moneydecoded.net/salary-calculator.html">연봉</a>
+    <a href="https://www.moneydecoded.net">블로그</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-badge">2026년 기준 · 무료</div>
+  <h1>환율 우대 받는 법 —<br><em>수수료 최대 90% 아끼는 방법</em></h1>
+  <p>은행 창구 환전은 손해입니다. 채널별 수수료 비교부터 우대 환율 받는 꿀팁까지 총정리.</p>
+</div>
+
+<div class="container">
+
+  <div class="toc">
+    <div class="toc-title">📋 목차</div>
+    <ol>
+      <li><a href="#spread">환율 우대란? 스프레드 이해하기</a></li>
+      <li><a href="#channel">채널별 환율 우대율 비교</a></li>
+      <li><a href="#tips">환율 우대 최대로 받는 법</a></li>
+      <li><a href="#sim">실제 절약 금액 시뮬레이션</a></li>
+      <li><a href="#timing">환전 타이밍 잡는 법</a></li>
+      <li><a href="#faq">자주 묻는 질문</a></li>
+    </ol>
+  </div>
+
+  <!-- SECTION 1 -->
+  <section id="spread">
+    <div class="section-num">01</div>
+    <h2>환율 우대란? 스프레드부터 이해하기</h2>
+
+    <p>환전할 때 손해를 보는 이유는 <strong>스프레드(spread)</strong> 때문입니다. 스프레드는 은행이 매매기준율과 실제 환전가 사이에 붙이는 수수료입니다.</p>
+
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <tr><th>구분</th><th>달러(USD) 기준</th><th>설명</th></tr>
+          <tr><td>매매기준율</td><td>1,350원</td><td>은행 간 거래 기준 환율</td></tr>
+          <tr><td>현찰 살 때 (환전)</td><td>1,377원</td><td>기준율 + 약 2% 수수료</td></tr>
+          <tr><td>현찰 팔 때 (재환전)</td><td>1,323원</td><td>기준율 - 약 2% 수수료</td></tr>
+          <tr><td>스프레드 (왕복)</td><td>약 54원</td><td>살 때 + 팔 때 합산</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <p>은행 창구에서 환전하면 보통 기준율 대비 <strong>1.5~2%</strong>의 스프레드가 붙습니다. 100만원 환전 시 약 1.5~2만원을 수수료로 내는 셈입니다.</p>
+
+    <div class="key-box blue">
+      <strong>💡 환율 우대란?</strong>
+      <p>스프레드를 일정 비율 깎아주는 것입니다. "환율 우대 90%"라면 스프레드의 90%를 면제해줘서 실질 수수료가 0.15~0.2% 수준으로 낮아집니다.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 2 -->
+  <section id="channel">
+    <div class="section-num">02</div>
+    <h2>채널별 환율 우대율 비교</h2>
+
+    <p>어디서 환전하느냐에 따라 수수료가 크게 달라집니다.</p>
+
+    <div class="channel-grid">
+      <div class="channel-card">
+        <div class="channel-name">은행 창구</div>
+        <div class="channel-rate">0%</div>
+        <div class="channel-sub">우대 없음 · 스프레드 그대로</div>
+      </div>
+      <div class="channel-card">
+        <div class="channel-name">은행 앱/인터넷</div>
+        <div class="channel-rate">50~70%</div>
+        <div class="channel-sub">비대면 기본 우대</div>
+      </div>
+      <div class="channel-card">
+        <div class="channel-name">공항 환전소</div>
+        <div class="channel-rate">0~30%</div>
+        <div class="channel-sub">편리하지만 수수료 높음</div>
+      </div>
+      <div class="channel-card best">
+        <div class="channel-badge">최저 수수료</div>
+        <div class="channel-name">트래블월렛·트래블로그</div>
+        <div class="channel-rate">최대 90%+</div>
+        <div class="channel-sub">우대 환율 + 해외 결제 가능</div>
+      </div>
+      <div class="channel-card">
+        <div class="channel-name">토스·카카오페이</div>
+        <div class="channel-rate">최대 90%</div>
+        <div class="channel-sub">앱 환전 · 이벤트 시 추가 우대</div>
+      </div>
+      <div class="channel-card">
+        <div class="channel-name">인터넷 환전소</div>
+        <div class="channel-rate">70~90%</div>
+        <div class="channel-sub">공항 수령 가능</div>
+      </div>
+    </div>
+
+    <div class="key-box orange">
+      <strong>⚠️ 공항 환전소는 마지막 수단</strong>
+      <p>급할 때 외에는 피하세요. 우대율이 낮고 기준율 자체도 불리하게 적용되는 경우가 있습니다. 미리 앱으로 환전 후 공항에서 수령하는 방식이 훨씬 유리합니다.</p>
+    </div>
+
+    <h3>주요 은행 앱 환율 우대율 (2026년 기준)</h3>
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <tr><th>은행/서비스</th><th>기본 우대율</th><th>최대 우대율</th><th>비고</th></tr>
+          <tr><td>KB국민은행 앱</td><td>50%</td><td>90%</td><td>이벤트·쿠폰 적용 시</td></tr>
+          <tr><td>신한은행 쏠(SOL)</td><td>50%</td><td>90%</td><td>비대면 우대</td></tr>
+          <tr><td>하나은행 하나원큐</td><td>60%</td><td>90%</td><td>하나머니 적립 연계</td></tr>
+          <tr><td>우리은행 우리WON</td><td>50%</td><td>90%</td><td>앱 환전 기본</td></tr>
+          <tr><td>토스</td><td>90%</td><td>90%</td><td>기본 90% 고정</td></tr>
+          <tr><td>카카오페이</td><td>90%</td><td>90%</td><td>기본 90% 고정</td></tr>
+          <tr><td>트래블월렛</td><td><span class="tag-green">수수료 無</span></td><td>—</td><td>매매기준율 적용</td></tr>
+          <tr><td>트래블로그</td><td><span class="tag-green">수수료 無</span></td><td>—</td><td>하나은행 연계</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="key-box green">
+      <strong>💡 결론: 일반 환전은 토스·카카오페이, 해외여행은 트래블월렛·트래블로그</strong>
+      <p>현찰이 필요하면 토스·카카오페이에서 90% 우대로 환전 후 은행에서 수령. 해외에서 카드로 쓸 거라면 트래블월렛·트래블로그 카드를 충전해서 사용하면 수수료가 거의 없습니다.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 3 -->
+  <section id="tips">
+    <div class="section-num">03</div>
+    <h2>환율 우대 최대로 받는 법</h2>
+
+    <h3>① 앱·인터넷 환전 기본 활용</h3>
+    <p>은행 앱에서 환전하면 창구 대비 기본 50~60% 우대가 자동 적용됩니다. 여기에 아래 방법을 더하면 최대 90%까지 올라갑니다.</p>
+
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <tr><th>방법</th><th>추가 우대율</th><th>방법</th></tr>
+          <tr><td>은행 앱 첫 환전 이벤트</td><td>+10~20%p</td><td>앱 설치 후 첫 환전 시 쿠폰 지급</td></tr>
+          <tr><td>환율 우대 쿠폰 다운로드</td><td>+10~30%p</td><td>각 은행 앱 이벤트 페이지 확인</td></tr>
+          <tr><td>주거래 고객 우대</td><td>+10%p</td><td>급여이체·카드 실적 연계</td></tr>
+          <tr><td>대량 환전 (100만원↑)</td><td>+10%p</td><td>금액 구간별 추가 우대 적용</td></tr>
+          <tr><td>환율 알림 설정 후 환전</td><td>—</td><td>유리한 시점에 자동 환전</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <h3>② 트래블 카드 활용 (해외여행 시 최강)</h3>
+
+    <div class="vs-grid">
+      <div class="vs-card a">
+        <div class="vs-label">🟢 트래블월렛 / 트래블로그</div>
+        <div class="vs-title">수수료 없음</div>
+        <div class="vs-list">
+          • 매매기준율 그대로 적용<br>
+          • 30개 이상 통화 지원<br>
+          • 앱에서 미리 충전<br>
+          • 해외 ATM 출금 가능<br>
+          • 잔액 재환전 가능
+        </div>
+      </div>
+      <div class="vs-card b">
+        <div class="vs-label">🔴 일반 신용카드 해외결제</div>
+        <div class="vs-title">수수료 2~3%</div>
+        <div class="vs-list">
+          • 국제 브랜드 수수료 1%<br>
+          • 해외 서비스 수수료 1~2%<br>
+          • 환율 불리하게 적용<br>
+          • 100만원 사용 시<br>　약 2~3만원 손해
+        </div>
+      </div>
+    </div>
+
+    <h3>③ 인터넷 환전 + 공항 수령</h3>
+    <p>현찰이 꼭 필요한 경우, 출발 전에 은행 앱이나 인터넷 환전 서비스에서 90% 우대 환율로 환전 신청 후 공항 지점에서 수령하면 됩니다. 인천·김포 주요 은행 환전소 모두 수령 가능합니다.</p>
+
+    <div class="key-box yellow">
+      <strong>📌 환전 금액은 여유 있게, 남은 건 재환전</strong>
+      <p>남은 외화를 재환전할 때도 손해가 납니다. 귀국 후 남은 달러·엔화 등은 재환전하지 않고 다음 여행을 위해 보관하거나, 트래블 카드에 충전해두는 게 유리합니다.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 4 -->
+  <section id="sim">
+    <div class="section-num">04</div>
+    <h2>실제 절약 금액 시뮬레이션</h2>
+
+    <p>100만원을 달러(USD)로 환전하는 경우를 비교해봤습니다. 매매기준율 1,350원 기준.</p>
+
+    <div class="sim-box">
+      <div class="sim-header">💸 100만원 → 달러 환전 비교</div>
+      <div class="sim-body">
+        <div class="sim-row">
+          <span class="label">매매기준율 (이상적)</span>
+          <span class="val">$740.74</span>
+        </div>
+        <div class="sim-row good">
+          <span class="label">트래블월렛 (수수료 無)</span>
+          <span class="val">$740.74</span>
+        </div>
+        <div class="sim-row good">
+          <span class="label">토스·카카오 (90% 우대)</span>
+          <span class="val">$739.26 (약 $1.5 차이)</span>
+        </div>
+        <div class="sim-row">
+          <span class="label">은행 앱 (70% 우대)</span>
+          <span class="val">$736.30 (약 $4.4 차이)</span>
+        </div>
+        <div class="sim-row">
+          <span class="label">은행 앱 (50% 우대)</span>
+          <span class="val">$733.13 (약 $7.6 차이)</span>
+        </div>
+        <div class="sim-row highlight">
+          <span class="label">은행 창구 (우대 없음)</span>
+          <span class="val">$725.37 — 약 $15 손해</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="key-box red">
+      <strong>⚠️ 은행 창구 vs 트래블월렛 — 100만원에 약 2만원 차이</strong>
+      <p>300만원 환전이라면 6만원, 500만원이라면 10만원 차이. 유럽 여행 경비 수준의 금액이면 환전 방법만 바꿔도 숙박비 한 박을 아낄 수 있습니다.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 5 -->
+  <section id="timing">
+    <div class="section-num">05</div>
+    <h2>환전 타이밍 잡는 법</h2>
+
+    <p>우대율만큼 중요한 게 환전 타이밍입니다. 환율은 매일 변동하므로 유리한 시점에 환전하면 추가 절약이 가능합니다.</p>
+
+    <div class="card">
+      <ul class="checklist">
+        <li><strong>환율 알림 설정:</strong> 각 은행 앱·트래블월렛에서 목표 환율 알림 설정 가능. 원하는 환율 도달 시 알림 수신 후 즉시 환전.</li>
+        <li><strong>오전 장 시작 전 환전:</strong> 국내 외환시장은 오전 9시 개장. 전날 미국 시장 움직임이 반영되기 전 오전 9시 직후가 유리한 경우가 많음.</li>
+        <li><strong>달러는 분할 환전:</strong> 큰 금액은 한 번에 하지 말고 2~3회로 나눠서 환전하면 환율 변동 리스크를 줄일 수 있음.</li>
+        <li><strong>여행 한 달 전부터 준비:</strong> 출발 직전 공항 환전은 최악. 최소 2~4주 전부터 환율 모니터링하며 분할 환전.</li>
+        <li><strong>엔화는 더 미리:</strong> 엔화는 변동성이 커서 환율이 유리할 때 미리 충전해두는 전략이 유효.</li>
+      </ul>
+    </div>
+
+    <div class="key-box green">
+      <strong>💡 완벽한 타이밍보다 채널 선택이 더 중요</strong>
+      <p>환율 예측은 전문가도 어렵습니다. 타이밍에 집착하기보다 우대율 높은 채널 선택이 확실한 절약입니다. 트래블월렛 같은 수수료 없는 카드를 기본으로 쓰면 타이밍 고민 자체가 줄어듭니다.</p>
+    </div>
+
+    <div class="summary">
+      <h3>✅ 핵심 요약</h3>
+      <ul class="summary-list">
+        <li>은행 창구 환전은 피하고 반드시 앱·인터넷 환전 활용</li>
+        <li>해외여행 시 트래블월렛·트래블로그 카드가 수수료 기준 최강</li>
+        <li>현찰이 필요하면 토스·카카오페이 90% 우대 환전 후 공항 수령</li>
+        <li>은행 앱 이벤트·쿠폰 챙기면 추가 10~30%p 우대 가능</li>
+        <li>환전은 여행 2~4주 전부터 환율 알림 설정해서 분할 환전</li>
+        <li>남은 외화는 재환전보다 다음 여행용 보관이 유리</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <h2>자주 묻는 질문</h2>
+    <div class="faq-item">
+      <button class="faq-q">환율 우대 90%면 수수료가 없는 건가요? <span class="arrow">▼</span></button>
+      <div class="faq-a">완전히 없는 건 아닙니다. 스프레드의 90%를 면제해준다는 의미로, 남은 10%의 스프레드가 수수료로 남습니다. 예를 들어 스프레드가 2%라면 90% 우대 후 실질 수수료는 0.2%입니다. 트래블월렛·트래블로그처럼 아예 매매기준율을 적용하는 서비스가 진짜 수수료 0에 가깝습니다.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">트래블월렛과 트래블로그 중 어느 게 더 낫나요? <span class="arrow">▼</span></button>
+      <div class="faq-a">둘 다 수수료가 거의 없어서 비슷한 수준입니다. 트래블로그는 하나은행 연계로 ATM 출금 수수료 혜택이 있고, 트래블월렛은 더 많은 통화를 지원합니다. 주거래 은행이 하나은행이면 트래블로그, 그 외에는 트래블월렛이 무난합니다.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">엔화는 어디서 환전하는 게 가장 유리한가요? <span class="arrow">▼</span></button>
+      <div class="faq-a">엔화도 트래블월렛·트래블로그 카드가 가장 유리합니다. 현찰이 꼭 필요하면 토스·카카오페이에서 90% 우대로 환전 후 은행 지점 수령을 추천합니다. 일본 현지 7-Eleven ATM에서 트래블월렛으로 인출하는 방법도 수수료가 저렴해서 많이 활용됩니다.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">달러 환전은 얼마나 미리 하는 게 좋나요? <span class="arrow">▼</span></button>
+      <div class="faq-a">환율 예측은 어렵지만 일반적으로 출발 2~4주 전부터 환율 알림을 설정하고 분할 환전하는 게 좋습니다. 트래블월렛 같은 선불 카드는 미리 충전해두고 환율이 더 유리해지면 추가 충전하는 전략도 유효합니다.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">남은 달러·엔화는 어떻게 처리하는 게 좋나요? <span class="arrow">▼</span></button>
+      <div class="faq-a">재환전은 또 수수료가 발생하므로 가급적 피하는 게 좋습니다. 달러는 보관했다가 다음 해외여행 때 사용하거나, 트래블월렛에 충전해두는 방법이 있습니다. 소액의 엔화·유로화 등은 기념품 삼아 보관하거나 공항 내 자동환전기를 이용하는 것도 방법입니다.</div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-wrap">
+    <a href="https://kr-tools.moneydecoded.net/exchange-rate.html" class="cta-btn">
+      <div class="cta-icon">💱</div>
+      <div class="cta-text">
+        <strong>환율 계산기</strong>
+        <span>실시간 환율로 원화·외화 변환 바로 계산</span>
+      </div>
+      <div class="cta-arrow">→</div>
+    </a>
+    <a href="https://kr-tools.moneydecoded.net/salary-calculator.html" class="cta-btn">
+      <div class="cta-icon">💰</div>
+      <div class="cta-text">
+        <strong>연봉 실수령액 계산기</strong>
+        <span>4대보험·소득세 공제 후 실제 월급 계산</span>
+      </div>
+      <div class="cta-arrow">→</div>
+    </a>
+    <a href="https://kr-tools.moneydecoded.net" class="cta-btn">
+      <div class="cta-icon">🧮</div>
+      <div class="cta-text">
+        <strong>한국어 계산기 모음</strong>
+        <span>퇴직금·청약·주담대 등 전체 계산기 보기</span>
+      </div>
+      <div class="cta-arrow">→</div>
+    </a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="https://kr-tools.moneydecoded.net">한국어 도구</a>
+    <a href="https://kr-tools.moneydecoded.net/exchange-rate.html">환율 계산기</a>
+    <a href="https://kr-tools.moneydecoded.net/salary-calculator.html">연봉계산기</a>
+    <a href="https://www.moneydecoded.net/p/privacy-policy.html">개인정보처리방침</a>
+  </div>
+  <p>© 2026 MoneyDecoded — 이 정보는 참고용이며 실제 환율·수수료는 각 금융기관에서 확인하세요.</p>
+</footer>
+
+<script>
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => btn.closest('.faq-item').classList.toggle('open'));
+  });
+</script>
+
+</body>
+</html>
