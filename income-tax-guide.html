@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>종합소득세 신고 방법 — 프리랜서·사업자 완벽 가이드 2026 | MoneyDecoded</title>
+<meta name="description" content="2026년 종합소득세 신고 방법 완벽 정리. 신고 대상·기간·홈택스 신고 절차·절세 방법까지. 프리랜서·사업자라면 꼭 읽어야 할 가이드.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #f5f5f0;
+    --surface: #ffffff;
+    --surface2: #f9f9f7;
+    --border: #e8e8e4;
+    --text: #1a1a1a;
+    --text2: #666660;
+    --text3: #999994;
+    --accent: #2563eb;
+    --accent-light: #eff6ff;
+    --green: #16a34a;
+    --green-light: #f0fdf4;
+    --orange: #ea580c;
+    --orange-light: #fff7ed;
+    --red: #dc2626;
+    --red-light: #fef2f2;
+    --yellow-light: #fefce8;
+    --radius: 12px;
+    --shadow: 0 1px 3px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.04);
+    --shadow-md: 0 4px 16px rgba(0,0,0,.08);
+  }
+  body { font-family: 'Pretendard', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; font-size: 15px; }
+
+  nav { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 24px; display: flex; align-items: center; height: 52px; gap: 16px; position: sticky; top: 0; z-index: 100; }
+  .nav-logo { font-weight: 700; font-size: 15px; color: var(--text); text-decoration: none; }
+  .nav-links { display: flex; gap: 16px; margin-left: auto; }
+  .nav-links a { font-size: 13px; color: var(--text2); text-decoration: none; }
+  .nav-links a:hover { color: var(--accent); }
+
+  .hero { background: linear-gradient(135deg, #1a1040 0%, #4f46e5 100%); color: #fff; padding: 48px 24px 40px; text-align: center; }
+  .hero-badge { display: inline-block; font-size: 12px; font-weight: 600; background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.25); padding: 4px 12px; border-radius: 20px; margin-bottom: 16px; }
+  .hero h1 { font-size: clamp(22px, 4vw, 32px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.35; margin-bottom: 10px; }
+  .hero h1 em { font-style: normal; color: #a5b4fc; }
+  .hero p { font-size: 14px; opacity: .85; max-width: 500px; margin: 0 auto; }
+
+  .container { max-width: 720px; margin: 0 auto; padding: 32px 16px 60px; }
+
+  .toc { background: var(--accent-light); border: 1px solid #bfdbfe; border-radius: var(--radius); padding: 18px 22px; margin-bottom: 32px; }
+  .toc-title { font-weight: 700; font-size: 13px; color: var(--accent); margin-bottom: 8px; }
+  .toc ol { padding-left: 18px; }
+  .toc li { margin-bottom: 3px; }
+  .toc a { color: var(--accent); text-decoration: none; font-size: 13px; }
+  .toc a:hover { text-decoration: underline; }
+
+  section { margin-bottom: 40px; }
+  .section-num { display: inline-block; background: var(--accent); color: #fff; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-bottom: 8px; letter-spacing: .05em; }
+  h2 { font-size: 19px; font-weight: 700; margin-bottom: 12px; line-height: 1.4; letter-spacing: -0.01em; }
+  h3 { font-size: 16px; font-weight: 700; margin: 20px 0 10px; }
+  p { margin-bottom: 12px; color: #374151; font-size: 14px; }
+
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 22px; margin-bottom: 14px; box-shadow: var(--shadow); }
+
+  .key-box { border-radius: var(--radius); padding: 16px 18px; margin-bottom: 14px; border-left: 4px solid; }
+  .key-box.green { background: var(--green-light); border-color: var(--green); }
+  .key-box.orange { background: var(--orange-light); border-color: var(--orange); }
+  .key-box.blue { background: var(--accent-light); border-color: var(--accent); }
+  .key-box.red { background: var(--red-light); border-color: var(--red); }
+  .key-box.yellow { background: var(--yellow-light); border-color: #ca8a04; }
+  .key-box strong { display: block; font-size: 13px; margin-bottom: 4px; }
+  .key-box p { margin: 0; font-size: 13px; }
+
+  .table-wrap { overflow-x: auto; margin-bottom: 14px; -webkit-overflow-scrolling: touch; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 480px; }
+  th { background: #f1f5f9; padding: 9px 12px; text-align: left; font-weight: 600; border-bottom: 2px solid var(--border); white-space: nowrap; }
+  td { padding: 9px 12px; border-bottom: 1px solid var(--border); }
+  tr:last-child td { border-bottom: none; }
+  .tag-green { background: var(--green-light); color: var(--green); padding: 2px 7px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+  .tag-blue { background: var(--accent-light); color: var(--accent); padding: 2px 7px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+  .tag-orange { background: var(--orange-light); color: var(--orange); padding: 2px 7px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+  .tag-red { background: var(--red-light); color: var(--red); padding: 2px 7px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+
+  .vs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
+  .vs-card { border-radius: var(--radius); padding: 16px; border: 1px solid; }
+  .vs-card.a { background: var(--accent-light); border-color: #bfdbfe; }
+  .vs-card.b { background: var(--orange-light); border-color: #fed7aa; }
+  .vs-label { font-size: 12px; font-weight: 700; margin-bottom: 8px; }
+  .vs-card.a .vs-label { color: var(--accent); }
+  .vs-card.b .vs-label { color: var(--orange); }
+  .vs-title { font-size: 15px; font-weight: 800; margin-bottom: 6px; }
+  .vs-list { font-size: 12px; color: #4b5563; line-height: 1.8; }
+
+  .step-list { list-style: none; counter-reset: step; }
+  .step-list li { counter-increment: step; display: flex; align-items: flex-start; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+  .step-list li:last-child { border-bottom: none; }
+  .step-num { background: var(--accent); color: #fff; font-weight: 700; font-size: 12px; min-width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+  .step-content strong { display: block; font-size: 13px; margin-bottom: 3px; }
+  .step-content span { color: var(--text2); font-size: 12px; }
+
+  .checklist { list-style: none; }
+  .checklist li { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li::before { content: "✓"; color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+  .sim-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); margin-bottom: 16px; }
+  .sim-header { background: #4f46e5; color: #fff; padding: 12px 18px; font-size: 13px; font-weight: 600; }
+  .sim-body { padding: 16px 18px; }
+  .sim-row { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+  .sim-row:last-child { border-bottom: none; }
+  .sim-row .label { color: var(--text2); }
+  .sim-row .val { font-weight: 700; }
+  .sim-row.highlight .val { color: var(--red); font-size: 15px; }
+  .sim-row.good .val { color: var(--green); }
+
+  .summary { background: linear-gradient(135deg, #1a1040, #4f46e5); color: #fff; border-radius: var(--radius); padding: 22px; margin-bottom: 32px; }
+  .summary h3 { color: #fff; margin-top: 0; font-size: 15px; margin-bottom: 14px; }
+  .summary-list { list-style: none; }
+  .summary-list li { padding: 5px 0; font-size: 13px; display: flex; align-items: flex-start; gap: 8px; }
+  .summary-list li::before { content: "✓"; color: #86efac; font-weight: 700; flex-shrink: 0; }
+
+  .cta-wrap { display: flex; flex-direction: column; gap: 10px; margin-top: 32px; }
+  .cta-btn { display: flex; align-items: center; gap: 12px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 18px; text-decoration: none; color: var(--text); box-shadow: var(--shadow); transition: box-shadow .15s, transform .15s; }
+  .cta-btn:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); }
+  .cta-icon { font-size: 22px; flex-shrink: 0; }
+  .cta-text strong { display: block; font-size: 14px; margin-bottom: 2px; }
+  .cta-text span { font-size: 12px; color: var(--text2); }
+  .cta-arrow { margin-left: auto; color: var(--text3); }
+
+  .faq-item { border: 1px solid var(--border); border-radius: 10px; margin-bottom: 8px; overflow: hidden; }
+  .faq-q { padding: 14px 16px; font-size: 14px; font-weight: 500; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: var(--surface); user-select: none; width: 100%; border: none; text-align: left; color: var(--text); font-family: inherit; }
+  .faq-q:hover { background: var(--surface2); }
+  .faq-q .arrow { transition: transform 0.2s; color: var(--text3); font-size: 12px; }
+  .faq-item.open .arrow { transform: rotate(180deg); }
+  .faq-a { display: none; padding: 0 16px 14px; font-size: 13px; color: var(--text2); line-height: 1.7; background: var(--surface); }
+  .faq-item.open .faq-a { display: block; }
+
+  footer { background: var(--surface); border-top: 1px solid var(--border); padding: 24px; text-align: center; margin-top: 48px; }
+  .footer-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 10px; }
+  .footer-links a { font-size: 13px; color: var(--text2); text-decoration: none; }
+  footer p { font-size: 12px; color: var(--text3); }
+
+  @media (max-width: 480px) {
+    .vs-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://kr-tools.moneydecoded.net" class="nav-logo">MoneyDecoded 🇰🇷</a>
+  <div class="nav-links">
+    <a href="https://kr-tools.moneydecoded.net/salary-calculator.html">연봉계산기</a>
+    <a href="https://kr-tools.moneydecoded.net">계산기 모음</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-badge">2026년 최신 기준</div>
+  <h1>종합소득세 신고 방법<br><em>프리랜서·사업자 완벽 가이드</em></h1>
+  <p>매년 5월, 한 번만 제대로 이해하면 평생 써먹습니다. 신고 대상부터 홈택스 절차·절세 팁까지 한 번에 정리했습니다.</p>
+</div>
+
+<div class="container">
+
+  <div class="toc">
+    <div class="toc-title">📋 이 페이지에서 다루는 내용</div>
+    <ol>
+      <li><a href="#who">신고 대상 — 나도 해야 하나?</a></li>
+      <li><a href="#period">신고 기간·납부 기한</a></li>
+      <li><a href="#types">소득 종류별 신고 방법</a></li>
+      <li><a href="#how">홈택스 신고 절차 (단계별)</a></li>
+      <li><a href="#deduction">공제 항목 — 세금 줄이는 법</a></li>
+      <li><a href="#rate">세율표 — 내 세금 미리 계산</a></li>
+      <li><a href="#faq">자주 묻는 질문</a></li>
+    </ol>
+  </div>
+
+  <!-- SECTION 1 -->
+  <section id="who">
+    <div class="section-num">01</div>
+    <h2>신고 대상 — 나도 해야 하나?</h2>
+    <p>종합소득세는 근로소득 외 다른 소득이 있는 사람이 직접 신고해야 합니다. 직장인도 부업·임대·이자소득이 있으면 해당됩니다.</p>
+
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <tr><th>대상</th><th>해당 여부</th><th>비고</th></tr>
+          <tr><td>프리랜서·개인사업자</td><td><span class="tag-red">무조건 신고</span></td><td>수입 전액 신고 대상</td></tr>
+          <tr><td>직장인 + 부업 수입</td><td><span class="tag-red">신고 필요</span></td><td>부업 소득 연 300만원 초과 시</td></tr>
+          <tr><td>임대소득자</td><td><span class="tag-red">신고 필요</span></td><td>주택 임대소득 연 2,000만원 초과</td></tr>
+          <tr><td>금융소득(이자·배당)</td><td><span class="tag-orange">조건부</span></td><td>연 2,000만원 초과 시 신고</td></tr>
+          <tr><td>연말정산 완료 직장인</td><td><span class="tag-green">신고 불필요</span></td><td>다른 소득 없으면 제외</td></tr>
+          <tr><td>퇴직소득만 있는 경우</td><td><span class="tag-green">신고 불필요</span></td><td>퇴직소득세 별도 원천징수</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="key-box yellow">
+      <strong>📌 프리랜서 3.3% 원천징수한 경우도 신고해야 합니다</strong>
+      <p>3.3% 떼고 받았더라도 종합소득세 신고는 별도입니다. 신고 후 환급받거나 추가 납부할 수 있습니다. 신고 안 하면 가산세가 붙습니다.</p>
+    </div>
+
+    <div class="key-box blue">
+      <strong>💡 신고 안 하면 어떻게 되나요?</strong>
+      <p>무신고 가산세 20% + 납부지연 가산세(일 0.022%)가 붙습니다. 세금보다 가산세가 더 나올 수 있으니, 소득이 적어도 반드시 신고하세요.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 2 -->
+  <section id="period">
+    <div class="section-num">02</div>
+    <h2>신고 기간·납부 기한</h2>
+
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <tr><th>구분</th><th>기간</th><th>비고</th></tr>
+          <tr><td>일반 신고·납부</td><td><strong>5월 1일 ~ 5월 31일</strong></td><td>2025년 귀속 소득 기준</td></tr>
+          <tr><td>성실신고확인 대상자</td><td><strong>5월 1일 ~ 6월 30일</strong></td><td>세무사 확인 필요 업종</td></tr>
+          <tr><td>분납 신고자</td><td>납부세액 1/2 → 6월 30일까지</td><td>납부세액 1,000만원 초과 시</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="key-box red">
+      <strong>⚠️ 5월 31일 넘기면 가산세</strong>
+      <p>단 하루라도 넘기면 무신고·납부지연 가산세가 부과됩니다. 5월 31일이 공휴일이면 다음 영업일까지입니다.</p>
+    </div>
+
+    <div class="key-box green">
+      <strong>💡 납부세액 1,000만원 넘으면 분납 가능</strong>
+      <p>납부세액이 1,000만원을 초과하면 절반은 5월 말, 나머지 절반은 6월 30일까지 나눠 낼 수 있습니다. 신청 없이 자동 적용됩니다.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 3 -->
+  <section id="types">
+    <div class="section-num">03</div>
+    <h2>소득 종류별 신고 방법</h2>
+    <p>종합소득세는 아래 6가지 소득을 합산해서 신고합니다. 내 소득이 어디에 해당하는지 먼저 확인하세요.</p>
+
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <tr><th>소득 종류</th><th>해당 대상</th><th>핵심 포인트</th></tr>
+          <tr><td><strong>사업소득</strong></td><td>개인사업자, 프리랜서</td><td>수입 - 경비 = 과세소득</td></tr>
+          <tr><td><strong>근로소득</strong></td><td>직장인 (다른 소득과 합산 시)</td><td>연말정산 자료 그대로 반영</td></tr>
+          <tr><td><strong>이자·배당소득</strong></td><td>금융소득 연 2천만원 초과자</td><td>초과분만 종합과세</td></tr>
+          <tr><td><strong>연금소득</strong></td><td>연금 수령자 (연 1,200만원 초과)</td><td>공적연금·사적연금 구분</td></tr>
+          <tr><td><strong>기타소득</strong></td><td>강연료, 원고료, 상금 등</td><td>연 300만원 초과 시 합산</td></tr>
+          <tr><td><strong>임대소득</strong></td><td>주택·상가 임대</td><td>주택 2,000만원 이하 분리과세 선택 가능</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="vs-grid">
+      <div class="vs-card a">
+        <div class="vs-label">💼 프리랜서 (사업소득)</div>
+        <div class="vs-title">3.3% 원천징수자</div>
+        <div class="vs-list">
+          수입금액 전액 신고<br>
+          필요경비 공제 후 과세<br>
+          단순경비율 또는 기준경비율 선택<br>
+          환급 or 추가납부 결정
+        </div>
+      </div>
+      <div class="vs-card b">
+        <div class="vs-label">🏢 개인사업자</div>
+        <div class="vs-title">사업장 있는 경우</div>
+        <div class="vs-list">
+          장부 작성이 원칙<br>
+          간편장부 or 복식부기<br>
+          세무사 의뢰 고려<br>
+          매출 규모별 의무 다름
+        </div>
+      </div>
+    </div>
+
+    <div class="key-box blue">
+      <strong>💡 단순경비율이란?</strong>
+      <p>장부 없이 신고할 때 업종별 정해진 비율로 경비를 인정해주는 제도입니다. 직전년도 수입이 일정 기준 이하인 소규모 사업자·프리랜서가 사용할 수 있습니다. (예: IT 개발·디자인 업종 약 64.1%)</p>
+    </div>
+  </section>
+
+  <!-- SECTION 4 -->
+  <section id="how">
+    <div class="section-num">04</div>
+    <h2>홈택스 신고 절차 (단계별)</h2>
+    <p>홈택스(hometax.go.kr)에서 직접 신고하는 방법입니다. 대부분 30분 이내 완료됩니다.</p>
+
+    <div class="card">
+      <ol class="step-list">
+        <li>
+          <div class="step-num">1</div>
+          <div class="step-content">
+            <strong>홈택스 로그인</strong>
+            <span>hometax.go.kr → 공동인증서(공인인증서) 또는 간편인증(카카오·네이버·PASS) 로그인</span>
+          </div>
+        </li>
+        <li>
+          <div class="step-num">2</div>
+          <div class="step-content">
+            <strong>신고/납부 → 종합소득세 → 정기신고 선택</strong>
+            <span>상단 메뉴 [신고/납부] → [종합소득세] → [일반신고서] 또는 [모두채움 신고서] 클릭</span>
+          </div>
+        </li>
+        <li>
+          <div class="step-num">3</div>
+          <div class="step-content">
+            <strong>모두채움 서비스 확인 (해당자)</strong>
+            <span>단순 프리랜서는 국세청이 미리 채운 '모두채움 신고서' 이용 가능. 내용 확인 후 제출만 하면 됨</span>
+          </div>
+        </li>
+        <li>
+          <div class="step-num">4</div>
+          <div class="step-content">
+            <strong>소득·공제 항목 입력</strong>
+            <span>수입금액 확인 → 경비 입력 → 소득공제·세액공제 항목 추가 (인적공제, 보험료, 교육비 등)</span>
+          </div>
+        </li>
+        <li>
+          <div class="step-num">5</div>
+          <div class="step-content">
+            <strong>세액 계산 확인</strong>
+            <span>납부세액 or 환급세액 자동 계산됨. 기납부세액(원천징수액)과 비교해 차이 확인</span>
+          </div>
+        </li>
+        <li>
+          <div class="step-num">6</div>
+          <div class="step-content">
+            <strong>신고서 제출 → 납부</strong>
+            <span>제출 완료 후 납부세액 있으면 즉시 납부 (계좌이체·카드 가능). 환급은 보통 2~4주 내 계좌로</span>
+          </div>
+        </li>
+      </ol>
+    </div>
+
+    <div class="key-box green">
+      <strong>💡 모두채움 신고서란?</strong>
+      <p>국세청이 보유한 자료로 미리 채워준 신고서입니다. 단순 프리랜서(3.3% 원천징수)나 근로소득 외 소득이 없는 경우 대부분 해당됩니다. 내용이 맞으면 확인 후 제출만 하면 되고, 추가 공제가 있으면 수정 입력하세요.</p>
+    </div>
+
+    <div class="key-box yellow">
+      <strong>📌 손택스(모바일)로도 신고 가능</strong>
+      <p>국세청 손택스 앱에서도 동일하게 신고할 수 있습니다. 모두채움 대상자는 모바일이 더 간편합니다.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 5 -->
+  <section id="deduction">
+    <div class="section-num">05</div>
+    <h2>공제 항목 — 세금 줄이는 법</h2>
+    <p>공제를 얼마나 챙기느냐에 따라 세금이 크게 달라집니다. 놓치기 쉬운 항목 위주로 정리했습니다.</p>
+
+    <div class="card">
+      <h3 style="margin-top:0; font-size:14px; color:var(--text2)">소득공제 — 과세소득 자체를 줄여줌</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>항목</th><th>공제 한도</th><th>비고</th></tr>
+          <tr><td>기본공제 (본인)</td><td>150만원</td><td>무조건 적용</td></tr>
+          <tr><td>기본공제 (부양가족)</td><td>1인당 150만원</td><td>배우자·자녀·부모 등</td></tr>
+          <tr><td>노란우산공제</td><td>최대 500만원</td><td>소기업·소상공인 사업자 전용</td></tr>
+          <tr><td>국민연금 보험료</td><td>전액</td><td>납부액 전액 소득공제</td></tr>
+          <tr><td>건강보험료</td><td>전액</td><td>납부액 전액 소득공제</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-top:0; font-size:14px; color:var(--text2)">세액공제 — 계산된 세금에서 직접 차감</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>항목</th><th>공제율/한도</th><th>비고</th></tr>
+          <tr><td>표준세액공제</td><td>7만원</td><td>다른 공제 없을 때 적용</td></tr>
+          <tr><td>의료비 세액공제</td><td>15% (연소득 3% 초과분)</td><td>본인·부양가족 포함</td></tr>
+          <tr><td>교육비 세액공제</td><td>15%</td><td>본인 대학원·학원 포함</td></tr>
+          <tr><td>보험료 세액공제</td><td>12~15%</td><td>보장성 보험 연 100만원 한도</td></tr>
+          <tr><td>기부금 세액공제</td><td>15~30%</td><td>법정·지정기부금</td></tr>
+          <tr><td>IRP·연금저축 세액공제</td><td>최대 900만원의 13.2~16.5%</td><td>소득에 따라 공제율 다름</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="key-box green">
+      <strong>💡 프리랜서·사업자가 놓치기 쉬운 경비 항목</strong>
+      <p>업무용 컴퓨터·소프트웨어·통신비·교통비·도서구입비·교육비·사무용품 등은 필요경비로 인정됩니다. 영수증 챙겨두면 세금이 크게 줄어듭니다.</p>
+    </div>
+
+    <div class="key-box blue">
+      <strong>💡 IRP·연금저축은 절세 효과 최고</strong>
+      <p>연금저축펀드·IRP 합산 최대 900만원까지 세액공제 됩니다. 소득 5,500만원 이하면 16.5%, 초과면 13.2% 공제율 적용. 900만원 납입 시 최대 148만원 환급 가능합니다.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 6 -->
+  <section id="rate">
+    <div class="section-num">06</div>
+    <h2>세율표 — 내 세금 미리 계산</h2>
+    <p>종합소득세는 과세표준 구간에 따라 세율이 달라지는 누진세 구조입니다.</p>
+
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <tr><th>과세표준</th><th>세율</th><th>누진공제</th></tr>
+          <tr><td>1,400만원 이하</td><td><strong>6%</strong></td><td>—</td></tr>
+          <tr><td>1,400만원 ~ 5,000만원</td><td><strong>15%</strong></td><td>126만원</td></tr>
+          <tr><td>5,000만원 ~ 8,800만원</td><td><strong>24%</strong></td><td>576만원</td></tr>
+          <tr><td>8,800만원 ~ 1.5억원</td><td><strong>35%</strong></td><td>1,544만원</td></tr>
+          <tr><td>1.5억원 ~ 3억원</td><td><strong>38%</strong></td><td>1,994만원</td></tr>
+          <tr><td>3억원 ~ 5억원</td><td><strong>40%</strong></td><td>2,594만원</td></tr>
+          <tr><td>5억원 ~ 10억원</td><td><strong>42%</strong></td><td>3,594만원</td></tr>
+          <tr><td>10억원 초과</td><td><strong>45%</strong></td><td>6,594만원</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="sim-box">
+      <div class="sim-header">📊 종합소득세 계산 예시 — 프리랜서 연 수입 4,000만원</div>
+      <div class="sim-body">
+        <div class="sim-row">
+          <span class="label">총 수입금액</span>
+          <span class="val">4,000만원</span>
+        </div>
+        <div class="sim-row">
+          <span class="label">단순경비율 공제 (64.1% 가정)</span>
+          <span class="val">- 2,564만원</span>
+        </div>
+        <div class="sim-row">
+          <span class="label">사업소득금액</span>
+          <span class="val">1,436만원</span>
+        </div>
+        <div class="sim-row">
+          <span class="label">소득공제 (기본공제 등 약 300만원)</span>
+          <span class="val">- 300만원</span>
+        </div>
+        <div class="sim-row">
+          <span class="label">과세표준</span>
+          <span class="val">약 1,136만원</span>
+        </div>
+        <div class="sim-row">
+          <span class="label">산출세액 (세율 6%)</span>
+          <span class="val">약 68만원</span>
+        </div>
+        <div class="sim-row good">
+          <span class="label">기납부세액 (3.3% 원천징수분)</span>
+          <span class="val good">- 132만원</span>
+        </div>
+        <div class="sim-row highlight">
+          <span class="label">환급 예상액</span>
+          <span class="val" style="color:var(--green)">약 64만원 환급</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="key-box orange">
+      <strong>📌 위 계산은 예시입니다</strong>
+      <p>업종별 경비율, 적용 공제 항목에 따라 실제 납부·환급액은 달라집니다. 연봉 계산기에서 내 실수령액을 먼저 확인한 뒤, 홈택스에서 정확하게 계산하세요.</p>
+    </div>
+  </section>
+
+  <!-- SUMMARY -->
+  <div class="summary">
+    <h3>✅ 핵심 요약</h3>
+    <ul class="summary-list">
+      <li>프리랜서는 3.3% 뗐어도 5월에 반드시 종합소득세 신고</li>
+      <li>신고 기간: 매년 5월 1일 ~ 5월 31일</li>
+      <li>모두채움 신고서 대상자는 홈택스에서 확인 후 제출만 하면 됨</li>
+      <li>단순경비율 활용하면 장부 없이도 경비 공제 가능</li>
+      <li>IRP·연금저축 납입하면 최대 148만원 세액공제</li>
+      <li>무신고 시 가산세 20% + 일 0.022% 납부지연 가산세</li>
+    </ul>
+  </div>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <h2>자주 묻는 질문</h2>
+    <div class="faq-item">
+      <button class="faq-q">프리랜서인데 수입이 적으면 신고 안 해도 되나요? <span class="arrow">▼</span></button>
+      <div class="faq-a">수입 금액과 관계없이 사업·프리랜서 소득이 있으면 신고 의무가 있습니다. 다만 공제 후 납부세액이 0원이 되는 경우도 많고, 오히려 원천징수한 세금을 환급받을 수 있습니다. 반드시 신고하세요.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">직장 다니면서 부업 수입이 있는데 어떻게 하나요? <span class="arrow">▼</span></button>
+      <div class="faq-a">부업 소득이 연 300만원을 초과하면 근로소득과 합산해서 종합소득세를 신고해야 합니다. 300만원 이하라도 기타소득으로 분리과세를 선택할 수 있습니다. 직장에 알려지는 게 걱정된다면 주소지 관할 세무서에 사업장 소재지 기준으로 납부 신청을 할 수 있습니다.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">세무사 없이 혼자 신고할 수 있나요? <span class="arrow">▼</span></button>
+      <div class="faq-a">단순 프리랜서(3.3% 원천징수)나 소규모 사업자는 홈택스에서 충분히 혼자 신고 가능합니다. 모두채움 신고서 대상자라면 특히 쉽습니다. 직원을 고용하거나 매출이 크거나 복잡한 경비 처리가 필요하면 세무사에게 의뢰하는 게 낫습니다.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">환급금은 언제 받나요? <span class="arrow">▼</span></button>
+      <div class="faq-a">신고 후 보통 2~4주 이내에 신청한 계좌로 입금됩니다. 5월 초에 신고할수록 빨리 받습니다. 홈택스 [신고/납부 → 환급] 메뉴에서 처리 상태를 확인할 수 있습니다.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">노란우산공제가 뭔가요? <span class="arrow">▼</span></button>
+      <div class="faq-a">소기업·소상공인을 위한 공제 제도로, 납입금 전액을 소득공제 받을 수 있습니다. 사업소득 기준으로 최대 500만원까지 공제됩니다. 프리랜서도 사업자등록이 있으면 가입 가능하고, 폐업 시 퇴직금 성격으로 수령할 수 있습니다.</div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-wrap">
+    <a href="https://kr-tools.moneydecoded.net/salary-calculator.html" class="cta-btn">
+      <div class="cta-icon">💰</div>
+      <div class="cta-text">
+        <strong>연봉 실수령액 계산기</strong>
+        <span>세후 월급 자동 계산 — 4대보험·소득세 포함</span>
+      </div>
+      <div class="cta-arrow">→</div>
+    </a>
+    <a href="https://kr-tools.moneydecoded.net/salary-table-2026.html" class="cta-btn">
+      <div class="cta-icon">📊</div>
+      <div class="cta-text">
+        <strong>연봉별 실수령액 표</strong>
+        <span>연봉 2,000만원~1억원 실수령 한눈에 보기</span>
+      </div>
+      <div class="cta-arrow">→</div>
+    </a>
+    <a href="https://kr-tools.moneydecoded.net/year-end-tax-guide.html" class="cta-btn">
+      <div class="cta-icon">📋</div>
+      <div class="cta-text">
+        <strong>연말정산 환급 많이 받는 법</strong>
+        <span>공제 항목 총정리 — 놓친 공제 찾기</span>
+      </div>
+      <div class="cta-arrow">→</div>
+    </a>
+    <a href="https://kr-tools.moneydecoded.net" class="cta-btn">
+      <div class="cta-icon">🧮</div>
+      <div class="cta-text">
+        <strong>한국어 계산기 모음</strong>
+        <span>퇴직금·주담대·청약·환율 계산기</span>
+      </div>
+      <div class="cta-arrow">→</div>
+    </a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="https://kr-tools.moneydecoded.net">한국어 도구</a>
+    <a href="https://kr-tools.moneydecoded.net/salary-calculator.html">연봉계산기</a>
+    <a href="https://kr-tools.moneydecoded.net/year-end-tax-guide.html">연말정산 가이드</a>
+    <a href="https://www.moneydecoded.net/p/privacy-policy.html">개인정보처리방침</a>
+  </div>
+  <p>© 2026 MoneyDecoded — 이 정보는 참고용이며 실제 세금은 홈택스 또는 세무사에게 확인하세요.</p>
+</footer>
+
+<script>
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => btn.closest('.faq-item').classList.toggle('open'));
+  });
+</script>
+
+</body>
+</html>

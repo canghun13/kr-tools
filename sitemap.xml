@@ -4,6 +4,7 @@
   <!-- 메인 -->
   <url>
     <loc>https://kr-tools.moneydecoded.net/</loc>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -11,84 +12,135 @@
   <!-- 계산기 -->
   <url>
     <loc>https://kr-tools.moneydecoded.net/salary-calculator.html</loc>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://kr-tools.moneydecoded.net/severance-calculator.html</loc>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://kr-tools.moneydecoded.net/mortgage-calculator.html</loc>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://kr-tools.moneydecoded.net/subscription-score.html</loc>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://kr-tools.moneydecoded.net/exchange-rate.html</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
 
-  <!-- 정보성 페이지 — 급여·세금 -->
+  <!-- 급여·세금 정보성 페이지 -->
   <url>
     <loc>https://kr-tools.moneydecoded.net/salary-table-2026.html</loc>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://kr-tools.moneydecoded.net/minimum-wage-2026.html</loc>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://kr-tools.moneydecoded.net/severance-tax-guide.html</loc>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://kr-tools.moneydecoded.net/year-end-tax-guide.html</loc>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://kr-tools.moneydecoded.net/social-insurance-guide.html</loc>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kr-tools.moneydecoded.net/income-tax-guide.html</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kr-tools.moneydecoded.net/pension-guide.html</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kr-tools.moneydecoded.net/car-insurance-guide.html</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
   </url>
 
-  <!-- 정보성 페이지 — 대출·부동산 -->
+  <!-- 대출·부동산 정보성 페이지 -->
   <url>
     <loc>https://kr-tools.moneydecoded.net/mortgage-rate-guide.html</loc>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://kr-tools.moneydecoded.net/subscription-score-guide.html</loc>
-    <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://kr-tools.moneydecoded.net/dsr-ltv-dti-guide.html</loc>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kr-tools.moneydecoded.net/subscription-score-guide.html</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://kr-tools.moneydecoded.net/subscription-special-guide.html</loc>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kr-tools.moneydecoded.net/jeonse-loan-guide.html</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kr-tools.moneydecoded.net/subscription-savings-guide.html</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kr-tools.moneydecoded.net/credit-score-guide.html</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
   </url>
 
-  <!-- 정보성 페이지 — 해외송금·환율 -->
+  <!-- 해외송금·환율 정보성 페이지 -->
   <url>
     <loc>https://kr-tools.moneydecoded.net/exchange-rate-guide.html</loc>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
 
 </urlset>

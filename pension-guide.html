@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>퇴직연금 종류 비교 DB·DC·IRP — 2026년 완벽 가이드 | MoneyDecoded</title>
+<meta name="description" content="퇴직연금 DB·DC·IRP 차이 완벽 정리. 어떤 게 나에게 유리한지, IRP 세액공제 최대 활용법까지 한 번에 정리.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #f5f5f0;
+    --surface: #ffffff;
+    --surface2: #f9f9f7;
+    --border: #e8e8e4;
+    --text: #1a1a1a;
+    --text2: #666660;
+    --text3: #999994;
+    --accent: #2563eb;
+    --accent-light: #eff6ff;
+    --green: #16a34a;
+    --green-light: #f0fdf4;
+    --orange: #ea580c;
+    --orange-light: #fff7ed;
+    --red: #dc2626;
+    --red-light: #fef2f2;
+    --yellow-light: #fefce8;
+    --radius: 12px;
+    --shadow: 0 1px 3px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.04);
+    --shadow-md: 0 4px 16px rgba(0,0,0,.08);
+  }
+  body { font-family: 'Pretendard', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; font-size: 15px; }
+
+  nav { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 24px; display: flex; align-items: center; height: 52px; gap: 16px; position: sticky; top: 0; z-index: 100; }
+  .nav-logo { font-weight: 700; font-size: 15px; color: var(--text); text-decoration: none; }
+  .nav-links { display: flex; gap: 16px; margin-left: auto; }
+  .nav-links a { font-size: 13px; color: var(--text2); text-decoration: none; }
+  .nav-links a:hover { color: var(--accent); }
+
+  .hero { background: linear-gradient(135deg, #312e81 0%, #7c3aed 100%); color: #fff; padding: 48px 24px 40px; text-align: center; }
+  .hero-badge { display: inline-block; font-size: 12px; font-weight: 600; background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.25); padding: 4px 12px; border-radius: 20px; margin-bottom: 16px; }
+  .hero h1 { font-size: clamp(22px, 4vw, 32px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.35; margin-bottom: 10px; }
+  .hero h1 em { font-style: normal; color: #c4b5fd; }
+  .hero p { font-size: 14px; opacity: .85; max-width: 500px; margin: 0 auto; }
+
+  .container { max-width: 720px; margin: 0 auto; padding: 32px 16px 60px; }
+
+  .toc { background: var(--accent-light); border: 1px solid #bfdbfe; border-radius: var(--radius); padding: 18px 22px; margin-bottom: 32px; }
+  .toc-title { font-weight: 700; font-size: 13px; color: var(--accent); margin-bottom: 8px; }
+  .toc ol { padding-left: 18px; }
+  .toc li { margin-bottom: 3px; }
+  .toc a { color: var(--accent); text-decoration: none; font-size: 13px; }
+  .toc a:hover { text-decoration: underline; }
+
+  section { margin-bottom: 40px; }
+  .section-num { display: inline-block; background: var(--accent); color: #fff; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-bottom: 8px; letter-spacing: .05em; }
+  h2 { font-size: 19px; font-weight: 700; margin-bottom: 12px; line-height: 1.4; letter-spacing: -0.01em; }
+  h3 { font-size: 16px; font-weight: 700; margin: 20px 0 10px; }
+  p { margin-bottom: 12px; color: #374151; font-size: 14px; }
+
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 22px; margin-bottom: 14px; box-shadow: var(--shadow); }
+
+  .key-box { border-radius: var(--radius); padding: 16px 18px; margin-bottom: 14px; border-left: 4px solid; }
+  .key-box.green { background: var(--green-light); border-color: var(--green); }
+  .key-box.orange { background: var(--orange-light); border-color: var(--orange); }
+  .key-box.blue { background: var(--accent-light); border-color: var(--accent); }
+  .key-box.red { background: var(--red-light); border-color: var(--red); }
+  .key-box.yellow { background: var(--yellow-light); border-color: #ca8a04; }
+  .key-box strong { display: block; font-size: 13px; margin-bottom: 4px; }
+  .key-box p { margin: 0; font-size: 13px; }
+
+  .table-wrap { overflow-x: auto; margin-bottom: 14px; -webkit-overflow-scrolling: touch; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 480px; }
+  th { background: #f1f5f9; padding: 9px 12px; text-align: left; font-weight: 600; border-bottom: 2px solid var(--border); white-space: nowrap; }
+  td { padding: 9px 12px; border-bottom: 1px solid var(--border); }
+  tr:last-child td { border-bottom: none; }
+  .tag-green { background: var(--green-light); color: var(--green); padding: 2px 7px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+  .tag-blue { background: var(--accent-light); color: var(--accent); padding: 2px 7px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+  .tag-orange { background: var(--orange-light); color: var(--orange); padding: 2px 7px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+  .tag-red { background: var(--red-light); color: var(--red); padding: 2px 7px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+
+  .three-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+  .type-card { border-radius: var(--radius); padding: 16px; border: 2px solid; }
+  .type-card.db { background: var(--accent-light); border-color: var(--accent); }
+  .type-card.dc { background: var(--green-light); border-color: var(--green); }
+  .type-card.irp { background: #f5f3ff; border-color: #7c3aed; }
+  .type-label { font-size: 10px; font-weight: 700; margin-bottom: 4px; }
+  .type-card.db .type-label { color: var(--accent); }
+  .type-card.dc .type-label { color: var(--green); }
+  .type-card.irp .type-label { color: #7c3aed; }
+  .type-name { font-size: 18px; font-weight: 900; margin-bottom: 6px; }
+  .type-card.db .type-name { color: var(--accent); }
+  .type-card.dc .type-name { color: var(--green); }
+  .type-card.irp .type-name { color: #7c3aed; }
+  .type-desc { font-size: 11px; color: var(--text2); line-height: 1.6; }
+
+  .sim-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); margin-bottom: 16px; }
+  .sim-header { background: #312e81; color: #fff; padding: 12px 18px; font-size: 13px; font-weight: 600; }
+  .sim-body { padding: 16px 18px; }
+  .sim-row { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+  .sim-row:last-child { border-bottom: none; }
+  .sim-row .label { color: var(--text2); }
+  .sim-row .val { font-weight: 700; }
+  .sim-row.good .val { color: var(--green); }
+  .sim-row.highlight .val { color: #7c3aed; font-size: 15px; }
+
+  .checklist { list-style: none; }
+  .checklist li { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li::before { content: "✓"; color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+  .summary { background: linear-gradient(135deg, #312e81, #7c3aed); color: #fff; border-radius: var(--radius); padding: 22px; margin-bottom: 32px; }
+  .summary h3 { color: #fff; margin-top: 0; font-size: 15px; margin-bottom: 14px; }
+  .summary-list { list-style: none; }
+  .summary-list li { padding: 5px 0; font-size: 13px; display: flex; align-items: flex-start; gap: 8px; }
+  .summary-list li::before { content: "✓"; color: #c4b5fd; font-weight: 700; flex-shrink: 0; }
+
+  .cta-wrap { display: flex; flex-direction: column; gap: 10px; margin-top: 32px; }
+  .cta-btn { display: flex; align-items: center; gap: 12px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 18px; text-decoration: none; color: var(--text); box-shadow: var(--shadow); transition: box-shadow .15s, transform .15s; }
+  .cta-btn:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); }
+  .cta-icon { font-size: 22px; flex-shrink: 0; }
+  .cta-text strong { display: block; font-size: 14px; margin-bottom: 2px; }
+  .cta-text span { font-size: 12px; color: var(--text2); }
+  .cta-arrow { margin-left: auto; color: var(--text3); }
+
+  .faq-item { border: 1px solid var(--border); border-radius: 10px; margin-bottom: 8px; overflow: hidden; }
+  .faq-q { padding: 14px 16px; font-size: 14px; font-weight: 500; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: var(--surface); user-select: none; width: 100%; border: none; text-align: left; color: var(--text); font-family: inherit; }
+  .faq-q:hover { background: var(--surface2); }
+  .faq-q .arrow { transition: transform 0.2s; color: var(--text3); font-size: 12px; }
+  .faq-item.open .arrow { transform: rotate(180deg); }
+  .faq-a { display: none; padding: 0 16px 14px; font-size: 13px; color: var(--text2); line-height: 1.7; background: var(--surface); }
+  .faq-item.open .faq-a { display: block; }
+
+  footer { background: var(--surface); border-top: 1px solid var(--border); padding: 24px; text-align: center; margin-top: 48px; }
+  .footer-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 10px; }
+  .footer-links a { font-size: 13px; color: var(--text2); text-decoration: none; }
+  footer p { font-size: 12px; color: var(--text3); }
+
+  @media (max-width: 480px) {
+    .three-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://kr-tools.moneydecoded.net" class="nav-logo">MoneyDecoded 🇰🇷</a>
+  <div class="nav-links">
+    <a href="https://kr-tools.moneydecoded.net/severance-calculator.html">퇴직금 계산기</a>
+    <a href="https://kr-tools.moneydecoded.net">계산기 모음</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-badge">2026년 최신 기준</div>
+  <h1>퇴직연금 종류 비교<br><em>DB·DC·IRP 뭐가 유리할까?</em></h1>
+  <p>회사에서 선택하라고 하는데 차이를 모르겠다면 이 페이지 하나면 됩니다. IRP 세액공제 활용법까지 정리했습니다.</p>
+</div>
+
+<div class="container">
+
+  <div class="toc">
+    <div class="toc-title">📋 이 페이지에서 다루는 내용</div>
+    <ol>
+      <li><a href="#overview">DB·DC·IRP 한눈에 보기</a></li>
+      <li><a href="#db">DB형 — 확정급여형</a></li>
+      <li><a href="#dc">DC형 — 확정기여형</a></li>
+      <li><a href="#irp">IRP — 개인형 퇴직연금</a></li>
+      <li><a href="#compare">3가지 완전 비교표</a></li>
+      <li><a href="#tax">IRP 세액공제 완전 활용법</a></li>
+      <li><a href="#faq">자주 묻는 질문</a></li>
+    </ol>
+  </div>
+
+  <!-- SECTION 1 -->
+  <section id="overview">
+    <div class="section-num">01</div>
+    <h2>DB·DC·IRP 한눈에 보기</h2>
+
+    <div class="three-grid">
+      <div class="type-card db">
+        <div class="type-label">확정급여형</div>
+        <div class="type-name">DB</div>
+        <div class="type-desc">받을 금액 확정<br>회사가 운용<br>안정형</div>
+      </div>
+      <div class="type-card dc">
+        <div class="type-label">확정기여형</div>
+        <div class="type-name">DC</div>
+        <div class="type-desc">넣는 금액 확정<br>내가 운용<br>투자형</div>
+      </div>
+      <div class="type-card irp">
+        <div class="type-label">개인형퇴직연금</div>
+        <div class="type-name">IRP</div>
+        <div class="type-desc">누구나 가입<br>세액공제 혜택<br>은퇴 준비</div>
+      </div>
+    </div>
+
+    <div class="key-box blue">
+      <strong>💡 DB·DC는 회사가 가입, IRP는 개인이 추가 가입</strong>
+      <p>DB·DC는 회사가 근로자를 위해 가입하는 퇴직연금이고, IRP는 개인이 추가로 가입해 세액공제 혜택을 받는 연금 계좌입니다. DB 또는 DC에 가입된 상태에서 IRP를 추가로 개설할 수 있습니다.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 2 -->
+  <section id="db">
+    <div class="section-num">02</div>
+    <h2>DB형 — 확정급여형</h2>
+    <p>퇴직 시 받을 금액이 미리 정해져 있는 방식입니다. 전통적인 퇴직금 방식과 유사합니다.</p>
+
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <tr><th>항목</th><th>내용</th></tr>
+          <tr><td>수령액 기준</td><td>퇴직 직전 3개월 평균 임금 × 근속연수</td></tr>
+          <tr><td>운용 주체</td><td>회사 (근로자가 직접 투자 불가)</td></tr>
+          <tr><td>임금 인상 시</td><td><span class="tag-green">유리</span> — 마지막 임금 기준이라 인상분 모두 반영</td></tr>
+          <tr><td>회사 도산 시</td><td>외부 금융기관 적립으로 보호 (100% 보장은 아님)</td></tr>
+          <tr><td>적합한 경우</td><td>임금 인상이 꾸준한 직장, 장기 근속 예정자</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="key-box green">
+      <strong>💡 DB형이 유리한 경우</strong>
+      <p>매년 임금이 꾸준히 오르는 직장이라면 DB형이 유리합니다. 퇴직 시 최근 임금 기준으로 계산되기 때문에 30년 근속 후 임금이 2배 올랐다면 전체 기간에 대해 높아진 임금을 기준으로 퇴직금을 받습니다.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 3 -->
+  <section id="dc">
+    <div class="section-num">03</div>
+    <h2>DC형 — 확정기여형</h2>
+    <p>회사가 매년 연봉의 1/12을 납입하고, 근로자가 직접 운용하는 방식입니다.</p>
+
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <tr><th>항목</th><th>내용</th></tr>
+          <tr><td>납입 기준</td><td>연간 임금총액의 1/12 이상 (회사 부담)</td></tr>
+          <tr><td>운용 주체</td><td>근로자 (직접 펀드·ETF·예금 선택)</td></tr>
+          <tr><td>수령액</td><td>납입금 + 운용 수익 (실적 따라 달라짐)</td></tr>
+          <tr><td>임금 인상 시</td><td><span class="tag-orange">상대적 불리</span> — 인상 전 임금 기준으로 납입</td></tr>
+          <tr><td>회사 도산 시</td><td><span class="tag-green">상대적 안전</span> — 이미 외부 금융기관에 납입됨</td></tr>
+          <tr><td>적합한 경우</td><td>투자에 관심 있는 경우, 이직 잦은 경우</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="key-box blue">
+      <strong>💡 DC형이 유리한 경우</strong>
+      <p>이직이 잦거나, 투자를 직접 해보고 싶거나, 회사 재정이 불안정한 경우 DC형이 유리합니다. ETF·펀드 등으로 운용 수익을 높이면 DB형보다 많이 받을 수 있지만, 원금 손실 가능성도 있습니다.</p>
+    </div>
+
+    <div class="key-box yellow">
+      <strong>📌 DC형 운용 팁</strong>
+      <p>DC형은 대부분 원리금보장상품(예금)에 방치됩니다. 적극적으로 TDF(타겟데이트펀드) 또는 국내외 ETF로 운용하면 수익률을 크게 높일 수 있습니다. 연 1~2회 리밸런싱을 권장합니다.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 4 -->
+  <section id="irp">
+    <div class="section-num">04</div>
+    <h2>IRP — 개인형 퇴직연금</h2>
+    <p>근로자·자영업자·프리랜서 누구나 가입 가능한 개인 퇴직연금 계좌입니다. 세액공제 혜택이 가장 큰 장점입니다.</p>
+
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <tr><th>항목</th><th>내용</th></tr>
+          <tr><td>가입 대상</td><td>소득이 있는 모든 사람 (근로자·자영업자·프리랜서)</td></tr>
+          <tr><td>연간 납입 한도</td><td>1,800만원 (연금저축 포함)</td></tr>
+          <tr><td>세액공제 한도</td><td>연 900만원 (연금저축 600만원 + IRP 300만원)</td></tr>
+          <tr><td>세액공제율</td><td>총 급여 5,500만원 이하: 16.5% / 초과: 13.2%</td></tr>
+          <tr><td>수령 나이</td><td>만 55세 이후 연금 수령 가능</td></tr>
+          <tr><td>중도 해지 시</td><td>기타소득세 16.5% 과세 (불리)</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="sim-box">
+      <div class="sim-header">💰 IRP 세액공제 효과 — 연 900만원 납입 시</div>
+      <div class="sim-body">
+        <div class="sim-row">
+          <span class="label">총 급여 5,500만원 이하 (공제율 16.5%)</span>
+          <span class="val good">최대 148만 5천원 환급</span>
+        </div>
+        <div class="sim-row">
+          <span class="label">총 급여 5,500만원 초과 (공제율 13.2%)</span>
+          <span class="val">최대 118만 8천원 환급</span>
+        </div>
+        <div class="sim-row highlight">
+          <span class="label">10년 납입 시 누적 절세 효과</span>
+          <span class="val" style="color:#7c3aed">최대 1,485만원 절세</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="key-box green">
+      <strong>💡 IRP + 연금저축 조합이 최적</strong>
+      <p>세액공제 한도는 IRP 단독 900만원, 또는 연금저축 600만원 + IRP 300만원 조합 가능합니다. 연금저축펀드로 600만원, IRP로 300만원 넣으면 세액공제 한도를 모두 채울 수 있습니다.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 5 -->
+  <section id="compare">
+    <div class="section-num">05</div>
+    <h2>3가지 완전 비교표</h2>
+
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <tr><th>항목</th><th>DB형</th><th>DC형</th><th>IRP</th></tr>
+          <tr><td>가입 주체</td><td>회사</td><td>회사</td><td>개인</td></tr>
+          <tr><td>운용 주체</td><td>회사</td><td><span class="tag-blue">근로자</span></td><td><span class="tag-blue">본인</span></td></tr>
+          <tr><td>수령액</td><td>확정 (임금 기준)</td><td>운용 실적에 따라</td><td>납입금 + 운용 수익</td></tr>
+          <tr><td>세액공제</td><td>없음</td><td>없음</td><td><span class="tag-green">최대 148만원</span></td></tr>
+          <tr><td>이직 시</td><td>IRP로 이전</td><td>IRP로 이전</td><td>유지</td></tr>
+          <tr><td>중도인출</td><td>원칙적 불가</td><td>조건부 가능</td><td>원칙적 불가</td></tr>
+          <tr><td>적합한 사람</td><td>장기근속·임금인상 예정</td><td>투자관심·이직잦음</td><td>절세 원하는 모든 직장인</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6 -->
+  <section id="tax">
+    <div class="section-num">06</div>
+    <h2>IRP 세액공제 완전 활용법</h2>
+
+    <div class="card">
+      <ul class="checklist">
+        <li><strong>연금저축 먼저 600만원 채우기</strong> — 연금저축펀드는 중도 인출이 IRP보다 유연합니다. 600만원 한도 먼저 채우는 게 유리</li>
+        <li><strong>IRP로 나머지 300만원 추가</strong> — 연금저축 600 + IRP 300 = 세액공제 한도 900만원 풀 활용</li>
+        <li><strong>연말에 몰아 넣어도 OK</strong> — 12월에 한번에 납입해도 세액공제 동일하게 적용됨</li>
+        <li><strong>운용 상품 직접 선택</strong> — 원리금보장 상품(예금)보다 TDF·국내외 ETF 활용 시 장기 수익률 높음</li>
+        <li><strong>55세 이후 연금 수령</strong> — 연금으로 수령 시 연금소득세 3.3~5.5% (낮음). 일시금 수령 시 기타소득세 16.5%로 불리</li>
+      </ul>
+    </div>
+
+    <div class="key-box orange">
+      <strong>⚠️ IRP 중도 해지는 손해</strong>
+      <p>세액공제 받은 납입금을 중도 해지하면 기타소득세 16.5%가 부과됩니다. 공제받은 세금을 토해내는 셈입니다. 긴급 자금이 필요할 때는 IRP 담보대출을 먼저 검토하세요.</p>
+    </div>
+  </section>
+
+  <!-- SUMMARY -->
+  <div class="summary">
+    <h3>✅ 핵심 요약</h3>
+    <ul class="summary-list">
+      <li>DB형 — 임금 꾸준히 오르는 장기근속 직장인에게 유리</li>
+      <li>DC형 — 이직 잦거나 투자 직접 하고 싶은 경우 유리</li>
+      <li>IRP — 누구나 추가 가입 가능, 연 최대 148만원 세액공제</li>
+      <li>연금저축 600만원 + IRP 300만원 = 세액공제 한도 900만원 풀 활용</li>
+      <li>IRP 중도 해지 시 세금 16.5% — 긴급 시 담보대출 먼저 고려</li>
+      <li>55세 이후 연금 수령 시 세율 3.3~5.5%로 훨씬 유리</li>
+    </ul>
+  </div>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <h2>자주 묻는 질문</h2>
+    <div class="faq-item">
+      <button class="faq-q">DB·DC 중 어떤 걸 선택해야 하나요? <span class="arrow">▼</span></button>
+      <div class="faq-a">임금이 꾸준히 오르는 직장에 장기 근속할 예정이라면 DB형, 이직이 잦거나 투자에 관심이 있다면 DC형이 유리합니다. 회사에 따라 선택권이 없는 경우도 있습니다. 한 번 선택 후에도 회사 규정에 따라 전환이 가능한 경우가 있습니다.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">IRP는 회사 퇴직연금이 있어도 가입할 수 있나요? <span class="arrow">▼</span></button>
+      <div class="faq-a">네, 가능합니다. DB·DC에 가입된 상태에서 IRP를 추가로 개설해 본인이 직접 납입하고 세액공제를 받을 수 있습니다. IRP는 개인 추가 납입 계좌이므로 퇴직연금과 별개입니다.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">퇴직할 때 퇴직금을 IRP로 받아야 하나요? <span class="arrow">▼</span></button>
+      <div class="faq-a">퇴직금이 300만원 초과이면 IRP 계좌로 의무 이전됩니다. IRP에서 바로 인출하면 퇴직소득세를 납부하고 수령합니다. 55세 이후까지 IRP에서 연금 수령 방식을 선택하면 퇴직소득세의 30~40%를 감면받을 수 있습니다.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">IRP를 어느 금융기관에서 개설하는 게 좋나요? <span class="arrow">▼</span></button>
+      <div class="faq-a">수수료와 투자 가능 상품을 비교하세요. 은행 IRP는 수수료가 낮지만 투자 상품이 제한적이고, 증권사 IRP는 ETF 등 다양한 투자 상품이 가능합니다. 미래에셋·삼성·한국투자 등 증권사 IRP가 투자 상품 다양성 면에서 유리합니다.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">자영업자·프리랜서도 IRP 가입할 수 있나요? <span class="arrow">▼</span></button>
+      <div class="faq-a">네, 가능합니다. 소득이 있으면 직장인이 아니어도 IRP에 가입해 세액공제 혜택을 받을 수 있습니다. 종합소득세 신고 시 IRP 납입액을 세액공제 항목으로 반영하면 됩니다.</div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-wrap">
+    <a href="https://kr-tools.moneydecoded.net/severance-calculator.html" class="cta-btn">
+      <div class="cta-icon">💼</div>
+      <div class="cta-text">
+        <strong>퇴직금 계산기</strong>
+        <span>내 퇴직금 얼마인지 바로 계산</span>
+      </div>
+      <div class="cta-arrow">→</div>
+    </a>
+    <a href="https://kr-tools.moneydecoded.net/severance-tax-guide.html" class="cta-btn">
+      <div class="cta-icon">📋</div>
+      <div class="cta-text">
+        <strong>퇴직금 세금 절약법</strong>
+        <span>퇴직소득세 줄이는 방법 총정리</span>
+      </div>
+      <div class="cta-arrow">→</div>
+    </a>
+    <a href="https://kr-tools.moneydecoded.net/salary-calculator.html" class="cta-btn">
+      <div class="cta-icon">💰</div>
+      <div class="cta-text">
+        <strong>연봉 실수령액 계산기</strong>
+        <span>IRP 공제 후 실수령액 확인</span>
+      </div>
+      <div class="cta-arrow">→</div>
+    </a>
+    <a href="https://kr-tools.moneydecoded.net" class="cta-btn">
+      <div class="cta-icon">🧮</div>
+      <div class="cta-text">
+        <strong>한국어 계산기 모음</strong>
+        <span>주담대·청약·환율 계산기</span>
+      </div>
+      <div class="cta-arrow">→</div>
+    </a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="https://kr-tools.moneydecoded.net">한국어 도구</a>
+    <a href="https://kr-tools.moneydecoded.net/severance-calculator.html">퇴직금 계산기</a>
+    <a href="https://kr-tools.moneydecoded.net/severance-tax-guide.html">퇴직금 세금 절약법</a>
+    <a href="https://www.moneydecoded.net/p/privacy-policy.html">개인정보처리방침</a>
+  </div>
+  <p>© 2026 MoneyDecoded — 이 정보는 참고용이며 실제 퇴직연금 조건은 각 금융기관에서 확인하세요.</p>
+</footer>
+
+<script>
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => btn.closest('.faq-item').classList.toggle('open'));
+  });
+</script>
+
+</body>
+</html>

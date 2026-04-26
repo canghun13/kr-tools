@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>청약통장 종류 비교 — 주택청약종합저축 완벽 가이드 2026 | MoneyDecoded</title>
+<meta name="description" content="2026년 청약통장 종류 비교 완벽 정리. 주택청약종합저축·청약저축·청약부금·청약예금 차이, 납입 전략, 소득공제 활용법까지 한 번에.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #f5f5f0;
+    --surface: #ffffff;
+    --surface2: #f9f9f7;
+    --border: #e8e8e4;
+    --text: #1a1a1a;
+    --text2: #666660;
+    --text3: #999994;
+    --accent: #2563eb;
+    --accent-light: #eff6ff;
+    --green: #16a34a;
+    --green-light: #f0fdf4;
+    --orange: #ea580c;
+    --orange-light: #fff7ed;
+    --red: #dc2626;
+    --red-light: #fef2f2;
+    --yellow-light: #fefce8;
+    --radius: 12px;
+    --shadow: 0 1px 3px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.04);
+    --shadow-md: 0 4px 16px rgba(0,0,0,.08);
+  }
+  body { font-family: 'Pretendard', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; font-size: 15px; }
+
+  nav { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 24px; display: flex; align-items: center; height: 52px; gap: 16px; position: sticky; top: 0; z-index: 100; }
+  .nav-logo { font-weight: 700; font-size: 15px; color: var(--text); text-decoration: none; }
+  .nav-links { display: flex; gap: 16px; margin-left: auto; }
+  .nav-links a { font-size: 13px; color: var(--text2); text-decoration: none; }
+  .nav-links a:hover { color: var(--accent); }
+
+  .hero { background: linear-gradient(135deg, #14532d 0%, #16a34a 100%); color: #fff; padding: 48px 24px 40px; text-align: center; }
+  .hero-badge { display: inline-block; font-size: 12px; font-weight: 600; background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.25); padding: 4px 12px; border-radius: 20px; margin-bottom: 16px; }
+  .hero h1 { font-size: clamp(22px, 4vw, 32px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.35; margin-bottom: 10px; }
+  .hero h1 em { font-style: normal; color: #86efac; }
+  .hero p { font-size: 14px; opacity: .85; max-width: 500px; margin: 0 auto; }
+
+  .container { max-width: 720px; margin: 0 auto; padding: 32px 16px 60px; }
+
+  .toc { background: var(--accent-light); border: 1px solid #bfdbfe; border-radius: var(--radius); padding: 18px 22px; margin-bottom: 32px; }
+  .toc-title { font-weight: 700; font-size: 13px; color: var(--accent); margin-bottom: 8px; }
+  .toc ol { padding-left: 18px; }
+  .toc li { margin-bottom: 3px; }
+  .toc a { color: var(--accent); text-decoration: none; font-size: 13px; }
+  .toc a:hover { text-decoration: underline; }
+
+  section { margin-bottom: 40px; }
+  .section-num { display: inline-block; background: var(--accent); color: #fff; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 4px; margin-bottom: 8px; letter-spacing: .05em; }
+  h2 { font-size: 19px; font-weight: 700; margin-bottom: 12px; line-height: 1.4; letter-spacing: -0.01em; }
+  h3 { font-size: 16px; font-weight: 700; margin: 20px 0 10px; }
+  p { margin-bottom: 12px; color: #374151; font-size: 14px; }
+
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 22px; margin-bottom: 14px; box-shadow: var(--shadow); }
+
+  .key-box { border-radius: var(--radius); padding: 16px 18px; margin-bottom: 14px; border-left: 4px solid; }
+  .key-box.green { background: var(--green-light); border-color: var(--green); }
+  .key-box.orange { background: var(--orange-light); border-color: var(--orange); }
+  .key-box.blue { background: var(--accent-light); border-color: var(--accent); }
+  .key-box.red { background: var(--red-light); border-color: var(--red); }
+  .key-box.yellow { background: var(--yellow-light); border-color: #ca8a04; }
+  .key-box strong { display: block; font-size: 13px; margin-bottom: 4px; }
+  .key-box p { margin: 0; font-size: 13px; }
+
+  .table-wrap { overflow-x: auto; margin-bottom: 14px; -webkit-overflow-scrolling: touch; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 480px; }
+  th { background: #f1f5f9; padding: 9px 12px; text-align: left; font-weight: 600; border-bottom: 2px solid var(--border); white-space: nowrap; }
+  td { padding: 9px 12px; border-bottom: 1px solid var(--border); }
+  tr:last-child td { border-bottom: none; }
+  .tag-green { background: var(--green-light); color: var(--green); padding: 2px 7px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+  .tag-blue { background: var(--accent-light); color: var(--accent); padding: 2px 7px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+  .tag-orange { background: var(--orange-light); color: var(--orange); padding: 2px 7px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+  .tag-red { background: var(--red-light); color: var(--red); padding: 2px 7px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+
+  .checklist { list-style: none; }
+  .checklist li { display: flex; align-items: flex-start; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist li::before { content: "✓"; color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+
+  .sim-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); margin-bottom: 16px; }
+  .sim-header { background: #14532d; color: #fff; padding: 12px 18px; font-size: 13px; font-weight: 600; }
+  .sim-body { padding: 16px 18px; }
+  .sim-row { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+  .sim-row:last-child { border-bottom: none; }
+  .sim-row .label { color: var(--text2); }
+  .sim-row .val { font-weight: 700; }
+  .sim-row.good .val { color: var(--green); }
+
+  .summary { background: linear-gradient(135deg, #14532d, #16a34a); color: #fff; border-radius: var(--radius); padding: 22px; margin-bottom: 32px; }
+  .summary h3 { color: #fff; margin-top: 0; font-size: 15px; margin-bottom: 14px; }
+  .summary-list { list-style: none; }
+  .summary-list li { padding: 5px 0; font-size: 13px; display: flex; align-items: flex-start; gap: 8px; }
+  .summary-list li::before { content: "✓"; color: #86efac; font-weight: 700; flex-shrink: 0; }
+
+  .cta-wrap { display: flex; flex-direction: column; gap: 10px; margin-top: 32px; }
+  .cta-btn { display: flex; align-items: center; gap: 12px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px 18px; text-decoration: none; color: var(--text); box-shadow: var(--shadow); transition: box-shadow .15s, transform .15s; }
+  .cta-btn:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); }
+  .cta-icon { font-size: 22px; flex-shrink: 0; }
+  .cta-text strong { display: block; font-size: 14px; margin-bottom: 2px; }
+  .cta-text span { font-size: 12px; color: var(--text2); }
+  .cta-arrow { margin-left: auto; color: var(--text3); }
+
+  .faq-item { border: 1px solid var(--border); border-radius: 10px; margin-bottom: 8px; overflow: hidden; }
+  .faq-q { padding: 14px 16px; font-size: 14px; font-weight: 500; cursor: pointer; display: flex; justify-content: space-between; align-items: center; background: var(--surface); user-select: none; width: 100%; border: none; text-align: left; color: var(--text); font-family: inherit; }
+  .faq-q:hover { background: var(--surface2); }
+  .faq-q .arrow { transition: transform 0.2s; color: var(--text3); font-size: 12px; }
+  .faq-item.open .arrow { transform: rotate(180deg); }
+  .faq-a { display: none; padding: 0 16px 14px; font-size: 13px; color: var(--text2); line-height: 1.7; background: var(--surface); }
+  .faq-item.open .faq-a { display: block; }
+
+  footer { background: var(--surface); border-top: 1px solid var(--border); padding: 24px; text-align: center; margin-top: 48px; }
+  .footer-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 10px; }
+  .footer-links a { font-size: 13px; color: var(--text2); text-decoration: none; }
+  footer p { font-size: 12px; color: var(--text3); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://kr-tools.moneydecoded.net" class="nav-logo">MoneyDecoded 🇰🇷</a>
+  <div class="nav-links">
+    <a href="https://kr-tools.moneydecoded.net/subscription-score.html">청약 가점 계산기</a>
+    <a href="https://kr-tools.moneydecoded.net">계산기 모음</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-badge">2026년 최신 기준</div>
+  <h1>청약통장 종류 비교<br><em>주택청약종합저축 완벽 가이드</em></h1>
+  <p>어떤 청약통장이 유리한지, 얼마씩 넣어야 하는지, 소득공제까지 받는 법. 청약 전략의 시작은 통장 선택입니다.</p>
+</div>
+
+<div class="container">
+
+  <div class="toc">
+    <div class="toc-title">📋 이 페이지에서 다루는 내용</div>
+    <ol>
+      <li><a href="#types">청약통장 종류 한눈에 보기</a></li>
+      <li><a href="#jonghabjeocho">주택청약종합저축 — 지금 가입해야 하는 이유</a></li>
+      <li><a href="#old">구형 통장 (청약저축·부금·예금)</a></li>
+      <li><a href="#strategy">납입 전략 — 얼마씩, 언제 넣을까</a></li>
+      <li><a href="#deduction">소득공제 완전 활용법</a></li>
+      <li><a href="#checklist">청약통장 관리 체크리스트</a></li>
+      <li><a href="#faq">자주 묻는 질문</a></li>
+    </ol>
+  </div>
+
+  <!-- SECTION 1 -->
+  <section id="types">
+    <div class="section-num">01</div>
+    <h2>청약통장 종류 한눈에 보기</h2>
+    <p>청약통장은 크게 4가지가 있지만, 2015년 이후 신규 가입은 주택청약종합저축만 가능합니다. 나머지 3가지는 기존 가입자만 유지할 수 있습니다.</p>
+
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <tr><th>통장 종류</th><th>신규 가입</th><th>청약 가능 주택</th><th>특징</th></tr>
+          <tr><td><strong>주택청약종합저축</strong></td><td><span class="tag-green">가능</span></td><td>모든 주택 (국민·민영)</td><td>지금 유일하게 가입 가능</td></tr>
+          <tr><td>청약저축</td><td><span class="tag-red">불가 (2015년 종료)</span></td><td>국민주택만</td><td>기존 가입자 유지 가능</td></tr>
+          <tr><td>청약부금</td><td><span class="tag-red">불가 (2015년 종료)</span></td><td>민영주택 85㎡ 이하</td><td>기존 가입자 유지 가능</td></tr>
+          <tr><td>청약예금</td><td><span class="tag-red">불가 (2015년 종료)</span></td><td>민영주택 전용</td><td>기존 가입자 유지 가능</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="key-box blue">
+      <strong>💡 지금 가입한다면 주택청약종합저축 하나면 됩니다</strong>
+      <p>2015년 9월 이후 신규 가입은 주택청약종합저축만 가능합니다. 국민주택·민영주택 모두 청약 가능하고 소득공제 혜택까지 있어 사실상 모든 청약을 커버합니다.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 2 -->
+  <section id="jonghabjeocho">
+    <div class="section-num">02</div>
+    <h2>주택청약종합저축 — 지금 가입해야 하는 이유</h2>
+
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <tr><th>항목</th><th>내용</th></tr>
+          <tr><td>가입 대상</td><td>국내 거주자 누구나 (미성년자 포함, 1인 1통장)</td></tr>
+          <tr><td>월 납입 금액</td><td>2만원 ~ 50만원 (자유 납입)</td></tr>
+          <tr><td>금리 (2026년 기준)</td><td>연 2.8% (2년 이상 유지 시)</td></tr>
+          <tr><td>국민주택 청약</td><td>월 납입 인정액 기준 (납입 횟수·금액)</td></tr>
+          <tr><td>민영주택 청약</td><td>예치금 기준 (지역·면적별 금액 충족)</td></tr>
+          <tr><td>소득공제</td><td>연 납입액의 40%, 최대 96만원 (무주택 세대주)</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="key-box green">
+      <strong>💡 미성년 자녀 명의로 일찍 가입할수록 유리</strong>
+      <p>청약 가점에서 청약통장 가입 기간이 최대 17점(15년 이상)까지 반영됩니다. 태어나자마자 가입하면 성인이 될 때 이미 수년치 가점을 확보할 수 있습니다. 매달 2만원이라도 꾸준히 납입하는 게 중요합니다.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 3 -->
+  <section id="old">
+    <div class="section-num">03</div>
+    <h2>구형 통장 (청약저축·부금·예금)</h2>
+    <p>2015년 이전 가입자라면 현재 가진 통장을 유지할지, 주택청약종합저축으로 전환할지 판단이 필요합니다.</p>
+
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <tr><th>구분</th><th>청약저축</th><th>청약부금</th><th>청약예금</th></tr>
+          <tr><td>청약 가능 주택</td><td>국민주택만</td><td>민영 85㎡ 이하</td><td>민영주택 전용</td></tr>
+          <tr><td>전환 가능 여부</td><td>종합저축으로 전환 가능</td><td>종합저축으로 전환 가능</td><td>종합저축으로 전환 가능</td></tr>
+          <tr><td>전환 시 주의</td><td>기존 납입 횟수 인정</td><td>가입 기간 인정 여부 확인</td><td>예치금 조건 재확인</td></tr>
+          <tr><td>유지 추천?</td><td>국민주택 노린다면 유지</td><td>대부분 전환 유리</td><td>대부분 전환 유리</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="key-box yellow">
+      <strong>📌 전환 전 반드시 확인하세요</strong>
+      <p>구형 통장을 주택청약종합저축으로 전환하면 기존 납입 실적이 일부 승계됩니다. 단, 전환 시 기존 통장은 해지됩니다. 전환 전에 현재 청약 자격과 가점 상태를 먼저 확인하세요.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 4 -->
+  <section id="strategy">
+    <div class="section-num">04</div>
+    <h2>납입 전략 — 얼마씩, 언제 넣을까</h2>
+
+    <div class="card">
+      <h3 style="margin-top:0; font-size:14px; color:var(--text2)">국민주택 청약 목표</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>전략</th><th>납입액</th><th>이유</th></tr>
+          <tr><td>최소 납입</td><td>월 2만원</td><td>납입 횟수(회차) 쌓기 목적</td></tr>
+          <tr><td>표준 납입</td><td>월 10만원</td><td>납입 인정 상한액 (회당 10만원)</td></tr>
+          <tr><td>과납 주의</td><td>월 10만원 초과 금액</td><td>국민주택 청약엔 추가 인정 안 됨</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-top:0; font-size:14px; color:var(--text2)">민영주택 청약 목표 — 지역별 예치금</h3>
+      <div class="table-wrap">
+        <table>
+          <tr><th>청약 지역</th><th>85㎡ 이하</th><th>102㎡ 이하</th><th>135㎡ 이하</th><th>모든 면적</th></tr>
+          <tr><td>서울·부산</td><td>300만원</td><td>600만원</td><td>1,000만원</td><td>1,500만원</td></tr>
+          <tr><td>기타 광역시</td><td>250만원</td><td>400만원</td><td>700만원</td><td>1,000만원</td></tr>
+          <tr><td>기타 시·군</td><td>200만원</td><td>300만원</td><td>400만원</td><td>500만원</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="key-box blue">
+      <strong>💡 국민주택 노린다면 월 10만원이 최적</strong>
+      <p>국민주택은 납입 횟수와 납입 금액(회당 최대 10만원 인정)이 당첨 기준입니다. 매달 10만원씩 꾸준히 납입하면 가점과 납입금 두 가지를 모두 최적으로 쌓을 수 있습니다.</p>
+    </div>
+
+    <div class="key-box green">
+      <strong>💡 선납 전략 — 목돈 있으면 한 번에 넣기</strong>
+      <p>청약통장에 목돈을 한 번에 납입하면 민영주택 예치금 기준을 빠르게 충족할 수 있습니다. 단, 납입 횟수는 월 1회씩 쌓이므로 국민주택 가점엔 선납 효과가 없습니다.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 5 -->
+  <section id="deduction">
+    <div class="section-num">05</div>
+    <h2>소득공제 완전 활용법</h2>
+    <p>무주택 세대주라면 청약통장 납입액으로 연말정산 소득공제를 받을 수 있습니다.</p>
+
+    <div class="card">
+      <div class="table-wrap">
+        <table>
+          <tr><th>항목</th><th>내용</th></tr>
+          <tr><td>공제 대상</td><td>무주택 세대주 (총 급여 7,000만원 이하 근로자)</td></tr>
+          <tr><td>공제율</td><td>연 납입액의 40%</td></tr>
+          <tr><td>공제 한도</td><td>연 납입액 최대 240만원 → 공제 최대 96만원</td></tr>
+          <tr><td>월 최적 납입액</td><td>월 20만원 (연 240만원 = 공제 한도 충족)</td></tr>
+          <tr><td>적용 세율 예시</td><td>과세표준 1,400만~5,000만원 구간: 15% → 세금 14.4만원 환급</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="sim-box">
+      <div class="sim-header">💰 소득공제 효과 — 월 20만원 납입 시</div>
+      <div class="sim-body">
+        <div class="sim-row">
+          <span class="label">연 납입액</span>
+          <span class="val">240만원</span>
+        </div>
+        <div class="sim-row">
+          <span class="label">소득공제 금액 (40%)</span>
+          <span class="val">96만원</span>
+        </div>
+        <div class="sim-row good">
+          <span class="label">세금 환급액 (세율 15% 기준)</span>
+          <span class="val good">약 14.4만원 환급</span>
+        </div>
+        <div class="sim-row good">
+          <span class="label">세금 환급액 (세율 24% 기준)</span>
+          <span class="val good">약 23만원 환급</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="key-box yellow">
+      <strong>📌 소득공제는 5년치 추징 가능</strong>
+      <p>소득공제를 받은 후 5년 이내에 청약통장을 해지하면 공제받은 세금을 추징당합니다. 당첨 후 해지가 아닌 중도 해지는 신중하게 결정하세요.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 6 -->
+  <section id="checklist">
+    <div class="section-num">06</div>
+    <h2>청약통장 관리 체크리스트</h2>
+
+    <div class="card">
+      <ul class="checklist">
+        <li>주택청약종합저축 아직 없으면 지금 바로 가입 (1인 1통장)</li>
+        <li>미성년 자녀가 있다면 자녀 명의로도 가입 — 가입 기간 가점 미리 쌓기</li>
+        <li>국민주택 목표라면 월 10만원 꾸준히 납입</li>
+        <li>소득공제 받으려면 월 20만원 납입 (연 240만원 = 공제 한도)</li>
+        <li>무주택 세대주 여부 확인 — 소득공제 조건</li>
+        <li>민영주택 목표라면 목표 면적에 맞는 예치금 먼저 확인</li>
+        <li>청약통장 납입 내역 확인 — 청약홈(applyhome.co.kr)에서 조회 가능</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SUMMARY -->
+  <div class="summary">
+    <h3>✅ 핵심 요약</h3>
+    <ul class="summary-list">
+      <li>지금 가입 가능한 청약통장은 주택청약종합저축 하나뿐</li>
+      <li>국민주택 청약 — 월 10만원이 최적 납입액</li>
+      <li>소득공제 받으려면 월 20만원 납입 (연 240만원 한도)</li>
+      <li>미성년 자녀 명의 가입으로 가점 미리 쌓기</li>
+      <li>공제받고 5년 이내 해지 시 세금 추징 주의</li>
+      <li>청약홈(applyhome.co.kr)에서 납입 내역·가점 수시 확인</li>
+    </ul>
+  </div>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <h2>자주 묻는 질문</h2>
+    <div class="faq-item">
+      <button class="faq-q">청약통장 없어도 청약할 수 있나요? <span class="arrow">▼</span></button>
+      <div class="faq-a">원칙적으로 청약통장이 있어야 청약이 가능합니다. 단, 일부 특별공급(신생아·다자녀 등)은 통장 가입 기간 조건이 짧거나 없는 경우도 있습니다. 어떤 경우든 통장은 미리 만들어두는 게 좋습니다.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">청약통장을 해지하면 다시 가입할 수 있나요? <span class="arrow">▼</span></button>
+      <div class="faq-a">재가입은 가능하지만 기존 납입 실적과 가입 기간은 초기화됩니다. 청약 가점에서 통장 가입 기간이 중요하므로 한 번 해지하면 그 기간을 다시 채워야 합니다. 절대 함부로 해지하지 마세요.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">배우자 명의 청약통장도 가점에 반영되나요? <span class="arrow">▼</span></button>
+      <div class="faq-a">청약은 세대주 명의로 신청하는 것이 원칙이고, 가점도 청약 신청자 본인의 통장 기간이 반영됩니다. 배우자 명의 통장은 별도로 가점에 반영되지 않지만, 배우자가 별도로 청약을 신청할 때 활용됩니다.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">월 납입액을 중간에 바꿀 수 있나요? <span class="arrow">▼</span></button>
+      <div class="faq-a">자유 납입 방식이라 매달 2만원~50만원 사이에서 금액을 자유롭게 변경할 수 있습니다. 다만 국민주택 청약에서는 회당 최대 10만원까지만 인정되므로 10만원 초과분은 청약 인정 측면에서 의미가 없습니다.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">청약통장 금리가 은행 예금보다 낮은데 유지해야 하나요? <span class="arrow">▼</span></button>
+      <div class="faq-a">청약통장의 핵심 가치는 금리가 아니라 청약 자격과 납입 기간 가점입니다. 금리만 보면 불리하게 느껴지지만, 소득공제 혜택과 청약 가점을 합산하면 실질 수익은 훨씬 높습니다. 집을 살 계획이 있다면 반드시 유지하세요.</div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-wrap">
+    <a href="https://kr-tools.moneydecoded.net/subscription-score.html" class="cta-btn">
+      <div class="cta-icon">🏆</div>
+      <div class="cta-text">
+        <strong>청약 가점 계산기</strong>
+        <span>내 청약 가점 바로 계산</span>
+      </div>
+      <div class="cta-arrow">→</div>
+    </a>
+    <a href="https://kr-tools.moneydecoded.net/subscription-score-guide.html" class="cta-btn">
+      <div class="cta-icon">📈</div>
+      <div class="cta-text">
+        <strong>청약 가점 높이는 법</strong>
+        <span>가점 구조와 전략 총정리</span>
+      </div>
+      <div class="cta-arrow">→</div>
+    </a>
+    <a href="https://kr-tools.moneydecoded.net/subscription-special-guide.html" class="cta-btn">
+      <div class="cta-icon">🎯</div>
+      <div class="cta-text">
+        <strong>청약 특별공급 종류와 조건</strong>
+        <span>신생아·신혼·다자녀·생애최초 정리</span>
+      </div>
+      <div class="cta-arrow">→</div>
+    </a>
+    <a href="https://kr-tools.moneydecoded.net" class="cta-btn">
+      <div class="cta-icon">🧮</div>
+      <div class="cta-text">
+        <strong>한국어 계산기 모음</strong>
+        <span>연봉·퇴직금·주담대·환율 계산기</span>
+      </div>
+      <div class="cta-arrow">→</div>
+    </a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="https://kr-tools.moneydecoded.net">한국어 도구</a>
+    <a href="https://kr-tools.moneydecoded.net/subscription-score.html">청약 가점 계산기</a>
+    <a href="https://kr-tools.moneydecoded.net/subscription-score-guide.html">청약 가점 높이는 법</a>
+    <a href="https://www.moneydecoded.net/p/privacy-policy.html">개인정보처리방침</a>
+  </div>
+  <p>© 2026 MoneyDecoded — 이 정보는 참고용이며 실제 청약 조건은 청약홈(applyhome.co.kr)에서 확인하세요.</p>
+</footer>
+
+<script>
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => btn.closest('.faq-item').classList.toggle('open'));
+  });
+</script>
+
+</body>
+</html>
