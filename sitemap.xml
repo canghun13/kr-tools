@@ -135,6 +135,32 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- 실업급여·건강보험 -->
+  <url>
+    <loc>https://kr-tools.moneydecoded.net/unemployment-calculator.html</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://kr-tools.moneydecoded.net/unemployment-guide.html</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kr-tools.moneydecoded.net/health-insurance-calculator.html</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://kr-tools.moneydecoded.net/health-insurance-guide.html</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- 해외송금·환율 정보성 페이지 -->
   <url>
     <loc>https://kr-tools.moneydecoded.net/exchange-rate-guide.html</loc>
