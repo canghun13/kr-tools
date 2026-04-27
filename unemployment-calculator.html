@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>실업급여 계산기 2026 — 수급액·기간 자동 계산 | MoneyDecoded</title>
+<meta name="description" content="실업급여 얼마나 받을 수 있을까? 나이·고용보험 가입기간·이전 월급 입력하면 수급액과 수급기간을 자동으로 계산해드립니다.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #f8f9fa;
+    --surface: #ffffff;
+    --border: #e9ecef;
+    --text: #1a1d23;
+    --text-sub: #6c757d;
+    --primary: #2563eb;
+    --primary-light: #eff6ff;
+    --green: #16a34a;
+    --green-light: #f0fdf4;
+    --orange: #ea580c;
+    --orange-light: #fff7ed;
+    --red: #dc2626;
+    --red-light: #fef2f2;
+    --yellow-light: #fefce8;
+    --shadow: 0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.04);
+    --shadow-md: 0 4px 12px rgba(0,0,0,.08);
+    --radius: 12px;
+  }
+
+  body {
+    font-family: 'Pretendard', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  nav {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-logo { font-weight: 700; font-size: 17px; color: var(--text); text-decoration: none; }
+  .nav-links { display: flex; gap: 20px; }
+  .nav-links a { color: var(--text-sub); text-decoration: none; font-size: 14px; }
+  .nav-links a:hover { color: var(--text); }
+
+  .hero {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);
+    color: #fff;
+    padding: 52px 24px 44px;
+    text-align: center;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(255,255,255,.15);
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 13px;
+    margin-bottom: 16px;
+  }
+  .hero h1 { font-size: clamp(22px, 5vw, 32px); font-weight: 700; line-height: 1.35; margin-bottom: 12px; }
+  .hero h1 em { font-style: normal; color: #93c5fd; }
+  .hero p { font-size: 15px; opacity: .85; max-width: 520px; margin: 0 auto; }
+
+  .container { max-width: 720px; margin: 0 auto; padding: 32px 16px 60px; }
+
+  /* CALCULATOR CARD */
+  .calc-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow);
+  }
+  .calc-card h2 { font-size: 18px; font-weight: 700; margin-bottom: 20px; }
+
+  .field { margin-bottom: 20px; }
+  .field label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--text);
+  }
+  .field label span { font-weight: 400; color: var(--text-sub); font-size: 13px; margin-left: 4px; }
+  .field input, .field select {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: inherit;
+    color: var(--text);
+    background: var(--surface);
+    transition: border-color .15s;
+    appearance: none;
+  }
+  .field input:focus, .field select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37,99,235,.1);
+  }
+  .input-wrap { position: relative; }
+  .input-unit {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: var(--text-sub);
+    pointer-events: none;
+  }
+
+  .radio-group { display: flex; gap: 10px; flex-wrap: wrap; }
+  .radio-btn {
+    flex: 1; min-width: 80px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 12px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-sub);
+    background: var(--surface);
+    transition: all .15s;
+    user-select: none;
+  }
+  .radio-btn.active {
+    background: var(--primary-light);
+    border-color: var(--primary);
+    color: var(--primary);
+    font-weight: 700;
+  }
+
+  .calc-btn {
+    width: 100%;
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background .15s, transform .1s;
+    margin-top: 8px;
+  }
+  .calc-btn:hover { background: #1d4ed8; transform: translateY(-1px); }
+  .calc-btn:active { transform: translateY(0); }
+
+  /* RESULT */
+  .result-card {
+    background: linear-gradient(135deg, #1e3a5f, #2563eb);
+    color: #fff;
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    margin-bottom: 24px;
+    display: none;
+  }
+  .result-card.show { display: block; }
+  .result-title { font-size: 14px; opacity: .8; margin-bottom: 4px; }
+  .result-main { font-size: 36px; font-weight: 800; margin-bottom: 20px; letter-spacing: -.02em; }
+  .result-main span { font-size: 20px; font-weight: 600; }
+  .result-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .result-item {
+    background: rgba(255,255,255,.12);
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .result-item-label { font-size: 12px; opacity: .75; margin-bottom: 4px; }
+  .result-item-val { font-size: 18px; font-weight: 700; }
+
+  /* NOTE */
+  .note {
+    background: var(--yellow-light);
+    border: 1px solid #fde68a;
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    font-size: 13px;
+    color: #78350f;
+    margin-bottom: 24px;
+    display: none;
+  }
+  .note.show { display: block; }
+
+  /* CONDITION */
+  .cond-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    box-shadow: var(--shadow);
+  }
+  .cond-title { font-size: 15px; font-weight: 700; margin-bottom: 12px; }
+  .cond-list { list-style: none; }
+  .cond-list li {
+    padding: 5px 0;
+    font-size: 14px;
+    color: #374151;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .cond-list li::before { content: "✓"; color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+  .cond-list li.no::before { content: "✗"; color: var(--red); }
+
+  .key-box {
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    margin-bottom: 16px;
+    border-left: 4px solid;
+  }
+  .key-box.green { background: var(--green-light); border-color: var(--green); }
+  .key-box.orange { background: var(--orange-light); border-color: var(--orange); }
+  .key-box.blue { background: var(--primary-light); border-color: var(--primary); }
+  .key-box.red { background: var(--red-light); border-color: var(--red); }
+  .key-box.yellow { background: var(--yellow-light); border-color: #ca8a04; }
+  .key-box strong { display: block; font-size: 14px; margin-bottom: 4px; }
+  .key-box p { margin: 0; font-size: 14px; color: inherit; }
+
+  .table-wrap { overflow-x: auto; margin-bottom: 16px; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th { background: #f1f5f9; padding: 10px 12px; text-align: left; font-weight: 600; border-bottom: 2px solid var(--border); }
+  td { padding: 10px 12px; border-bottom: 1px solid var(--border); }
+  tr:last-child td { border-bottom: none; }
+
+  .section-num {
+    display: inline-block;
+    background: var(--primary);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    letter-spacing: .05em;
+  }
+  section { margin-bottom: 40px; }
+  h2 { font-size: 20px; font-weight: 700; margin-bottom: 12px; line-height: 1.4; }
+  h3 { font-size: 17px; font-weight: 700; margin: 20px 0 10px; }
+  p { margin-bottom: 14px; color: #374151; }
+
+  /* FAQ */
+  .faq-item { border-bottom: 1px solid var(--border); }
+  .faq-q {
+    width: 100%; background: none; border: none;
+    text-align: left; padding: 16px 0;
+    font-size: 15px; font-weight: 600; cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center;
+    color: var(--text);
+  }
+  .faq-q .arrow { transition: transform .2s; font-size: 12px; color: var(--text-sub); }
+  .faq-item.open .arrow { transform: rotate(180deg); }
+  .faq-a { display: none; padding-bottom: 16px; font-size: 14px; color: #4b5563; line-height: 1.7; }
+  .faq-item.open .faq-a { display: block; }
+
+  /* CTA */
+  .cta-wrap { display: flex; flex-direction: column; gap: 12px; margin-top: 32px; }
+  .cta-btn {
+    display: flex; align-items: center; gap: 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    text-decoration: none;
+    color: var(--text);
+    box-shadow: var(--shadow);
+    transition: box-shadow .15s, transform .15s;
+  }
+  .cta-btn:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); }
+  .cta-icon { font-size: 24px; flex-shrink: 0; }
+  .cta-text strong { display: block; font-size: 15px; margin-bottom: 2px; }
+  .cta-text span { font-size: 13px; color: var(--text-sub); }
+  .cta-arrow { margin-left: auto; color: var(--text-sub); }
+
+  footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 24px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-sub);
+  }
+  footer a { color: var(--text-sub); text-decoration: none; margin: 0 8px; }
+  footer a:hover { color: var(--text); }
+
+  @media (max-width: 480px) {
+    .result-grid { grid-template-columns: 1fr; }
+    .result-main { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://kr-tools.moneydecoded.net" class="nav-logo">MoneyDecoded 🇰🇷</a>
+  <div class="nav-links">
+    <a href="https://kr-tools.moneydecoded.net/unemployment-guide.html">실업급여 가이드</a>
+    <a href="https://kr-tools.moneydecoded.net">계산기 모음</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-badge">2026년 최신 기준</div>
+  <h1>실업급여 계산기<br><em>수급액·수급기간 자동 계산</em></h1>
+  <p>나이, 고용보험 가입기간, 이전 월급만 입력하면 실업급여를 얼마나 받을 수 있는지 바로 알 수 있어요.</p>
+</div>
+
+<div class="container">
+
+  <!-- CALCULATOR -->
+  <div class="calc-card">
+    <h2>📋 실업급여 계산기</h2>
+
+    <div class="field">
+      <label>나이 <span>(만 나이 기준)</span></label>
+      <div class="radio-group" id="age-group">
+        <div class="radio-btn" data-val="young">만 50세 미만</div>
+        <div class="radio-btn" data-val="old">만 50세 이상 또는 장애인</div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>고용보험 가입기간 <span>(이직 전 18개월 이내 합산)</span></label>
+      <div class="radio-group" id="insure-group">
+        <div class="radio-btn" data-val="180">180일 이상 ~ 1년 미만</div>
+        <div class="radio-btn" data-val="365">1년 이상 ~ 3년 미만</div>
+        <div class="radio-btn" data-val="1095">3년 이상 ~ 5년 미만</div>
+        <div class="radio-btn" data-val="1825">5년 이상 ~ 10년 미만</div>
+        <div class="radio-btn" data-val="3650">10년 이상</div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>퇴직 전 3개월 평균 월급 <span>(세전)</span></label>
+      <div class="input-wrap">
+        <input type="number" id="salary-input" placeholder="예: 3500000" min="0">
+        <span class="input-unit">원</span>
+      </div>
+    </div>
+
+    <button class="calc-btn" onclick="calculate()">실업급여 계산하기</button>
+  </div>
+
+  <!-- RESULT -->
+  <div class="result-card" id="result-card">
+    <div class="result-title">예상 실업급여 총액</div>
+    <div class="result-main" id="result-total">— <span>원</span></div>
+    <div class="result-grid">
+      <div class="result-item">
+        <div class="result-item-label">하루 수급액</div>
+        <div class="result-item-val" id="result-daily">—</div>
+      </div>
+      <div class="result-item">
+        <div class="result-item-label">수급 기간</div>
+        <div class="result-item-val" id="result-days">—</div>
+      </div>
+      <div class="result-item">
+        <div class="result-item-label">월 환산 수령액</div>
+        <div class="result-item-val" id="result-monthly">—</div>
+      </div>
+      <div class="result-item">
+        <div class="result-item-label">이전 월급 대비</div>
+        <div class="result-item-val" id="result-ratio">—</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note show" id="result-note" style="display:none">
+    ⚠️ 이 계산기는 <strong>참고용</strong>입니다. 실제 수급액은 고용센터 심사 결과에 따라 달라질 수 있으며, 비자발적 퇴직·수급 자격 요건을 충족해야 합니다.
+  </div>
+
+  <!-- SECTION 1 -->
+  <section id="conditions">
+    <div class="section-num">01</div>
+    <h2>실업급여 받으려면? 수급 조건 정리</h2>
+    <p>실업급여(구직급여)는 비자발적으로 일자리를 잃은 경우에 지급됩니다. 네 가지 조건을 모두 충족해야 합니다.</p>
+
+    <div class="cond-card">
+      <div class="cond-title">✅ 수급 자격 4가지 조건</div>
+      <ul class="cond-list">
+        <li>고용보험 가입 기간이 이직 전 18개월 이내에 <strong>180일 이상</strong>일 것</li>
+        <li>비자발적 이직 — 권고사직·계약만료·폐업·정리해고 등</li>
+        <li>재취업 의사와 능력이 있을 것 (구직활동 의지)</li>
+        <li>근로 능력이 있음에도 취업하지 못한 상태일 것</li>
+      </ul>
+    </div>
+
+    <div class="key-box orange">
+      <strong>📌 자진 퇴사는 원칙적으로 불가</strong>
+      <p>단, 임금 체불·직장 내 괴롭힘·건강 악화·이사 등 <strong>정당한 사유</strong>가 있는 경우 자진퇴사도 수급 가능합니다. 이직확인서 발급 시 사유를 정확히 기재해야 합니다.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 2 -->
+  <section id="amount">
+    <div class="section-num">02</div>
+    <h2>실업급여 계산 방법</h2>
+    <p>실업급여(구직급여)는 <strong>이직 전 평균임금의 60%</strong>를 기준으로 계산합니다. 단, 상한액과 하한액이 정해져 있습니다.</p>
+
+    <div class="key-box blue">
+      <strong>💡 1일 구직급여 계산 공식</strong>
+      <p>1일 구직급여 = 이직 전 3개월 평균임금 ÷ 30일 × 60%<br>
+      단, <strong>상한액 66,000원 / 하한액 약 63,104원</strong> (2026년 기준)</p>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <tr><th>구분</th><th>기준</th><th>2026년 금액</th></tr>
+        <tr><td>1일 상한액</td><td>고용부 고시</td><td><strong>66,000원</strong></td></tr>
+        <tr><td>1일 하한액</td><td>최저임금의 80%</td><td><strong>약 63,104원</strong></td></tr>
+        <tr><td>지급률</td><td>평균임금 기준</td><td><strong>60%</strong></td></tr>
+      </table>
+    </div>
+
+    <div class="key-box green">
+      <strong>✅ 하한액이 생각보다 높은 이유</strong>
+      <p>최저임금 인상으로 하한액도 함께 올라갑니다. 2026년 기준 최저임금 시급 10,320원 × 8시간 × 80% ≒ 63,104원입니다. 월급이 낮을수록 하한액 적용을 받을 가능성이 높습니다.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 3 -->
+  <section id="period">
+    <div class="section-num">03</div>
+    <h2>수급 기간은 얼마나 될까?</h2>
+    <p>나이와 고용보험 가입기간에 따라 수급 기간이 달라집니다. 최소 120일 ~ 최대 270일입니다.</p>
+
+    <div class="table-wrap">
+      <table>
+        <tr>
+          <th>고용보험 가입기간</th>
+          <th>만 50세 미만</th>
+          <th>만 50세 이상 또는 장애인</th>
+        </tr>
+        <tr><td>1년 미만</td><td>120일</td><td>120일</td></tr>
+        <tr><td>1년 이상 ~ 3년 미만</td><td>150일</td><td>180일</td></tr>
+        <tr><td>3년 이상 ~ 5년 미만</td><td>180일</td><td>210일</td></tr>
+        <tr><td>5년 이상 ~ 10년 미만</td><td>210일</td><td>240일</td></tr>
+        <tr><td>10년 이상</td><td>240일</td><td>270일</td></tr>
+      </table>
+    </div>
+
+    <div class="key-box yellow">
+      <strong>⏰ 신청 기한은 퇴직 후 1년</strong>
+      <p>이직일(마지막 근무일 다음날)로부터 <strong>1년 이내</strong>에 신청해야 합니다. 수급 기간이 남아 있어도 1년이 지나면 소멸됩니다. 퇴직 후 바로 고용센터에 신청하세요.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 4 -->
+  <section id="how-to">
+    <div class="section-num">04</div>
+    <h2>실업급여 신청 절차</h2>
+
+    <div class="cond-card">
+      <div class="cond-title">📋 신청 순서</div>
+      <ul class="cond-list">
+        <li><strong>이직확인서 발급</strong> — 전 직장에서 고용보험 상실신고 + 이직확인서 발급 요청</li>
+        <li><strong>워크넷 구직 등록</strong> — 워크넷(www.work.go.kr)에서 이력서 등록</li>
+        <li><strong>고용센터 방문</strong> — 관할 고용센터 방문, 수급자격 신청서 제출</li>
+        <li><strong>온라인 교육 수강</strong> — 고용보험 홈페이지에서 수급자격자 교육 이수</li>
+        <li><strong>1~4주 후 수급자격 인정</strong> — 인정 후 실업인정일마다 구직활동 신고</li>
+      </ul>
+    </div>
+
+    <div class="key-box blue">
+      <strong>💡 실업인정은 4주마다</strong>
+      <p>수급 기간 중 4주에 한 번 고용센터에 구직활동 보고를 해야 급여가 지급됩니다. 1~2차는 고용센터 방문 필수, 이후부터는 온라인 신고도 가능합니다.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <h2>자주 묻는 질문</h2>
+    <div class="faq-item">
+      <button class="faq-q">권고사직도 실업급여 받을 수 있나요? <span class="arrow">▼</span></button>
+      <div class="faq-a">네, 가능합니다. 권고사직은 비자발적 이직으로 분류되어 수급 자격이 됩니다. 단, 이직확인서에 '권고사직' 또는 '사업주 권유에 의한 사직'으로 정확히 기재되어야 합니다.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">계약직 계약 만료도 되나요? <span class="arrow">▼</span></button>
+      <div class="faq-a">계약 만료로 인한 퇴직은 원칙적으로 실업급여 대상입니다. 단, 사업주가 계약 갱신을 제안했는데 본인이 거절한 경우에는 자발적 이직으로 봐서 수급이 어려울 수 있습니다.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">프리랜서·특수고용직도 받을 수 있나요? <span class="arrow">▼</span></button>
+      <div class="faq-a">고용보험에 가입된 경우만 가능합니다. 2021년부터 특수형태근로종사자(퀵서비스, 대리운전, 학습지 교사 등 일부 직종)도 고용보험 의무 가입 대상이 되었습니다. 본인의 가입 여부는 고용보험 홈페이지에서 확인하세요.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">실업급여 받는 중에 아르바이트 해도 되나요? <span class="arrow">▼</span></button>
+      <div class="faq-a">신고 후 제한적으로 가능합니다. 주 15시간 미만 또는 월 60만원 미만의 단기 취업은 신고 조건으로 허용됩니다. 단, 신고하지 않고 취업하다 적발되면 부정수급으로 환수 + 추가 제재를 받습니다. 반드시 고용센터에 신고하세요.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q">퇴직금이랑 실업급여 동시에 받을 수 있나요? <span class="arrow">▼</span></button>
+      <div class="faq-a">네, 둘은 별개입니다. 퇴직금은 근로기준법상 권리이고 실업급여는 고용보험에서 지급되므로 중복 수령이 가능합니다. 퇴직금을 IRP로 받으면 세금 절약까지 가능합니다.</div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-wrap">
+    <a href="https://kr-tools.moneydecoded.net/unemployment-guide.html" class="cta-btn">
+      <div class="cta-icon">📖</div>
+      <div class="cta-text">
+        <strong>실업급여 완벽 가이드</strong>
+        <span>신청 절차·주의사항·자진퇴사 수급법 총정리</span>
+      </div>
+      <div class="cta-arrow">→</div>
+    </a>
+    <a href="https://kr-tools.moneydecoded.net/severance-calculator.html" class="cta-btn">
+      <div class="cta-icon">🏖️</div>
+      <div class="cta-text">
+        <strong>퇴직금 계산기</strong>
+        <span>퇴직금 + 퇴직소득세 자동 계산</span>
+      </div>
+      <div class="cta-arrow">→</div>
+    </a>
+    <a href="https://kr-tools.moneydecoded.net/salary-calculator.html" class="cta-btn">
+      <div class="cta-icon">💰</div>
+      <div class="cta-text">
+        <strong>연봉 실수령액 계산기</strong>
+        <span>4대보험·소득세 공제 후 월급 확인</span>
+      </div>
+      <div class="cta-arrow">→</div>
+    </a>
+    <a href="https://kr-tools.moneydecoded.net" class="cta-btn">
+      <div class="cta-icon">🧮</div>
+      <div class="cta-text">
+        <strong>한국어 계산기 모음</strong>
+        <span>주담대·청약·환율·퇴직금 계산기</span>
+      </div>
+      <div class="cta-arrow">→</div>
+    </a>
+  </div>
+
+</div>
+
+<footer>
+  <div style="margin-bottom:8px">
+    <a href="https://kr-tools.moneydecoded.net">한국어 도구</a>
+    <a href="https://kr-tools.moneydecoded.net/severance-calculator.html">퇴직금 계산기</a>
+    <a href="https://kr-tools.moneydecoded.net/salary-calculator.html">연봉계산기</a>
+    <a href="https://www.moneydecoded.net/p/privacy-policy.html">개인정보처리방침</a>
+  </div>
+  © 2026 MoneyDecoded — 이 정보는 참고용이며 정확한 내용은 고용센터에 문의하세요.
+</footer>
+
+<script>
+  // Radio buttons
+  function initRadio(groupId, callback) {
+    const btns = document.querySelectorAll(`#${groupId} .radio-btn`);
+    btns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        if (callback) callback();
+      });
+    });
+  }
+  initRadio('age-group');
+  initRadio('insure-group');
+
+  function getVal(groupId) {
+    const active = document.querySelector(`#${groupId} .radio-btn.active`);
+    return active ? active.dataset.val : null;
+  }
+
+  // 수급 기간 테이블
+  const periodTable = {
+    young: { 180: 120, 365: 150, 1095: 180, 1825: 210, 3650: 240 },
+    old:   { 180: 120, 365: 180, 1095: 210, 1825: 240, 3650: 270 }
+  };
+
+  function calculate() {
+    const ageGroup = getVal('age-group');
+    const insureGroup = getVal('insure-group');
+    const salaryInput = document.getElementById('salary-input').value;
+
+    if (!ageGroup || !insureGroup || !salaryInput) {
+      alert('모든 항목을 선택·입력해주세요.');
+      return;
+    }
+
+    const salary = parseInt(salaryInput);
+    if (isNaN(salary) || salary <= 0) {
+      alert('올바른 월급을 입력해주세요.');
+      return;
+    }
+
+    // 1일 평균임금
+    const dailyAvg = salary / 30;
+    // 1일 구직급여 = 평균임금 × 60%
+    let dailyBenefit = dailyAvg * 0.6;
+    // 상한 66,000 / 하한 63,104
+    const MAX = 66000;
+    const MIN = 63104;
+    dailyBenefit = Math.max(MIN, Math.min(MAX, dailyBenefit));
+    dailyBenefit = Math.round(dailyBenefit);
+
+    // 수급 기간
+    const days = periodTable[ageGroup][insureGroup];
+    const total = dailyBenefit * days;
+    const monthly = dailyBenefit * 30;
+    const ratio = Math.round((monthly / salary) * 100);
+
+    // 결과 표시
+    document.getElementById('result-total').innerHTML = `${total.toLocaleString()} <span>원</span>`;
+    document.getElementById('result-daily').textContent = `${dailyBenefit.toLocaleString()}원`;
+    document.getElementById('result-days').textContent = `${days}일`;
+    document.getElementById('result-monthly').textContent = `약 ${monthly.toLocaleString()}원`;
+    document.getElementById('result-ratio').textContent = `약 ${ratio}%`;
+
+    document.getElementById('result-card').classList.add('show');
+    document.getElementById('result-note').style.display = 'block';
+    document.getElementById('result-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.closest('.faq-item').classList.toggle('open');
+    });
+  });
+</script>
+
+</body>
+</html>
